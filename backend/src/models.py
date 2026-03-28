@@ -83,4 +83,13 @@ class GAConfig:
     random_seed: int = 42
 
 
-
+@dataclass
+class Config:
+    institution: Institution
+    rooms: dict  # id -> Room
+    subjects: dict  # id -> Subject
+    teachers: dict  # id -> Teacher
+    classes: List[Class]
+    ga: GAConfig
+    required_lectures: dict = field(default_factory=dict)
+    # class_id -> { subject_id -> count }
