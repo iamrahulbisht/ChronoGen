@@ -1,0 +1,1336 @@
+{
+  "institution": {
+    "name": "GEHU Bhimtal - Combined Sem 4 & 6",
+    "days_per_week": 5,
+    "periods_per_day": 8,
+    "period_duration_minutes": 55,
+    "lunch_break_after_period": 4
+  },
+  "rooms": [
+    {
+      "id": "CR601",
+      "name": "Classroom 601",
+      "capacity": 65,
+      "type": "classroom"
+    },
+    {
+      "id": "CR602",
+      "name": "Classroom 602",
+      "capacity": 65,
+      "type": "classroom"
+    },
+    {
+      "id": "CR603",
+      "name": "Classroom 603",
+      "capacity": 65,
+      "type": "classroom"
+    },
+    {
+      "id": "CR604",
+      "name": "Classroom 604",
+      "capacity": 65,
+      "type": "classroom"
+    },
+    {
+      "id": "CR605",
+      "name": "Classroom 605",
+      "capacity": 65,
+      "type": "classroom"
+    },
+    {
+      "id": "CR606",
+      "name": "Classroom 606",
+      "capacity": 65,
+      "type": "classroom"
+    },
+    {
+      "id": "CR401",
+      "name": "Classroom 401",
+      "capacity": 80,
+      "type": "classroom"
+    },
+    {
+      "id": "CR402",
+      "name": "Classroom 402",
+      "capacity": 80,
+      "type": "classroom"
+    },
+    {
+      "id": "CR403",
+      "name": "Classroom 403",
+      "capacity": 80,
+      "type": "classroom"
+    },
+    {
+      "id": "LAB1",
+      "name": "CS Lab 1",
+      "capacity": 65,
+      "type": "lab"
+    },
+    {
+      "id": "LAB2",
+      "name": "CS Lab 2",
+      "capacity": 65,
+      "type": "lab"
+    },
+    {
+      "id": "LAB3",
+      "name": "CS Lab 3",
+      "capacity": 65,
+      "type": "lab"
+    },
+    {
+      "id": "LAB4",
+      "name": "CS Lab 4",
+      "capacity": 80,
+      "type": "lab"
+    },
+    {
+      "id": "SEMR1",
+      "name": "Seminar Room 1",
+      "capacity": 80,
+      "type": "seminar_room"
+    },
+    {
+      "id": "SEMR2",
+      "name": "Seminar Room 2",
+      "capacity": 100,
+      "type": "seminar_room"
+    }
+  ],
+  "subjects": [
+    {
+      "id": "TCS-601",
+      "name": "Compiler Design",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 3,
+      "is_lab": false,
+      "is_split_allowed": true
+    },
+    {
+      "id": "TCS-611",
+      "name": "Software Engineering",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 3,
+      "is_lab": false,
+      "is_split_allowed": true
+    },
+    {
+      "id": "TCS-666",
+      "name": "Transformer Models and Apps",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 3,
+      "is_lab": false,
+      "is_split_allowed": true
+    },
+    {
+      "id": "TCS-693",
+      "name": "Full Stack Web Development",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 3,
+      "is_lab": false,
+      "is_split_allowed": true
+    },
+    {
+      "id": "TCS-695",
+      "name": "Security Audit and Compliance II",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 3,
+      "is_lab": false,
+      "is_split_allowed": true
+    },
+    {
+      "id": "TCS-651",
+      "name": "Devops on Cloud",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 3,
+      "is_lab": false,
+      "is_split_allowed": true
+    },
+    {
+      "id": "TCS-614",
+      "name": "Computer Networks-II",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 3,
+      "is_lab": false,
+      "is_split_allowed": true
+    },
+    {
+      "id": "PCS-601",
+      "name": "Compiler Design Lab",
+      "requires_room_type": "lab",
+      "min_lectures_per_week": 1,
+      "is_lab": true,
+      "is_split_allowed": false
+    },
+    {
+      "id": "PCS-666",
+      "name": "Transformer Models Lab",
+      "requires_room_type": "lab",
+      "min_lectures_per_week": 1,
+      "is_lab": true,
+      "is_split_allowed": false
+    },
+    {
+      "id": "PCS-693",
+      "name": "Web Development Lab",
+      "requires_room_type": "lab",
+      "min_lectures_per_week": 1,
+      "is_lab": true,
+      "is_split_allowed": false
+    },
+    {
+      "id": "PCS-614",
+      "name": "Computer Networks-II Lab",
+      "requires_room_type": "lab",
+      "min_lectures_per_week": 1,
+      "is_lab": true,
+      "is_split_allowed": false
+    },
+    {
+      "id": "XCS-601",
+      "name": "Career Skills IV",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 2,
+      "is_lab": false,
+      "is_split_allowed": true
+    },
+    {
+      "id": "PESE-600",
+      "name": "Employability Skill Enhancement",
+      "requires_room_type": "seminar_room",
+      "min_lectures_per_week": 1,
+      "is_lab": true,
+      "is_split_allowed": false
+    },
+    {
+      "id": "SCS-601",
+      "name": "MOOCS Seminar",
+      "requires_room_type": "seminar_room",
+      "min_lectures_per_week": 1,
+      "is_lab": false,
+      "is_split_allowed": false
+    },
+    {
+      "id": "TCS-408",
+      "name": "Programming in Java",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 3,
+      "is_lab": false,
+      "is_split_allowed": true
+    },
+    {
+      "id": "TCS-402",
+      "name": "Finite Automata",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 3,
+      "is_lab": false,
+      "is_split_allowed": true
+    },
+    {
+      "id": "TCS-403",
+      "name": "Microprocessor",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 3,
+      "is_lab": false,
+      "is_split_allowed": true
+    },
+    {
+      "id": "TCS-409",
+      "name": "Design and Analysis of Algorithm",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 3,
+      "is_lab": false,
+      "is_split_allowed": true
+    },
+    {
+      "id": "TCS-421",
+      "name": "Fundamental of Statistics and AI",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 3,
+      "is_lab": false,
+      "is_split_allowed": true
+    },
+    {
+      "id": "TCS-464",
+      "name": "Deep learning",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 3,
+      "is_lab": false,
+      "is_split_allowed": true
+    },
+    {
+      "id": "PCS-408",
+      "name": "Java Programming Lab",
+      "requires_room_type": "lab",
+      "min_lectures_per_week": 1,
+      "is_lab": true,
+      "is_split_allowed": false
+    },
+    {
+      "id": "PCS-403",
+      "name": "Microprocessors Lab",
+      "requires_room_type": "lab",
+      "min_lectures_per_week": 1,
+      "is_lab": true,
+      "is_split_allowed": false
+    },
+    {
+      "id": "PCS-409",
+      "name": "DAA Lab",
+      "requires_room_type": "lab",
+      "min_lectures_per_week": 1,
+      "is_lab": true,
+      "is_split_allowed": false
+    },
+    {
+      "id": "PCS-464",
+      "name": "Deep Learning Lab",
+      "requires_room_type": "lab",
+      "min_lectures_per_week": 1,
+      "is_lab": true,
+      "is_split_allowed": false
+    },
+    {
+      "id": "XCS-401",
+      "name": "Career Skills-II",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 2,
+      "is_lab": false,
+      "is_split_allowed": true
+    },
+    {
+      "id": "PESE-400",
+      "name": "Employability Practical",
+      "requires_room_type": "seminar_room",
+      "min_lectures_per_week": 1,
+      "is_lab": true,
+      "is_split_allowed": false
+    }
+  ],
+  "teachers": [
+    {
+      "id": "RS",
+      "name": "Mr. Rahul Singh",
+      "teaches_subjects": [
+        "TCS-601",
+        "TCS-402",
+        "SCS-601"
+      ],
+      "max_lectures_per_week": 12,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": true
+    },
+    {
+      "id": "DVP",
+      "name": "Mr. Devesh Pandey",
+      "teaches_subjects": [
+        "TCS-601"
+      ],
+      "max_lectures_per_week": 8,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": true
+    },
+    {
+      "id": "MK",
+      "name": "Mr. Manoj Kaushik",
+      "teaches_subjects": [
+        "TCS-601",
+        "TCS-402",
+        "TCS-409"
+      ],
+      "max_lectures_per_week": 18,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": false
+    },
+    {
+      "id": "AB",
+      "name": "Mr. Anubhav Bewerval",
+      "teaches_subjects": [
+        "TCS-611",
+        "TCS-614",
+        "SCS-601",
+        "TCS-403",
+        "PCS-403"
+      ],
+      "max_lectures_per_week": 33,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": false
+    },
+    {
+      "id": "SJ",
+      "name": "Dr. Shilpa Jain",
+      "teaches_subjects": [
+        "TCS-666",
+        "PCS-666",
+        "SCS-601",
+        "TCS-421",
+        "TCS-464",
+        "PCS-464"
+      ],
+      "max_lectures_per_week": 16,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": true
+    },
+    {
+      "id": "AD",
+      "name": "Mr. Ansh Dhingra",
+      "teaches_subjects": [
+        "TCS-651",
+        "TCS-495"
+      ],
+      "max_lectures_per_week": 8,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": false
+    },
+    {
+      "id": "AA",
+      "name": "Mr. Aviral Awashthi",
+      "teaches_subjects": [
+        "TCS-614",
+        "SCS-601",
+        "TCS-402"
+      ],
+      "max_lectures_per_week": 15,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": true
+    },
+    {
+      "id": "PK",
+      "name": "Mr. Prince Kumar",
+      "teaches_subjects": [
+        "TCS-695"
+      ],
+      "max_lectures_per_week": 14,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": false
+    },
+    {
+      "id": "SC",
+      "name": "Mr. Suraj Chaunal",
+      "teaches_subjects": [
+        "TCS-693",
+        "TCS-409"
+      ],
+      "max_lectures_per_week": 14,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": false
+    },
+    {
+      "id": "HP",
+      "name": "Ms. Heera Patwal",
+      "teaches_subjects": [
+        "TCS-693",
+        "TCS-421"
+      ],
+      "max_lectures_per_week": 11,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": false
+    },
+    {
+      "id": "SP",
+      "name": "Ms. Senam Pandey",
+      "teaches_subjects": [
+        "TCS-693",
+        "PCS-693",
+        "SCS-601"
+      ],
+      "max_lectures_per_week": 13,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": false
+    },
+    {
+      "id": "VD",
+      "name": "Ms. Vaishali Dev",
+      "teaches_subjects": [
+        "PCS-601"
+      ],
+      "max_lectures_per_week": 14,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": true
+    },
+    {
+      "id": "KU",
+      "name": "Ms. Kumkum",
+      "teaches_subjects": [
+        "PCS-614"
+      ],
+      "max_lectures_per_week": 12,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": false
+    },
+    {
+      "id": "MU",
+      "name": "Ms. Megha Upreti",
+      "teaches_subjects": [
+        "PCS-693"
+      ],
+      "max_lectures_per_week": 8,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": false
+    },
+    {
+      "id": "DT",
+      "name": "Mr. Divas Tiwari",
+      "teaches_subjects": [
+        "XCS-601",
+        "XCS-401"
+      ],
+      "max_lectures_per_week": 6,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": true
+    },
+    {
+      "id": "LS",
+      "name": "Mr. Lalit Singh",
+      "teaches_subjects": [
+        "XCS-601",
+        "PESE-600",
+        "XCS-401"
+      ],
+      "max_lectures_per_week": 10,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": true
+    },
+    {
+      "id": "PA",
+      "name": "Mr. Pawan Agarwal",
+      "teaches_subjects": [
+        "XCS-601",
+        "PESE-600"
+      ],
+      "max_lectures_per_week": 4,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": false
+    },
+    {
+      "id": "NB",
+      "name": "Mr. Narendra Bisht",
+      "teaches_subjects": [
+        "XCS-601",
+        "XCS-401"
+      ],
+      "max_lectures_per_week": 6,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": true
+    },
+    {
+      "id": "MP",
+      "name": "Ms. Maya G Pillai",
+      "teaches_subjects": [
+        "XCS-601",
+        "PESE-600"
+      ],
+      "max_lectures_per_week": 8,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": false
+    },
+    {
+      "id": "NJ",
+      "name": "Ms. Nidhi Joshi",
+      "teaches_subjects": [
+        "XCS-601",
+        "PESE-600",
+        "PESE-400"
+      ],
+      "max_lectures_per_week": 8,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": false
+    },
+    {
+      "id": "SK",
+      "name": "Ms. Srijna Karnatak",
+      "teaches_subjects": [
+        "PESE-600",
+        "PESE-400"
+      ],
+      "max_lectures_per_week": 6,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": false
+    },
+    {
+      "id": "SKS",
+      "name": "Mr. Shashi Kumar Sharma",
+      "teaches_subjects": [
+        "SCS-601",
+        "TCS-402",
+        "TCS-409"
+      ],
+      "max_lectures_per_week": 12,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": false
+    },
+    {
+      "id": "DC",
+      "name": "Ms. Deepali Chaudhary",
+      "teaches_subjects": [
+        "TCS-408",
+        "PCS-408"
+      ],
+      "max_lectures_per_week": 17,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": false
+    },
+    {
+      "id": "KM",
+      "name": "Ms. Kashish Mirza",
+      "teaches_subjects": [
+        "TCS-408",
+        "PCS-408"
+      ],
+      "max_lectures_per_week": 12,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": false
+    },
+    {
+      "id": "GSJ",
+      "name": "Mr. Govind Singh Jethi",
+      "teaches_subjects": [
+        "TCS-403",
+        "PCS-403"
+      ],
+      "max_lectures_per_week": 12,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": false
+    },
+    {
+      "id": "MOP",
+      "name": "Mr. Mohit Pant",
+      "teaches_subjects": [
+        "TCS-403",
+        "PCS-403"
+      ],
+      "max_lectures_per_week": 12,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": false
+    },
+    {
+      "id": "ASB",
+      "name": "Dr. Ankur singh Bist",
+      "teaches_subjects": [
+        "TCS-421"
+      ],
+      "max_lectures_per_week": 8,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": false
+    },
+    {
+      "id": "AG",
+      "name": "Mr. Aditya Gupta",
+      "teaches_subjects": [
+        "PCS-409"
+      ],
+      "max_lectures_per_week": 12,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": false
+    },
+    {
+      "id": "KJ",
+      "name": "Dr. K.A. Joshi",
+      "teaches_subjects": [
+        "XCS-401",
+        "PESE-400"
+      ],
+      "max_lectures_per_week": 8,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": false
+    },
+    {
+      "id": "GP",
+      "name": "Ms. Garima Pant",
+      "teaches_subjects": [
+        "XCS-401"
+      ],
+      "max_lectures_per_week": 4,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": false
+    },
+    {
+      "id": "SA",
+      "name": "Dr. Shweta Arora",
+      "teaches_subjects": [
+        "XCS-401",
+        "PESE-400"
+      ],
+      "max_lectures_per_week": 6,
+      "max_consecutive_lectures": 4,
+      "prefers_morning": false
+    }
+  ],
+  "classes": [
+    {
+      "id": "CS6A",
+      "name": "CS 6th Sem Sec A",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "TCS-601",
+          "teacher_id": "RS",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-611",
+          "teacher_id": "AB",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-614",
+          "teacher_id": "AA",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-695",
+          "teacher_id": "PK",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-693",
+          "teacher_id": "SC",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "PCS-601",
+          "teacher_id": "VD",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "PCS-614",
+          "teacher_id": "KU",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "PCS-693",
+          "teacher_id": "MU",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "XCS-601",
+          "teacher_id": "DT",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "PESE-600",
+          "teacher_id": "LS",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "SCS-601",
+          "teacher_id": "SKS",
+          "min_per_week": 1
+        }
+      ]
+    },
+    {
+      "id": "CS6B",
+      "name": "CS 6th Sem Sec B",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "TCS-601",
+          "teacher_id": "DVP",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-611",
+          "teacher_id": "AB",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-666",
+          "teacher_id": "SJ",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-695",
+          "teacher_id": "PK",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-693",
+          "teacher_id": "HP",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "PCS-601",
+          "teacher_id": "VD",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "PCS-666",
+          "teacher_id": "SJ",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "PCS-693",
+          "teacher_id": "SP",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "XCS-601",
+          "teacher_id": "PA",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "PESE-600",
+          "teacher_id": "MP",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "SCS-601",
+          "teacher_id": "RS",
+          "min_per_week": 1
+        }
+      ]
+    },
+    {
+      "id": "CS6C",
+      "name": "CS 6th Sem Sec C",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "TCS-601",
+          "teacher_id": "MK",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-611",
+          "teacher_id": "AB",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-614",
+          "teacher_id": "AB",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-651",
+          "teacher_id": "AD",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-693",
+          "teacher_id": "SP",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "PCS-601",
+          "teacher_id": "VD",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "PCS-614",
+          "teacher_id": "KU",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "PCS-693",
+          "teacher_id": "MU",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "XCS-601",
+          "teacher_id": "NB",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "PESE-600",
+          "teacher_id": "NJ",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "SCS-601",
+          "teacher_id": "SJ",
+          "min_per_week": 1
+        }
+      ]
+    },
+    {
+      "id": "CS6D",
+      "name": "CS 6th Sem Sec D",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "TCS-601",
+          "teacher_id": "RS",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-611",
+          "teacher_id": "AB",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-614",
+          "teacher_id": "AA",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-651",
+          "teacher_id": "AD",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-693",
+          "teacher_id": "SC",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "PCS-601",
+          "teacher_id": "VD",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "PCS-614",
+          "teacher_id": "KU",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "PCS-693",
+          "teacher_id": "SP",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "XCS-601",
+          "teacher_id": "MP",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "PESE-600",
+          "teacher_id": "SK",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "SCS-601",
+          "teacher_id": "AA",
+          "min_per_week": 1
+        }
+      ]
+    },
+    {
+      "id": "CS6E",
+      "name": "CS 6th Sem Sec E",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "TCS-601",
+          "teacher_id": "DVP",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-611",
+          "teacher_id": "AB",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-614",
+          "teacher_id": "AB",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-695",
+          "teacher_id": "PK",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-693",
+          "teacher_id": "HP",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "PCS-601",
+          "teacher_id": "VD",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "PCS-614",
+          "teacher_id": "KU",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "PCS-693",
+          "teacher_id": "MU",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "XCS-601",
+          "teacher_id": "NJ",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "PESE-600",
+          "teacher_id": "LS",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "SCS-601",
+          "teacher_id": "SP",
+          "min_per_week": 1
+        }
+      ]
+    },
+    {
+      "id": "CS6F",
+      "name": "CS 6th Sem Sec F",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "TCS-601",
+          "teacher_id": "MK",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-611",
+          "teacher_id": "AB",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-614",
+          "teacher_id": "AA",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-695",
+          "teacher_id": "PK",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-693",
+          "teacher_id": "SP",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "PCS-601",
+          "teacher_id": "VD",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "PCS-614",
+          "teacher_id": "KU",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "PCS-693",
+          "teacher_id": "SP",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "XCS-601",
+          "teacher_id": "LS",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "PESE-600",
+          "teacher_id": "MP",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "SCS-601",
+          "teacher_id": "AB",
+          "min_per_week": 1
+        }
+      ]
+    },
+    {
+      "id": "CS4A",
+      "name": "CS 4th Sem Core A",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "TCS-408",
+          "teacher_id": "KM",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-402",
+          "teacher_id": "RS",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-403",
+          "teacher_id": "GSJ",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-409",
+          "teacher_id": "SKS",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-421",
+          "teacher_id": "ASB",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "PCS-408",
+          "teacher_id": "KM",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "PCS-403",
+          "teacher_id": "GSJ",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "PCS-409",
+          "teacher_id": "AG",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "XCS-401",
+          "teacher_id": "SA",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "PESE-400",
+          "teacher_id": "SA",
+          "min_per_week": 1
+        }
+      ]
+    },
+    {
+      "id": "CS4B",
+      "name": "CS 4th Sem AI/ML+Cyber",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "TCS-408",
+          "teacher_id": "DC",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-402",
+          "teacher_id": "AA",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-403",
+          "teacher_id": "AB",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-409",
+          "teacher_id": "SC",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-464",
+          "teacher_id": "SJ",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "PCS-408",
+          "teacher_id": "DC",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "PCS-403",
+          "teacher_id": "AB",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "PCS-409",
+          "teacher_id": "AG",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "PCS-464",
+          "teacher_id": "SJ",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "XCS-401",
+          "teacher_id": "GP",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "PESE-400",
+          "teacher_id": "NJ",
+          "min_per_week": 1
+        }
+      ]
+    },
+    {
+      "id": "CS4C",
+      "name": "CS 4th Sem Core C",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "TCS-408",
+          "teacher_id": "KM",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-402",
+          "teacher_id": "SKS",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-403",
+          "teacher_id": "GSJ",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-409",
+          "teacher_id": "SC",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-421",
+          "teacher_id": "HP",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "PCS-408",
+          "teacher_id": "KM",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "PCS-403",
+          "teacher_id": "GSJ",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "PCS-409",
+          "teacher_id": "AG",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "XCS-401",
+          "teacher_id": "DT",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "PESE-400",
+          "teacher_id": "SK",
+          "min_per_week": 1
+        }
+      ]
+    },
+    {
+      "id": "CS4D",
+      "name": "CS 4th Sem Core D",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "TCS-408",
+          "teacher_id": "DC",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-402",
+          "teacher_id": "MK",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-403",
+          "teacher_id": "MOP",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-409",
+          "teacher_id": "SKS",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-421",
+          "teacher_id": "ASB",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "PCS-408",
+          "teacher_id": "DC",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "PCS-403",
+          "teacher_id": "MOP",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "PCS-409",
+          "teacher_id": "AG",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "XCS-401",
+          "teacher_id": "LS",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "PESE-400",
+          "teacher_id": "KJ",
+          "min_per_week": 1
+        }
+      ]
+    },
+    {
+      "id": "CS4E",
+      "name": "CS 4th Sem Core E",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "TCS-408",
+          "teacher_id": "DC",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-402",
+          "teacher_id": "MK",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-403",
+          "teacher_id": "MOP",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-409",
+          "teacher_id": "MK",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "TCS-421",
+          "teacher_id": "SJ",
+          "min_per_week": 3
+        },
+        {
+          "subject_id": "PCS-408",
+          "teacher_id": "DC",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "PCS-403",
+          "teacher_id": "MOP",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "PCS-409",
+          "teacher_id": "AG",
+          "min_per_week": 1
+        },
+        {
+          "subject_id": "XCS-401",
+          "teacher_id": "NB",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "PESE-400",
+          "teacher_id": "KJ",
+          "min_per_week": 1
+        }
+      ]
+    }
+  ],
+  "ga_config": {
+    "population_size": 100,
+    "max_generations": 500,
+    "crossover_rate": 0.85,
+    "mutation_rate": 0.02,
+    "tournament_size": 5,
+    "elitism_count": 2,
+    "stagnation_window": 50,
+    "stagnation_mutation_boost": 0.08,
+    "target_fitness": 9800,
+    "random_seed": 42
+  }
+}
