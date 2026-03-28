@@ -1,0 +1,188 @@
+from collections import defaultdict
+
+from src.models import Config
+
+MAX_SCORE = 200000
+
+
+def evaluate_fitness(chromosome, config: Config) -> int:
+
+    teacher_slot_genes = defaultdict(list)
+    room_slot_genes = defaultdict(list)
+    class_slot_genes = defaultdict(list)
+
+    class_day_subjects = defaultdict(lambda: defaultdict(list))
+    teacher_count = defaultdict(int)
+    class_subj_count = defaultdict(lambda: defaultdict(int))
+    teacher_day_periods = defaultdict(lambda: defaultdict(list))
+    class_day_periods = defaultdict(lambda: defaultdict(list))
+
+    for gene in chromosome:
+        teacher_slot_genes[(gene.teacher_id, gene.day, gene.period)].append(gene)
+        room_slot_genes[(gene.room_id, gene.day, gene.period)].append(gene)
+        class_slot_genes[(gene.class_id, gene.day, gene.period)].append(gene)
+        class_day_subjects[gene.class_id][gene.day].append(gene.subject_id)
+
+        subj = config.subjects.get(gene.subject_id)
+        weight = 2 if subj and subj.is_lab else 1
+        teacher_count[gene.teacher_id] += weight
+
+        class_subj_count[gene.class_id][gene.subject_id] += 1
+        teacher_day_periods[gene.teacher_id][gene.day].append(gene.period)
+        class_day_periods[gene.class_id][gene.day].append(gene.period)
+        if weight == 2:
+            teacher_day_periods[gene.teacher_id][gene.day].append(gene.period + 1)
+            class_day_periods[gene.class_id][gene.day].append(gene.period + 1)
+
+    penalty = 0
+
+    # HARD CONSTRAINTS (penalty weight 1000 each)
+
+    # H1: Taecher in two places at same time
+    for (tid, day, period), genes in teacher_slot_genes.items():
+        if len(genes) > 1:
+            penalty += (len(genes) - 1) * 1000
+
+    # H2 + H4: Class double-booked in same slot (also covers two subjects same period)
+    for (cid, day, period), genes in class_slot_genes.items():
+        if len(genes) > 1:
+            penalty += (len(genes) - 1) * 1000
+
+    # H3: Room used by two classes at same time
+    for (rid, day, period), genes in room_slot_genes.items():
+        if len(genes) > 1:
+            penalty += (len(genes) - 1) * 1000
+
+    # SOFT CONSTRAINTS
+
+    # S1: Each subject must appear min_per_week times for each class (weight 10)
+    for cls in config.classes:
+        for entry in cls.curriculum:
+            actual = class_subj_count[cls.id][entry.subject_id]
+            missing = max(0, entry.min_per_week - actual)
+            penalty += missing * 10
+
+    # S2: Teacher must not exceed max_lectures_per_week (weight 5)
+    for tid, teacher in config.teachers.items():
+        excess = max(0, teacher_count[tid] - teacher.max_lectures_per_week)
+        penalty += excess * 5
+
+    # S3: Teacher max consecutive lectures (weight 3)
+    for tid, day_map in teacher_day_periods.items():
+        teacher = config.teachers.get(tid)
+        if not teacher:
+            continue
+        max_consec = teacher.max_consecutive_lectures
+        for day, periods in day_map.items():
+            sorted_periods = sorted(set(periods))
+            # sabse jada consecutive run
+            run = 1
+            for i in range(1, len(sorted_periods)):
+                if sorted_periods[i] == sorted_periods[i - 1] + 1:
+                    run += 1
+                    if run > max_consec:
+                        penalty += 3
+                else:
+                    run = 1
+
+    # S4: ek hi din me do subject for a class (weight 2)
+    for cid, day_map in class_day_subjects.items():
+        for day, subj_list in day_map.items():
+            seen = set()
+            for s in subj_list:
+                if s in seen:
+                    penalty += 2
+                seen.add(s)
+
+    # S8: Morning-preference teacher lekin they assigned afternoon slot (weight 2)
+    # Afternoon = period > periods_per_day // 2
+    half = config.institution.periods_per_day // 2
+    for gene in chromosome:
+        teacher = config.teachers.get(gene.teacher_id)
+        if teacher and teacher.prefers_morning and gene.period > half:
+            penalty += 2
+
+    # S9: Prefer lectures in first 4 periods of the day (soft priority)
+    # Period 5-8 gets a small penalty. Period 5 = 1pt, 6 = 2pt, 7 = 3pt, 8 = 4pt.
+    # gently push krega lectures ko morning me.
+    EARLY_PERIOD_CUTOFF = 4
+    for gene in chromosome:
+        if gene.period > EARLY_PERIOD_CUTOFF:
+            penalty += (gene.period - EARLY_PERIOD_CUTOFF) * 1
+
+    # kam gaps hoga, better fitness hoga (weight 1)
+    for cid, day_map in class_day_periods.items():
+        for day, periods in day_map.items():
+            if not periods:
+                continue
+            sorted_p = sorted(set(periods))
+            gaps = (sorted_p[-1] - sorted_p[0] + 1) - len(sorted_p)
+            if gaps > 0:
+                penalty += gaps * 1
+
+    # S6: A teacher's free periods between assigned lectures kam hona chaiye (weight 1)
+    for tid, day_map in teacher_day_periods.items():
+        for day, periods in day_map.items():
+            if not periods:
+                continue
+            sorted_p = sorted(set(periods))
+            gaps = (sorted_p[-1] - sorted_p[0] + 1) - len(sorted_p)
+            if gaps > 0:
+                penalty += gaps * 1
+
+    # LAB CONSTRAINTS (penalty weight 500 each — near-hard)
+    
+    # H_LAB1: Lab in ODD period (1, 3, 5, 7)
+    # H_LAB2: The period immediately after a lab must be FREE for that class
+    #         i.e. no other subject can be in (same day, period+1) for same class
+    
+    # Build a set of (class_id, day, period) that are occupied by non-lab genes
+    class_occupied_by_theory = set()
+    teacher_occupied_by_theory = set()
+    room_occupied_by_theory = set()
+    for gene in chromosome:
+        subj = config.subjects.get(gene.subject_id)
+        if subj and not subj.is_lab:
+            class_occupied_by_theory.add((gene.class_id, gene.day, gene.period))
+            teacher_occupied_by_theory.add((gene.teacher_id, gene.day, gene.period))
+            room_occupied_by_theory.add((gene.room_id, gene.day, gene.period))
+
+    for gene in chromosome:
+        subj = config.subjects.get(gene.subject_id)
+        if subj and subj.is_lab:
+
+            # H_LAB1: period must be odd
+            if gene.period % 2 == 0:
+                penalty += 500
+
+            # H_LAB2: next period (period+1) must not have any conflicting class, teacher, or room
+            next_period = gene.period + 1
+            if next_period <= config.institution.periods_per_day:
+                # Check if any theory gene occupies class, teacher, or room in next_period
+                if (gene.class_id, gene.day, next_period) in class_occupied_by_theory:
+                    penalty += 500
+                if (
+                    gene.teacher_id,
+                    gene.day,
+                    next_period,
+                ) in teacher_occupied_by_theory:
+                    penalty += 500
+                if (gene.room_id, gene.day, next_period) in room_occupied_by_theory:
+                    penalty += 500
+
+                # Also check if another lab occupies the next slot
+                for other in chromosome:
+                    if (
+                        other is not gene
+                        and other.day == gene.day
+                        and other.period == next_period
+                    ):
+                        if (
+                            other.class_id == gene.class_id
+                            or other.teacher_id == gene.teacher_id
+                            or other.room_id == gene.room_id
+                        ):
+                            penalty += 500
+                            break
+
+    return max(0, MAX_SCORE - penalty)
