@@ -129,7 +129,7 @@ Different institutions have different levels of scheduling complexity. ChronoGen
 
 - **Update in Real Time:** A customized React hook polls the backend every three seconds and updates the Recharts the user is viewing, so that they can see the progress of the genetic algorithm in real time.
 
-- **Export Options:** The winning schedule will be displayed as an interactive grid in the UI and a ZIP file containing CSV files for the classes, teachers, and rooms purchased by the user will be created.
+- **Export Options:** The winning schedule will be displayed as an interactive grid in the UI and a ZIP file containing CSV files, json, html and png format for the classes, teachers, and rooms purchased by the user will be created.
   
 ### API Routes
 
@@ -159,7 +159,7 @@ Different institutions have different levels of scheduling complexity. ChronoGen
 ### Tech Stack
 
 **Frontend**
-* **React 18 & TypeScript:** For a robust, type-safe user interface.
+* **React 19 & TypeScript:** For a robust, type-safe user interface.
 * **Vite:** For lightning-fast local development and optimized builds.
 * **Tailwind CSS:** For precise, custom styling and an industrial, data-heavy design system.
 * **Zustand:** For lightweight, persistent state management (handling institutional context).
