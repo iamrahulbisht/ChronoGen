@@ -1,5 +1,5 @@
 <h1 align="center">ChronoGen - A Genetic Algorithm Timetable Generator</h1>
-<p align="center"><i>From Chaos to Clarity.</i></p>
+<p align="center"><i>Making scheduling less painful</i></p>
 
 ## Inspiration
 Every school or university has to build a timetable before each term starts. It sounds simple but when you start making a timetable with 30 classes, 60 teachers and 8 periods a day you realize it is one of the hardest scheduling problem that exists. While making a timetable the number of possible arrangements is larger than the number of atoms in the universe. You cannot try them all so you need to have a smarter way to do it.
@@ -77,6 +77,21 @@ As a school gets bigger, the scheduling "puzzle" gets exponentially harder to so
 **You're never left in the dark:** Running a genetic algorithm takes some heavy lifting. Instead of freezing your screen with a boring loading spinner, the backend runs the math in the background and gives you a live dashboard so you can actually watch the schedule optimize in real-time.
 
 ## Technical Details
+
+- **Import and Check Data:** Institutional data can be uploaded in bulk as JSON, and one of the FastAPI routes will see if there are any impossible combinations of scheduling rules before allocate any compute power.
+
+- **Cache State:** The React front end stores the context of the selected institution in Zustand, so that all operations can be executed concurrently with MongoDB.
+
+- **Process in Background:** All long-running mathematical operations using the genetic algorithm are executed in the background by FastAPI workers, allowing the user to see the results quickly, even though the math is still being calculated.
+
+- **Create Schedules:** The backend is responsible for selecting, crossing, and mutating all of the timetable options until a perfect schedule is created.
+
+- **Penalty Points:** The customized fitness function in the backend assigns penalty points for Hard constraints (e.g., double-booked rooms) and Soft constraints (e.g., gaps in the schedule), resulting in a final conflict score of zero.
+
+- **Update in Real Time:** A customized React hook polls the backend every three seconds and updates the Recharts the user is viewing, so that they can see the progress of the genetic algorithm in real time.
+
+- **Export Options:** The winning schedule will be displayed as an interactive grid in the UI and a ZIP file containing CSV files for the classes, teachers, and rooms purchased by the user will be created.
+  
 ### API Routes
 
 | Method | Route | Description |
@@ -87,3 +102,4 @@ As a school gets bigger, the scheduling "puzzle" gets exponentially harder to so
 | GET | `/api/v1/jobs/{job_id}` | Get job status, fitness score, and progress |
 | GET | `/api/v1/jobs/{job_id}/timetable` | Retrieve generated timetable as structured data |
 | GET | `/api/v1/jobs/{job_id}/exports/all` | Download all outputs (CSV, charts, reports) |
+
