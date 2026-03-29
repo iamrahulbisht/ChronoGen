@@ -5,8 +5,11 @@
 Every school or university has to build a timetable before each term starts. It sounds simple but when you start making a timetable with 30 classes, 60 teachers and 8 periods a day you realize it is one of the hardest scheduling problem that exists. While making a timetable the number of possible arrangements is larger than the number of atoms in the universe. You cannot try them all so you need to have a smarter way to do it.
 
 ## Demo Video
-
-
+<p align="center">
+  <a href="https://drive.google.com/drive/folders/17j2ZZcrvy82ucgfOgG_CCnRHSkEKyCfH" target="_blank">
+    <img src="https://img.shields.io/badge/Watch%20Demo-Video-blue?style=for-the-badge" />
+  </a>
+</p>
 
 ## Try ChronoGen here
 [https://return0-chronogen.vercel.app/](https://return0-chronogen.vercel.app/)
