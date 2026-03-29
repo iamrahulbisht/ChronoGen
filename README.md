@@ -7,8 +7,9 @@ Every school or university has to build a timetable before each term starts. It 
 ## Demo Video
 
 
-## Try it out
 
+## Try ChronoGen here
+[https://return0-chronogen.vercel.app/](https://return0-chronogen.vercel.app/)
 
 ## What it Does
 
@@ -66,6 +67,7 @@ As a school gets bigger, the scheduling "puzzle" gets exponentially harder to so
 </p>
 
 <p align="center"><i>ChronoGen System Architecture</i></p>
+
 ## Flowchart
 <p align="center">
   <img src="https://github.com/user-attachments/assets/7cd040d1-3f07-492c-a0ef-8177172d976f" width="800"/>
