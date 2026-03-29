@@ -51,7 +51,7 @@ As a school gets bigger, the scheduling "puzzle" gets exponentially harder to so
 
 **4. Live Progress Tracking:** While the GA is "evolving" the timetable, the user isn't left staring at a blank screen. The frontend polls the backend every 3 seconds, showing a live fitness chart and a breakdown of which constraints (like teacher clashes) are currently being fixed.
 
-## -The Engine Side
+### -The Engine Side
 **1. Config Building:** The backend pulls all those scattered MongoDB documents (teachers, rooms, sections) and assembles them into a single Config object that the Python GA engine can understand.
 
 **2. Genetic Optimization:** The engine generates hundreds of random timetable "candidates." It then runs them through a cycle of Selection, Crossover, and Mutation. The "fittest" timetables (those with the fewest overlaps) survive and reproduce, while the "weak" ones are discarded.
@@ -66,3 +66,24 @@ As a school gets bigger, the scheduling "puzzle" gets exponentially harder to so
 </p>
 
 <p align="center"><i>ChronoGen System Architecture</i></p>
+
+## What Sets ChronoGen Apart
+**It actually "evolves" a solution:** Most scheduling tools just try to cram classes into empty slots and give up when they hit a conflict. ChronoGen uses Genetic Algorithms to test thousands of different schedules, combining the best parts of each until it finds a perfect, conflict-free fit.
+
+**It understands real-world rules:** Making a schedule isn't just about finding empty rooms. The system knows the actual rules of a school—like the fact that a chemistry lab needs two back-to-back periods, or that a specific teacher can't be scheduled for 5 classes in a row.
+
+**No more spreadsheet headaches:** What usually takes a human administrator days of frustrating, mind-numbing work now takes the computer just a few seconds. It doesn't matter if your school has 50 students or 5,000; the system handles it without breaking a sweat.
+
+**You're never left in the dark:** Running a genetic algorithm takes some heavy lifting. Instead of freezing your screen with a boring loading spinner, the backend runs the math in the background and gives you a live dashboard so you can actually watch the schedule optimize in real-time.
+
+## Technical Details
+### API Routes
+
+| Method | Route | Description |
+|--------|-------|-------------|
+| POST | `/api/v1/institutions/{id}/import/json` | Bulk import all data (rooms, teachers, subjects, sections) |
+| GET | `/api/v1/institutions/{id}/validate` | Validate constraints before running the algorithm |
+| POST | `/api/v1/jobs` | Start timetable generation using genetic algorithms |
+| GET | `/api/v1/jobs/{job_id}` | Get job status, fitness score, and progress |
+| GET | `/api/v1/jobs/{job_id}/timetable` | Retrieve generated timetable as structured data |
+| GET | `/api/v1/jobs/{job_id}/exports/all` | Download all outputs (CSV, charts, reports) |
