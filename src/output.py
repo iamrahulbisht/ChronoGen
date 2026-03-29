@@ -38,7 +38,6 @@ def print_class_timetable(chromosome, class_id: str, config: Config):
         print(row)
 
 
-
 def print_teacher_timetable(chromosome, teacher_id: str, config: Config):
     inst = config.institution
     days = inst.days_per_week
@@ -109,11 +108,13 @@ def save_timetable_csv(
         grid = {}
         for gene in chromosome:
             if gene.class_id == cls.id:
-                grid[(gene.day, gene.period)] = f"{gene.subject_id} ({gene.teacher_id})"
+                grid[(gene.day, gene.period)] = (
+                    f"{gene.subject_id} ({gene.teacher_id}) [{gene.room_id}]"
+                )
                 subj = config.subjects.get(gene.subject_id)
                 if subj and subj.is_lab:
                     grid[(gene.day, gene.period + 1)] = (
-                        f"{gene.subject_id}(L) ({gene.teacher_id})"
+                        f"{gene.subject_id}(L) ({gene.teacher_id}) [{gene.room_id}]"
                     )
 
         filepath = os.path.join(output_dir, f"student_timetable_{cls.id}.csv")
@@ -140,11 +141,13 @@ def save_teacher_timetable_csv(
         grid = {}
         for gene in chromosome:
             if gene.teacher_id == tid:
-                grid[(gene.day, gene.period)] = f"{gene.class_id}/{gene.subject_id}"
+                grid[(gene.day, gene.period)] = (
+                    f"{gene.class_id}/{gene.subject_id} [{gene.room_id}]"
+                )
                 subj = config.subjects.get(gene.subject_id)
                 if subj and subj.is_lab:
                     grid[(gene.day, gene.period + 1)] = (
-                        f"{gene.class_id}/{gene.subject_id}(L)"
+                        f"{gene.class_id}/{gene.subject_id}(L) [{gene.room_id}]"
                     )
 
         name_safe = (
@@ -275,7 +278,7 @@ def generate_html_report(config: Config, output_dir: str = "output/visual_charts
         <h2>Fitness Convergence</h2>
         <img src="convergence_plot.png" alt="Fitness Plot">
         <p>The convergence chart illustrates the optimization journey.</p>
-        <p>Please refer to the <b>timetable_for_students/</b> and <b>timetable_for_teachers/</b> folders for exact CSV tables.</p>
+        <p>Please refer to the <b>timetable_for_students/</b>, <b>timetable_for_teachers/</b>, and <b>timetable_for_rooms/</b> folders for exact CSV tables.</p>
     </body>
     </html>
     """
@@ -283,3 +286,40 @@ def generate_html_report(config: Config, output_dir: str = "output/visual_charts
     with open(filepath, "w") as f:
         f.write(html_content)
     print(f"  Saved: {filepath}")
+
+
+def save_room_timetable_csv(
+    chromosome, config: Config, output_dir: str = "output/timetable_for_rooms"
+):
+    """Save each room timetable as a CSV file."""
+    os.makedirs(output_dir, exist_ok=True)
+    inst = config.institution
+    days = inst.days_per_week
+    periods = inst.periods_per_day
+
+    for room_id, room in config.rooms.items():
+        grid = {}
+        for gene in chromosome:
+            if gene.room_id == room_id:
+                grid[(gene.day, gene.period)] = (
+                    f"{gene.class_id}/{gene.subject_id} ({gene.teacher_id})"
+                )
+                subj = config.subjects.get(gene.subject_id)
+                if subj and subj.is_lab:
+                    grid[(gene.day, gene.period + 1)] = (
+                        f"{gene.class_id}/{gene.subject_id}(L) ({gene.teacher_id})"
+                    )
+
+        name_safe = (
+            room.name.replace(" ", "_").replace(".", "") if room.name else room.id
+        )
+        filepath = os.path.join(output_dir, f"room_timetable_{name_safe}.csv")
+        with open(filepath, "w", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(["Day"] + [f"Period {p}" for p in range(1, periods + 1)])
+            for d in range(1, days + 1):
+                row = [DAY_NAMES.get(d, f"D{d}")]
+                for p in range(1, periods + 1):
+                    row.append(grid.get((d, p), "FREE"))
+                writer.writerow(row)
+        print(f"  Saved: {filepath}")
