@@ -92,6 +92,20 @@ Different institutions have different levels of scheduling complexity. ChronoGen
 | **Hyper-Heuristic** | Self-adjusting mutation and crossover strategies | No tuning needed, adaptive | Slightly unpredictable convergence time | Users who want automatic optimization |
 | **NSGA-II** | Multi-objective optimization (hard vs soft constraints) | Provides multiple optimal solutions (Pareto front) | Highest computational cost | When balancing trade-offs is important |
 
+## Comparision Graph
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/070f1464-bf68-4674-8480-01c24ff8be7c" width="800"/>
+</p>
+
+<p align="center"><i>Basic GA vs Memetic GA</i></p>
+
+## Constraints breakdown
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/30d9d08a-3b15-4007-a8b5-bc5b14a3c272" width="800"/>
+</p>
+
+<p align="center"><i>Algorithm Comparison Overview</i></p>
+
 ## What Sets ChronoGen Apart
 - **It actually "evolves" a solution:** Most scheduling tools just try to cram classes into empty slots and give up when they hit a conflict. ChronoGen uses Genetic Algorithms to test thousands of different schedules, combining the best parts of each until it finds a perfect, conflict-free fit.
 
