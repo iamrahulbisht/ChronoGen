@@ -104,7 +104,7 @@ Different institutions have different levels of scheduling complexity. ChronoGen
   <img src="https://github.com/user-attachments/assets/30d9d08a-3b15-4007-a8b5-bc5b14a3c272" width="800"/>
 </p>
 
-<p align="center"><i>Algorithm Comparison Overview</i></p>
+<p align="center"><i>Constraints</i></p>
 
 ## What Sets ChronoGen Apart
 - **It actually "evolves" a solution:** Most scheduling tools just try to cram classes into empty slots and give up when they hit a conflict. ChronoGen uses Genetic Algorithms to test thousands of different schedules, combining the best parts of each until it finds a perfect, conflict-free fit.
@@ -141,6 +141,11 @@ Different institutions have different levels of scheduling complexity. ChronoGen
 | GET | `/api/v1/jobs/{job_id}` | Get job status, fitness score, and progress |
 | GET | `/api/v1/jobs/{job_id}/timetable` | Retrieve generated timetable as structured data |
 | GET | `/api/v1/jobs/{job_id}/exports/all` | Download all outputs (CSV, charts, reports) |
+
+## Performance benchmarks
+- **Small Departments (up to 10 teachers):** Usually done in under 10 seconds.
+- **Average High Schools (30+ teachers):** Typically takes 1 to 2 minutes to find a conflict-free result.
+- **Large Colleges (80+ teachers):** Can take 3 to 5 minutes to solve the most complex puzzles.
 
 ### Tech Stack
 
