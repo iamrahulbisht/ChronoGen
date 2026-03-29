@@ -147,6 +147,15 @@ Different institutions have different levels of scheduling complexity. ChronoGen
 - **Average High Schools (30+ teachers):** Typically takes 1 to 2 minutes to find a conflict-free result.
 - **Large Colleges (80+ teachers):** Can take 3 to 5 minutes to solve the most complex puzzles.
 
+## Real-World Edge Cases 
+
+- **Early Validation** – Detects impossible schedules before running the algorithm  
+- **Lab Continuity** – Keeps long sessions (like labs) uninterrupted  
+- **Teacher Availability** – Respects blocked time slots and part-time schedules  
+- **Gap Minimization** – Reduces unnecessary idle periods in a teacher’s day  
+- **Stagnation Handling** – Explores new solutions when optimization gets stuck  
+
+
 ### Tech Stack
 
 **Frontend**
