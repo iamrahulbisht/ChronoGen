@@ -20,29 +20,29 @@ A lot of schools still try to do this by hand or with old fashioned spreadsheets
 
 ### ChronoGen's Solution
 
-#### Smart Scheduling with Genetic Algorithms
+#### -Smart Scheduling with Genetic Algorithms
 Traditional methods get stuck when there are too many constraints to handle.
 
 **Our Solution:** ChronoGen uses a genetic algorithm to evolve the best schedule. It creates several versions of a timetable and constantly improves them through selection and mutation until it finds a perfect, conflict free result.
 
-#### Real World Constraint Management
+#### -Real World Constraint Management
 Balancing teacher availability, subject requirements, and room allocation is complex.
 
 **Our Solution:** The system is built to understand rules. It models everything from how many hours a teacher can work to specific subject requirements ensuring every schedule is actually practical for a real institution.
 
-#### Automatic conflict fixing
+#### -Automatic conflict fixing
 Fixing overlapping classes or room clashes usually takes hours of manual checking.
 
 **Our Solution:** ChronoGen does the heavy lifting for you. It automatically spots and eliminates overlaps during the generation process, so you never have to worry about two classes fighting over the same room.
 
-#### Fast and Scalable Performance
+#### -Fast and Scalable Performance
 As a school gets bigger, the scheduling "puzzle" gets exponentially harder to solve.
 
 **Our Solution:** ChronoGen is built for speed. It can process large amounts of data and generate a high-quality, ready-to-use timetable in just a few seconds without any manual tweaking needed.
 
 ## How it Works
 
-### The User Side
+### -The User Side
 **1. Institution Setup:** The user starts by defining their "world"—how many days a week they teach, how many periods are in a day, and when the lunch break happens. They can then manually add rooms, teachers, and subjects, or simply drag and drop a JSON file to populate everything instantly.
 
 **2. Constraint Mapping:** This is where the human touch comes in. Users set specific "rules" for the AI to follow, such as marking exactly when a teacher is unavailable or deciding if a subject is a "Lab" (which automatically tells the system it needs two back-to-back slots).
@@ -51,7 +51,7 @@ As a school gets bigger, the scheduling "puzzle" gets exponentially harder to so
 
 **4. Live Progress Tracking:** While the GA is "evolving" the timetable, the user isn't left staring at a blank screen. The frontend polls the backend every 3 seconds, showing a live fitness chart and a breakdown of which constraints (like teacher clashes) are currently being fixed.
 
-## The Engine Side
+## -The Engine Side
 **1. Config Building:** The backend pulls all those scattered MongoDB documents (teachers, rooms, sections) and assembles them into a single Config object that the Python GA engine can understand.
 
 **2. Genetic Optimization:** The engine generates hundreds of random timetable "candidates." It then runs them through a cycle of Selection, Crossover, and Mutation. The "fittest" timetables (those with the fewest overlaps) survive and reproduce, while the "weak" ones are discarded.
