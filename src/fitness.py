@@ -36,9 +36,9 @@ def evaluate_fitness(chromosome, config: Config) -> int:
 
     penalty = 0
 
-    # HARD CONSTRAINTS (penalty weight 1000 each)
+    # HARD CONSTRAINTS 
 
-    # H1: Taecher in two places at same time
+    # H1: Teacher in two places at same time
     for (tid, day, period), genes in teacher_slot_genes.items():
         if len(genes) > 1:
             penalty += (len(genes) - 1) * 1000
@@ -53,7 +53,7 @@ def evaluate_fitness(chromosome, config: Config) -> int:
         if len(genes) > 1:
             penalty += (len(genes) - 1) * 1000
 
-    # SOFT CONSTRAINTS
+    # SOFT CONSTRAINTS 
 
     # S1: Each subject must appear min_per_week times for each class (weight 10)
     for cls in config.classes:
@@ -75,7 +75,7 @@ def evaluate_fitness(chromosome, config: Config) -> int:
         max_consec = teacher.max_consecutive_lectures
         for day, periods in day_map.items():
             sorted_periods = sorted(set(periods))
-            # sabse jada consecutive run
+            # find longest consecutive run
             run = 1
             for i in range(1, len(sorted_periods)):
                 if sorted_periods[i] == sorted_periods[i - 1] + 1:
@@ -85,7 +85,7 @@ def evaluate_fitness(chromosome, config: Config) -> int:
                 else:
                     run = 1
 
-    # S4: ek hi din me do subject for a class (weight 2)
+    # S4: Same subject twice in one day for a class (weight 2)
     for cid, day_map in class_day_subjects.items():
         for day, subj_list in day_map.items():
             seen = set()
@@ -94,7 +94,7 @@ def evaluate_fitness(chromosome, config: Config) -> int:
                     penalty += 2
                 seen.add(s)
 
-    # S8: Morning-preference teacher lekin they assigned afternoon slot (weight 2)
+    # S8: Morning-preference teacher assigned afternoon slot (weight 2)
     # Afternoon = period > periods_per_day // 2
     half = config.institution.periods_per_day // 2
     for gene in chromosome:
@@ -104,13 +104,12 @@ def evaluate_fitness(chromosome, config: Config) -> int:
 
     # S9: Prefer lectures in first 4 periods of the day (soft priority)
     # Period 5-8 gets a small penalty. Period 5 = 1pt, 6 = 2pt, 7 = 3pt, 8 = 4pt.
-    # gently push krega lectures ko morning me.
     EARLY_PERIOD_CUTOFF = 4
     for gene in chromosome:
         if gene.period > EARLY_PERIOD_CUTOFF:
             penalty += (gene.period - EARLY_PERIOD_CUTOFF) * 1
 
-    # kam gaps hoga, better fitness hoga (weight 1)
+    # S5: Free periods (gaps) in a class's day should be minimised (weight 1)
     for cid, day_map in class_day_periods.items():
         for day, periods in day_map.items():
             if not periods:
@@ -120,7 +119,7 @@ def evaluate_fitness(chromosome, config: Config) -> int:
             if gaps > 0:
                 penalty += gaps * 1
 
-    # S6: A teacher's free periods between assigned lectures kam hona chaiye (weight 1)
+    # S6: A teacher's free periods between assigned lectures should be minimised (weight 1)
     for tid, day_map in teacher_day_periods.items():
         for day, periods in day_map.items():
             if not periods:
@@ -130,13 +129,20 @@ def evaluate_fitness(chromosome, config: Config) -> int:
             if gaps > 0:
                 penalty += gaps * 1
 
-    # LAB CONSTRAINTS (penalty weight 500 each — near-hard)
-    
-    # H_LAB1: Lab in ODD period (1, 3, 5, 7)
-    # H_LAB2: The period immediately after a lab must be FREE for that class
-    #         i.e. no other subject can be in (same day, period+1) for same class
-    
-    # Build a set of (class_id, day, period) that are occupied by non-lab genes
+    # S10: Minimize distinct classrooms per section (weight 3)
+    # Each section should ideally use only 1 classroom for theory.
+    # Every extra distinct classroom beyond 1 adds penalty.
+    class_theory_rooms = defaultdict(set)
+    for gene in chromosome:
+        subj = config.subjects.get(gene.subject_id)
+        if subj and not subj.is_lab:
+            class_theory_rooms[gene.class_id].add(gene.room_id)
+    for cid, rooms_used in class_theory_rooms.items():
+        extra = len(rooms_used) - 1  # 1 classroom is free, each extra penalized
+        if extra > 0:
+            penalty += extra * 3
+
+    # LAB CONSTRAINTS 
     class_occupied_by_theory = set()
     teacher_occupied_by_theory = set()
     room_occupied_by_theory = set()
@@ -158,7 +164,6 @@ def evaluate_fitness(chromosome, config: Config) -> int:
             # H_LAB2: next period (period+1) must not have any conflicting class, teacher, or room
             next_period = gene.period + 1
             if next_period <= config.institution.periods_per_day:
-                # Check if any theory gene occupies class, teacher, or room in next_period
                 if (gene.class_id, gene.day, next_period) in class_occupied_by_theory:
                     penalty += 500
                 if (
@@ -170,7 +175,6 @@ def evaluate_fitness(chromosome, config: Config) -> int:
                 if (gene.room_id, gene.day, next_period) in room_occupied_by_theory:
                     penalty += 500
 
-                # Also check if another lab occupies the next slot
                 for other in chromosome:
                     if (
                         other is not gene
@@ -189,7 +193,6 @@ def evaluate_fitness(chromosome, config: Config) -> int:
 
 
 def get_penalty_breakdown(chromosome, config: Config) -> dict:
-    """Returns a dict showing each constraint's penalty separately."""
     teacher_slot_genes = defaultdict(list)
     room_slot_genes = defaultdict(list)
     class_slot_genes = defaultdict(list)
@@ -230,6 +233,7 @@ def get_penalty_breakdown(chromosome, config: Config) -> dict:
         "S6_teacher_gaps": 0,
         "S8_morning_pref": 0,
         "S9_late_period": 0,
+        "S10_room_spread": 0,
     }
 
     for (tid, day, period), genes in teacher_slot_genes.items():
@@ -305,6 +309,17 @@ def get_penalty_breakdown(chromosome, config: Config) -> dict:
             gaps = (sorted_p[-1] - sorted_p[0] + 1) - len(sorted_p)
             if gaps > 0:
                 breakdown["S6_teacher_gaps"] += gaps * 1
+
+    # S10: Minimize distinct classrooms per section (weight 3)
+    class_theory_rooms = defaultdict(set)
+    for gene in chromosome:
+        subj = config.subjects.get(gene.subject_id)
+        if subj and not subj.is_lab:
+            class_theory_rooms[gene.class_id].add(gene.room_id)
+    for cid, rooms_used in class_theory_rooms.items():
+        extra = len(rooms_used) - 1
+        if extra > 0:
+            breakdown["S10_room_spread"] += extra * 3
 
     class_occupied_by_theory = set()
     teacher_occupied_by_theory = set()

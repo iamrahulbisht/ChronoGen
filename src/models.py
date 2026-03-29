@@ -81,6 +81,8 @@ class GAConfig:
     stagnation_mutation_boost: float = 0.08
     target_fitness: int = 9800
     random_seed: int = 42
+    hard_penalty_weight: int = 1
+    soft_penalty_weight: int = 1
 
 
 @dataclass
