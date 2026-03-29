@@ -261,7 +261,23 @@ def mutate_slot_swap(chromosome, mutation_rate: float, config: Config):
     return mutated
 
 
-
+def mutate_room_reassign(chromosome, mutation_rate: float, config: Config):
+    mutated = []
+    for gene in chromosome:
+        if random.random() < mutation_rate:
+            cls = next((c for c in config.classes if c.id == gene.class_id), None)
+            student_count = cls.student_count if cls else 0
+            new_room = pick_valid_room(config, gene.subject_id, student_count)
+            gene = Gene(
+                gene.class_id,
+                gene.subject_id,
+                gene.teacher_id,
+                new_room.id,
+                gene.day,
+                gene.period,
+            )
+        mutated.append(gene)
+    return mutated
 
 
 def mutate_day_move(chromosome, mutation_rate: float, config: Config):
