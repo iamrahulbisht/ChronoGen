@@ -61,3 +61,8 @@ As a school gets bigger, the scheduling "puzzle" gets exponentially harder to so
 **4. Result Exporting:** Once a perfect (or near-perfect) solution is found, the backend saves the result as a Chromosome. It then generates a JSON grid for the UI and creates downloadable CSVs for every student, teacher, and room.
 
 ## System Architecture
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/7bb9279e-3c64-4cf9-b51c-b9ebcecddc6d" width="800"/>
+</p>
+
+<p align="center"><i>ChronoGen System Architecture</i></p>
