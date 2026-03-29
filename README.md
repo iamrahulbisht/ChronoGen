@@ -1,4 +1,4 @@
-<h1 align="center">ChronoGen-A Genetic algorithm</h1>
+<h1 align="center">ChronoGen - A Genetic Algorithm Timetable Generator</h1>
 <p align="center"><i>From Chaos to Clarity.</i></p>
 
 ## Inspiration
