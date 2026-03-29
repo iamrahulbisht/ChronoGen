@@ -66,6 +66,12 @@ As a school gets bigger, the scheduling "puzzle" gets exponentially harder to so
 </p>
 
 <p align="center"><i>ChronoGen System Architecture</i></p>
+## Flowchart
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/7cd040d1-3f07-492c-a0ef-8177172d976f" width="800"/>
+</p>
+
+<p align="center"><i>ChronoGen System Architecture</i></p>
 
 ## What Sets ChronoGen Apart
 - **It actually "evolves" a solution:** Most scheduling tools just try to cram classes into empty slots and give up when they hit a conflict. ChronoGen uses Genetic Algorithms to test thousands of different schedules, combining the best parts of each until it finds a perfect, conflict-free fit.
