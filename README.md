@@ -6,7 +6,7 @@ Every school or university has to build a timetable before each term starts. It 
 
 ## Demo Video
 <p align="center">
-  <a href="https://drive.google.com/drive/folders/17j2ZZcrvy82ucgfOgG_CCnRHSkEKyCfH" target="_blank">
+  <a href="[https://drive.google.com/drive/folders/17j2ZZcrvy82ucgfOgG_CCnRHSkEKyCfH](https://drive.google.com/file/d/1Ni8MpM0kU0UOibMzWklJEYOF5pD1WHh5/view?usp=drivesdk)" target="_blank">
     <img src="https://img.shields.io/badge/Watch%20Demo-Video-blue?style=for-the-badge" />
   </a>
 </p>
