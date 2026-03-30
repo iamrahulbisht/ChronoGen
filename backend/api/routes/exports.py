@@ -15,7 +15,9 @@ from backend.db.collections import JOBS
 
 router = APIRouter(prefix="/api/v1/jobs/{job_id}/exports", tags=["Exports"])
 
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+PROJECT_ROOT = os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+)
 
 
 def _oid(id_str: str) -> ObjectId:

@@ -202,8 +202,12 @@ async def import_json(
                     "period_duration_minutes": inst.get("period_duration_minutes", 55),
                     "lunch_break_after_period": inst.get("lunch_break_after_period", 4),
                     "updated_at": now,
+                },
+                "$setOnInsert": {
+                    "created_at": now,
                 }
             },
+            upsert=True
         )
 
     counts = {"rooms": 0, "teachers": 0, "subjects": 0, "sections": 0}

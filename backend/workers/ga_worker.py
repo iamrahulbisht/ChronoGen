@@ -12,17 +12,19 @@ from datetime import datetime, timezone
 from bson import ObjectId
 
 # Ensure project root is on path so src/ imports work
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
 
-from backend.engine.engine import (
+from src.engine import (
     run_ga,
     run_hyper_heuristic_ga,
     run_island_ga,
     run_memetic_ga,
     run_nsga2,
 )
-from backend.engine.fitness import get_penalty_breakdown
-from backend.engine.models import (
+from src.fitness import get_penalty_breakdown
+from src.models import (
     Class,
     Config,
     CurriculumEntry,
@@ -32,7 +34,7 @@ from backend.engine.models import (
     Subject,
     Teacher,
 )
-from backend.engine.output import (
+from src.output import (
     generate_html_report,
     plot_fitness_history_matplotlib,
     save_chromosome_json,

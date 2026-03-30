@@ -718,7 +718,9 @@
           "teacher_id": "SKS",
           "min_per_week": 1
         }
-      ]
+      ],
+      "fixed_classroom": "CR601",
+      "fixed_lab": "LAB1"
     },
     {
       "id": "CS6B",
@@ -780,7 +782,9 @@
           "teacher_id": "RS",
           "min_per_week": 1
         }
-      ]
+      ],
+      "fixed_classroom": "CR602",
+      "fixed_lab": "LAB1"
     },
     {
       "id": "CS6C",
@@ -842,7 +846,9 @@
           "teacher_id": "SJ",
           "min_per_week": 1
         }
-      ]
+      ],
+      "fixed_classroom": "CR603",
+      "fixed_lab": "LAB2"
     },
     {
       "id": "CS6D",
@@ -904,7 +910,9 @@
           "teacher_id": "AA",
           "min_per_week": 1
         }
-      ]
+      ],
+      "fixed_classroom": "CR604",
+      "fixed_lab": "LAB2"
     },
     {
       "id": "CS6E",
@@ -966,7 +974,9 @@
           "teacher_id": "SP",
           "min_per_week": 1
         }
-      ]
+      ],
+      "fixed_classroom": "CR605",
+      "fixed_lab": "LAB3"
     },
     {
       "id": "CS6F",
@@ -1028,7 +1038,9 @@
           "teacher_id": "AB",
           "min_per_week": 1
         }
-      ]
+      ],
+      "fixed_classroom": "CR606",
+      "fixed_lab": "LAB3"
     },
     {
       "id": "CS4A",
@@ -1085,7 +1097,9 @@
           "teacher_id": "SA",
           "min_per_week": 1
         }
-      ]
+      ],
+      "fixed_classroom": "CR401",
+      "fixed_lab": "LAB4"
     },
     {
       "id": "CS4B",
@@ -1147,7 +1161,9 @@
           "teacher_id": "NJ",
           "min_per_week": 1
         }
-      ]
+      ],
+      "fixed_classroom": "CR402",
+      "fixed_lab": "LAB4"
     },
     {
       "id": "CS4C",
@@ -1204,7 +1220,9 @@
           "teacher_id": "SK",
           "min_per_week": 1
         }
-      ]
+      ],
+      "fixed_classroom": "CR403",
+      "fixed_lab": "LAB1"
     },
     {
       "id": "CS4D",
@@ -1261,7 +1279,9 @@
           "teacher_id": "KJ",
           "min_per_week": 1
         }
-      ]
+      ],
+      "fixed_classroom": "SEMR1",
+      "fixed_lab": "LAB2"
     },
     {
       "id": "CS4E",
@@ -1318,7 +1338,9 @@
           "teacher_id": "KJ",
           "min_per_week": 1
         }
-      ]
+      ],
+      "fixed_classroom": "SEMR2",
+      "fixed_lab": "LAB3"
     }
   ],
   "ga_config": {

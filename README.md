@@ -78,6 +78,34 @@ As a school gets bigger, the scheduling "puzzle" gets exponentially harder to so
 
 <p align="center"><i>ChronoGen System Architecture</i></p>
 
+## Algorithm Comparison
+
+Different institutions have different levels of scheduling complexity. ChronoGen provides multiple algorithm options instead of forcing a one-size-fits-all approach.
+
+### Which algorithm to use?
+
+| Algorithm | How it Works | Strengths | Trade-offs | Best For |
+|----------|-------------|-----------|------------|----------|
+| **Basic GA** | Standard evolutionary loop (selection, crossover, mutation) | Very fast and simple | Can get stuck in local optima | Small institutions with simple constraints |
+| **Memetic GA** | GA combined with local search refinement | High accuracy, improves near-perfect solutions | Slower due to extra optimization step | When Basic GA gets close but not perfect |
+| **Island GA** | Multiple populations evolve independently and exchange solutions | High diversity, avoids stagnation | Requires more memory and compute | Large, complex institutions |
+| **Hyper-Heuristic** | Self-adjusting mutation and crossover strategies | No tuning needed, adaptive | Slightly unpredictable convergence time | Users who want automatic optimization |
+| **NSGA-II** | Multi-objective optimization (hard vs soft constraints) | Provides multiple optimal solutions (Pareto front) | Highest computational cost | When balancing trade-offs is important |
+
+## Comparision Graph
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/070f1464-bf68-4674-8480-01c24ff8be7c" width="800"/>
+</p>
+
+<p align="center"><i>Basic GA vs Memetic GA</i></p>
+
+## Constraints breakdown
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/30d9d08a-3b15-4007-a8b5-bc5b14a3c272" width="800"/>
+</p>
+
+<p align="center"><i>Constraints</i></p>
+
 ## What Sets ChronoGen Apart
 - **It actually "evolves" a solution:** Most scheduling tools just try to cram classes into empty slots and give up when they hit a conflict. ChronoGen uses Genetic Algorithms to test thousands of different schedules, combining the best parts of each until it finds a perfect, conflict-free fit.
 
@@ -101,7 +129,7 @@ As a school gets bigger, the scheduling "puzzle" gets exponentially harder to so
 
 - **Update in Real Time:** A customized React hook polls the backend every three seconds and updates the Recharts the user is viewing, so that they can see the progress of the genetic algorithm in real time.
 
-- **Export Options:** The winning schedule will be displayed as an interactive grid in the UI and a ZIP file containing CSV files for the classes, teachers, and rooms purchased by the user will be created.
+- **Export Options:** The winning schedule will be displayed as an interactive grid in the UI and a ZIP file containing CSV files, json, html and png format for the classes, teachers, and rooms purchased by the user will be created.
   
 ### API Routes
 
@@ -114,10 +142,24 @@ As a school gets bigger, the scheduling "puzzle" gets exponentially harder to so
 | GET | `/api/v1/jobs/{job_id}/timetable` | Retrieve generated timetable as structured data |
 | GET | `/api/v1/jobs/{job_id}/exports/all` | Download all outputs (CSV, charts, reports) |
 
+## Performance benchmarks
+- **Small Departments (up to 10 teachers):** Usually done in under 10 seconds.
+- **Average High Schools (30+ teachers):** Typically takes 1 to 2 minutes to find a conflict-free result.
+- **Large Colleges (80+ teachers):** Can take 3 to 5 minutes to solve the most complex puzzles.
+
+## Real-World Edge Cases 
+
+- **Early Validation** – Detects impossible schedules before running the algorithm  
+- **Lab Continuity** – Keeps long sessions (like labs) uninterrupted  
+- **Teacher Availability** – Respects blocked time slots and part-time schedules  
+- **Gap Minimization** – Reduces unnecessary idle periods in a teacher’s day  
+- **Stagnation Handling** – Explores new solutions when optimization gets stuck  
+
+
 ### Tech Stack
 
 **Frontend**
-* **React 18 & TypeScript:** For a robust, type-safe user interface.
+* **React 19 & TypeScript:** For a robust, type-safe user interface.
 * **Vite:** For lightning-fast local development and optimized builds.
 * **Tailwind CSS:** For precise, custom styling and an industrial, data-heavy design system.
 * **Zustand:** For lightweight, persistent state management (handling institutional context).

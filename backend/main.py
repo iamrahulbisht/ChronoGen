@@ -5,7 +5,10 @@ ChronoGen Backend — FastAPI Application Entry Point.
 import os
 import sys
 
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+# Ensure project root is on path so `src/` imports work
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
 
 from contextlib import asynccontextmanager
 
@@ -68,10 +71,33 @@ async def health_check():
     return {"status": "ok", "service": "ChronoGen API", "version": "1.0.0"}
 
 
-@app.get("/", tags=["Health"])
-async def root():
-    return {
-        "message": "ChronoGen Backend API",
-        "docs": "/docs",
-        "health": "/health",
-    }
+from fastapi.responses import HTMLResponse
+from fastapi.exceptions import HTTPException
+from starlette.exceptions import HTTPException as StarletteHTTPException
+
+frontend_dir = os.path.join(PROJECT_ROOT, "frontend", "dist")
+
+if os.path.exists(frontend_dir):
+    app.mount("/", StaticFiles(directory=frontend_dir, html=True), name="frontend")
+
+    @app.exception_handler(404)
+    @app.exception_handler(StarletteHTTPException)
+    async def not_found_handler(request, exc):
+        # Allow API routes to fail with standard 404
+        if request.url.path.startswith("/api/"):
+            return {"detail": "Not Found"}
+        # Serve index.html for unknown frontend routes
+        index_file = os.path.join(frontend_dir, "index.html")
+        if os.path.exists(index_file):
+            with open(index_file, "r", encoding="utf-8") as f:
+                return HTMLResponse(f.read())
+        return {"detail": "Not Found"}
+else:
+    @app.get("/", tags=["Health"])
+    async def root():
+        return {
+            "message": "ChronoGen Backend API",
+            "docs": "/docs",
+            "health": "/health",
+            "warning": "Frontend dist not found"
+        }
