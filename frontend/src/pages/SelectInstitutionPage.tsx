@@ -47,7 +47,7 @@ export default function SelectInstitutionPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-4xl">
           {institutions?.map((inst) => (
             <div key={inst.id} className="bg-surface border border-border rounded-lg p-5 hover:border-accent/40 transition-colors group">
-              <h3 className="font-display font-bold text-base tracking-tight mb-1 text-text-primary">{inst.name}</h3>
+              <h3 className="font-display font-bold text-base tracking-tight mb-1 text-white">{inst.name}</h3>
               <div className="text-xs text-text-secondary space-y-1 mb-4">
                 <p className="flex items-center gap-1.5"><Calendar size={12} />{inst.days_per_week} days × {inst.periods_per_day} periods</p>
                 <p>{formatDate(inst.created_at)}</p>

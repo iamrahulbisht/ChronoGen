@@ -28,7 +28,7 @@ export default function Sidebar() {
     <aside className="fixed left-0 top-0 h-screen w-60 bg-base border-r border-border flex flex-col z-50">
       <div className="p-5 border-b border-border">
         <h1 className="font-display text-lg font-bold tracking-tight text-accent">ChronoGen</h1>
-        <<p className="text-xs text-text-primary font-medium mt-1 truncate" title={institutionName}>
+        <p className="text-xs text-text-primary font-medium mt-1 truncate" title={institutionName}>
           {institutionName || 'No institution'}
         </p>
       </div>
