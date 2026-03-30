@@ -211,9 +211,8 @@ Different institutions have different levels of scheduling complexity. ChronoGen
 | S7 | Lab Room Violation | Lab conducted in incorrect room type | 8 |
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/30d9d08a-3b15-4007-a8b5-bc5b14a3c272" width="800"/>
+  <img src="https://github.com/user-attachments/assets/4730e077-df1e-4c28-a3bf-548809902e5c" width="800"/>
 </p>
-
 <p align="center"><i>Constraints</i></p>
 
 ## What Sets ChronoGen Apart
