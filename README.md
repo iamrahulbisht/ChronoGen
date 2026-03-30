@@ -110,13 +110,6 @@ As a school gets bigger, the scheduling "puzzle" gets exponentially harder to so
 
 <p align="center">JSON format<i></i></p>
 
-## System Architecture
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/7bb9279e-3c64-4cf9-b51c-b9ebcecddc6d" width="800"/>
-</p>
-
-<p align="center"><i>ChronoGen System Architecture</i></p>
-
 ### Output Overview
 
 #### Timetable
@@ -150,6 +143,13 @@ As a school gets bigger, the scheduling "puzzle" gets exponentially harder to so
 
 <p align="center"><i>ChronoGen System Architecture</i></p>
 
+## System Architecture
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/7bb9279e-3c64-4cf9-b51c-b9ebcecddc6d" width="800"/>
+</p>
+
+<p align="center"><i>ChronoGen System Architecture</i></p>
+
 ## Algorithm Comparison
 
 Different institutions have different levels of scheduling complexity. ChronoGen provides multiple algorithm options instead of forcing a one-size-fits-all approach.
@@ -163,6 +163,17 @@ Different institutions have different levels of scheduling complexity. ChronoGen
 | **Island GA** | Multiple populations evolve independently and exchange solutions | High diversity, avoids stagnation | Requires more memory and compute | Large, complex institutions |
 | **Hyper-Heuristic** | Self-adjusting mutation and crossover strategies | No tuning needed, adaptive | Slightly unpredictable convergence time | Users who want automatic optimization |
 | **NSGA-II** | Multi-objective optimization (hard vs soft constraints) | Provides multiple optimal solutions (Pareto front) | Highest computational cost | When balancing trade-offs is important |
+
+## Performance and convergence
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ab8ac968-272b-4e4e-a0db-36b29d5ac3c2" width="800"/>
+</p>
+<p align="center"><i>GA Convergence Plot</i></p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9cd23154-b470-4608-9cf5-1298871c9f8c" width="800"/>
+</p>
+<p align="center"><i>Fitness History Over Generations</i></p>
 
 ## Comparision Graph
 <p align="center">
