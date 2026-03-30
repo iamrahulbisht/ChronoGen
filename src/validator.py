@@ -77,19 +77,19 @@ def validate(config: Config) -> bool:
 
     # Print results
     if errors:
-        print("\n=== VALIDATION FAILED ===")
+        print("\nVALIDATION FAILED")
         for e in errors:
             print(" ", e)
         print()
         return False
 
     if warnings:
-        print("\n=== WARNINGS ===")
+        print("\nWARNINGS")
         for w in warnings:
             print(" ", w)
 
     print(
-        f"[OK] Validation passed. "
+        f"Validation passed. "
         f"{len(config.classes)} classes, "
         f"{len(config.teachers)} teachers, "
         f"{len(config.rooms)} rooms, "

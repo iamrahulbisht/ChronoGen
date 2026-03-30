@@ -4,6 +4,7 @@ Return 0 - Kaam chota ya bada nhi hota, commit hona chahiye
 
 import os
 import sys
+
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from src.engine import (
     run_ga,
@@ -20,6 +21,7 @@ from src.output import (
     print_all_timetables,
     print_fitness_summary,
     save_chromosome_json,
+    save_room_timetable_csv,
     save_teacher_timetable_csv,
     save_timetable_csv,
 )
@@ -69,9 +71,17 @@ def main():
         print("\nFound", len(pareto_front), "Pareto Optimal Solutions:")
         for i, obj in enumerate(pareto_objs):
             print(f"[{i}] Hard Penalty: {obj[0]}, Soft Penalty: {obj[1]}")
-        print("\nAutomatically selecting the optimal timetable (Minimum Hard Penalty, then Minimum Soft Penalty)...")
-        idx = min(range(len(pareto_objs)), key=lambda i: (pareto_objs[i][0], pareto_objs[i][1]))
-        print(f"Selected: [{idx}] Hard Penalty: {pareto_objs[idx][0]}, Soft Penalty: {pareto_objs[idx][1]}")
+        print(
+            "\nAutomatically selecting the optimal timetable (Minimum Hard Penalty, then Minimum Soft Penalty)..."
+        )
+        # Find index of solution with smallest soft penalty among those with smallest hard penalty
+        idx = min(
+            range(len(pareto_objs)),
+            key=lambda i: (pareto_objs[i][0], pareto_objs[i][1]),
+        )
+        print(
+            f"Selected: [{idx}] Hard Penalty: {pareto_objs[idx][0]}, Soft Penalty: {pareto_objs[idx][1]}"
+        )
         best_chromosome = pareto_front[idx]
     else:
         print("\n[3] Running Basic Genetic Algorithm...")
@@ -91,6 +101,7 @@ def main():
     print("\n[6] Exporting Final Artifacts...")
     save_timetable_csv(best_chromosome, config, "output/timetable_for_students")
     save_teacher_timetable_csv(best_chromosome, config, "output/timetable_for_teachers")
+    save_room_timetable_csv(best_chromosome, config, "output/timetable_for_rooms")
     save_chromosome_json(best_chromosome, "output/visual_charts")
     generate_html_report(config, "output/visual_charts")
 

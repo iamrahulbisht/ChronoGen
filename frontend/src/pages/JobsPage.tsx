@@ -11,6 +11,7 @@ import Spinner from '../components/ui/Spinner'
 import { Eye, Trash2, Zap } from 'lucide-react'
 import { truncateId, formatDate } from '../utils/formatters'
 import toast from 'react-hot-toast'
+import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 
 const ALGORITHMS = [
   { value: 'basic_ga', label: 'Basic GA', desc: 'Standard genetic algorithm' },
@@ -69,8 +70,14 @@ export default function JobsPage() {
                 <span className="font-code text-xs text-text-secondary">{truncateId(j.job_id)}</span>
                 <Badge>{j.algorithm}</Badge>
                 <Badge variant={j.status}>
-                  {j.status === 'running' && <span className="inline-block w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse mr-1.5" />}
-                  {j.status}
+                  <div className="flex items-center gap-1.5">
+                    {j.status === 'running' && (
+                      <div className="w-4 h-4 -ml-1">
+                        <DotLottieReact src="https://lottie.host/bd567b7c-53e5-4ee5-981e-918a05b6c55f/bNS86uJ1qE.lottie" loop autoplay />
+                      </div>
+                    )}
+                    {j.status}
+                  </div>
                 </Badge>
                 <span className="text-xs text-text-muted">{formatDate(j.created_at)}</span>
               </div>

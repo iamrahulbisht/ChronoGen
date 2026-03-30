@@ -20,6 +20,7 @@ def pick_valid_room(config: Config, subject_id: str, student_count: int):
         valid_rooms = list(config.rooms.values())
     return random.choice(valid_rooms)
 
+
 def create_random_chromosome(config: Config):
     genes = []
     inst = config.institution
