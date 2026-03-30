@@ -64,12 +64,84 @@ As a school gets bigger, the scheduling "puzzle" gets exponentially harder to so
 
 **4. Result Exporting:** Once a perfect (or near-perfect) solution is found, the backend saves the result as a Chromosome. It then generates a JSON grid for the UI and creates downloadable CSVs for every student, teacher, and room.
 
+## Screenshots
+
+### Main dashboard
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/7fdcd7f3-64a0-4e6f-82a5-f6beffa70b0f" width="800"/>
+</p>
+
+<p align="center"><i>Dashboard/i></p>
+
+### Input Preview
+
+#### Input Rooms
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8c8715f4-cbbc-4923-8ec7-8e33683ee896" width="800"/>
+</p>
+
+<p align="center"><i>Rooms1</i></p>
+
+#### Input Teachers
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/e9cb4566-e2f0-488e-8f3e-ab34a2d2dcd9" width="800"/>
+</p>
+
+<p align="center"><i>Teachers</i></p>
+
+#### Input Subjects
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f9705f0e-a6f9-4d7a-a74e-4e001196ca98" width="800"/>
+</p>
+
+<p align="center"><i>Subjects</i></p>
+
+#### Input Sections
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/25738c34-71f1-459e-a6f6-7e819a3d98ce" width="800"/>
+</p>
+
+<p align="center"><i>Sections</i></p>
+
+#### JSON Upload
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8f2033f2-af8a-4224-a8c3-d57150db7bdb" width="900"/>
+</p>
+
+<p align="center">JSON format<i></i></p>
+
 ## System Architecture
 <p align="center">
   <img src="https://github.com/user-attachments/assets/7bb9279e-3c64-4cf9-b51c-b9ebcecddc6d" width="800"/>
 </p>
 
 <p align="center"><i>ChronoGen System Architecture</i></p>
+
+### Output Overview
+
+#### Timetable
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/1ea5b3ba-1b8e-4946-95f8-3b1a800ce0ce" width="800"/>
+</p>
+<p align="center"><i>Timetable View</i></p>
+
+#### Room management
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/365f843a-da86-4d76-b0b7-7a6775a16eec" width="800"/>
+</p>
+<p align="center"><i>Room Management</i></p>
+
+#### Teacher management
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9d23ed3a-e7b4-46ce-8b09-972cc6d6c363" width="800"/>
+</p>
+<p align="center"><i>Teacher Management</i></p>
+
+#### Exported Timetable formats
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/650a9727-f6f6-49f8-9edf-b2e88c641fa6" width="800"/>
+</p>
+<p align="center"><i>Exported Timetable Formats</i></p>
 
 ## Flowchart
 <p align="center">
@@ -100,6 +172,33 @@ Different institutions have different levels of scheduling complexity. ChronoGen
 <p align="center"><i>Basic GA vs Memetic GA</i></p>
 
 ## Constraints breakdown
+
+## Constraints ⚖️
+
+### 🔴 Hard Constraints (Must Not Be Violated)
+
+| Code | Constraint | Description | Penalty |
+|------|-----------|------------|---------|
+| H1 | Teacher Double Booking | Same teacher assigned to multiple classes at the same time | 1000 |
+| H2 | Class Double Period | Same class scheduled in multiple rooms simultaneously | 1000 |
+| H3 | Room Double Booking | Multiple classes assigned to the same room at the same time | 1000 |
+| H4 | Two Subjects Same Period | A class assigned more than one subject in a single slot | 1000 |
+| H5 | Unqualified Teacher | Teacher assigned to a subject they don’t teach | 500 |
+| H6 | Room Capacity Exceeded | Student count exceeds room capacity | 500 |
+
+---
+
+### 🟡 Soft Constraints (Optimization Goals)
+
+| Code | Constraint | Description | Penalty |
+|------|-----------|------------|---------|
+| S1 | Minimum Lectures | Subject scheduled less than required weekly frequency | 10 |
+| S2 | Teacher Overload | Exceeds maximum lectures per week | 5 |
+| S3 | Consecutive Lecture Limit | Too many back-to-back lectures | 3 |
+| S4 | Same Subject Twice a Day | Same subject scheduled multiple times in one day | 2 |
+| S5/S6 | Schedule Gaps | Unnecessary free periods between lectures | 1 |
+| S7 | Lab Room Violation | Lab conducted in incorrect room type | 8 |
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/30d9d08a-3b15-4007-a8b5-bc5b14a3c272" width="800"/>
 </p>
