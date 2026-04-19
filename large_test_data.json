@@ -1,0 +1,1938 @@
+{
+  "institution": {
+    "name": "Mega Tech Institute of Technology",
+    "periods_per_day": 8,
+    "days_per_week": 5,
+    "lunch_break_after_period": 4
+  },
+  "rooms": [
+    {
+      "id": "R001",
+      "name": "Classroom 101",
+      "capacity": 80,
+      "type": "classroom"
+    },
+    {
+      "id": "R002",
+      "name": "Classroom 102",
+      "capacity": 80,
+      "type": "classroom"
+    },
+    {
+      "id": "R003",
+      "name": "Classroom 103",
+      "capacity": 80,
+      "type": "classroom"
+    },
+    {
+      "id": "R004",
+      "name": "Classroom 104",
+      "capacity": 80,
+      "type": "classroom"
+    },
+    {
+      "id": "R005",
+      "name": "Classroom 105",
+      "capacity": 80,
+      "type": "classroom"
+    },
+    {
+      "id": "R006",
+      "name": "Classroom 106",
+      "capacity": 80,
+      "type": "classroom"
+    },
+    {
+      "id": "R007",
+      "name": "Classroom 107",
+      "capacity": 80,
+      "type": "classroom"
+    },
+    {
+      "id": "R008",
+      "name": "Classroom 108",
+      "capacity": 80,
+      "type": "classroom"
+    },
+    {
+      "id": "R009",
+      "name": "Classroom 109",
+      "capacity": 80,
+      "type": "classroom"
+    },
+    {
+      "id": "R010",
+      "name": "Classroom 110",
+      "capacity": 80,
+      "type": "classroom"
+    },
+    {
+      "id": "R011",
+      "name": "Classroom 111",
+      "capacity": 80,
+      "type": "classroom"
+    },
+    {
+      "id": "R012",
+      "name": "Classroom 112",
+      "capacity": 80,
+      "type": "classroom"
+    },
+    {
+      "id": "R013",
+      "name": "Classroom 113",
+      "capacity": 80,
+      "type": "classroom"
+    },
+    {
+      "id": "R014",
+      "name": "Classroom 114",
+      "capacity": 80,
+      "type": "classroom"
+    },
+    {
+      "id": "R015",
+      "name": "Classroom 115",
+      "capacity": 80,
+      "type": "classroom"
+    },
+    {
+      "id": "R016",
+      "name": "Classroom 116",
+      "capacity": 80,
+      "type": "classroom"
+    },
+    {
+      "id": "R017",
+      "name": "Classroom 117",
+      "capacity": 80,
+      "type": "classroom"
+    },
+    {
+      "id": "R018",
+      "name": "Classroom 118",
+      "capacity": 80,
+      "type": "classroom"
+    },
+    {
+      "id": "R019",
+      "name": "Classroom 119",
+      "capacity": 80,
+      "type": "classroom"
+    },
+    {
+      "id": "R020",
+      "name": "Classroom 120",
+      "capacity": 80,
+      "type": "classroom"
+    },
+    {
+      "id": "R021",
+      "name": "CS Lab 1",
+      "capacity": 70,
+      "type": "lab"
+    },
+    {
+      "id": "R022",
+      "name": "CS Lab 2",
+      "capacity": 70,
+      "type": "lab"
+    },
+    {
+      "id": "R023",
+      "name": "CS Lab 3",
+      "capacity": 70,
+      "type": "lab"
+    },
+    {
+      "id": "R024",
+      "name": "CS Lab 4",
+      "capacity": 70,
+      "type": "lab"
+    },
+    {
+      "id": "R025",
+      "name": "CS Lab 5",
+      "capacity": 70,
+      "type": "lab"
+    },
+    {
+      "id": "R026",
+      "name": "CS Lab 6",
+      "capacity": 70,
+      "type": "lab"
+    },
+    {
+      "id": "R027",
+      "name": "CS Lab 7",
+      "capacity": 70,
+      "type": "lab"
+    },
+    {
+      "id": "R028",
+      "name": "CS Lab 8",
+      "capacity": 70,
+      "type": "lab"
+    },
+    {
+      "id": "R029",
+      "name": "CS Lab 9",
+      "capacity": 70,
+      "type": "lab"
+    },
+    {
+      "id": "R030",
+      "name": "CS Lab 10",
+      "capacity": 70,
+      "type": "lab"
+    },
+    {
+      "id": "R031",
+      "name": "Seminar Room 1",
+      "capacity": 100,
+      "type": "seminar_room"
+    },
+    {
+      "id": "R032",
+      "name": "Seminar Room 2",
+      "capacity": 100,
+      "type": "seminar_room"
+    },
+    {
+      "id": "R033",
+      "name": "Seminar Room 3",
+      "capacity": 100,
+      "type": "seminar_room"
+    },
+    {
+      "id": "R034",
+      "name": "Seminar Room 4",
+      "capacity": 100,
+      "type": "seminar_room"
+    },
+    {
+      "id": "R035",
+      "name": "Seminar Room 5",
+      "capacity": 100,
+      "type": "seminar_room"
+    }
+  ],
+  "teachers": [
+    {
+      "id": "T001",
+      "name": "Mr. Khan B",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB03",
+        "SUB08",
+        "LAB06",
+        "LAB05"
+      ]
+    },
+    {
+      "id": "T002",
+      "name": "Ms. Nair C",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SEM01",
+        "SUB09",
+        "SUB14",
+        "LAB03"
+      ]
+    },
+    {
+      "id": "T003",
+      "name": "Dr. Patel D",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB14",
+        "SUB11",
+        "LAB01",
+        "SUB04"
+      ]
+    },
+    {
+      "id": "T004",
+      "name": "Prof. Das E",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "LAB05",
+        "SUB06",
+        "SUB04",
+        "SUB03"
+      ]
+    },
+    {
+      "id": "T005",
+      "name": "Prof. Malhotra F",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB14",
+        "SUB10",
+        "LAB05",
+        "LAB01"
+      ]
+    },
+    {
+      "id": "T006",
+      "name": "Mr. Bajaj G",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB07",
+        "SUB09",
+        "SUB12",
+        "SUB01"
+      ]
+    },
+    {
+      "id": "T007",
+      "name": "Prof. Malhotra H",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "LAB05",
+        "SUB08",
+        "LAB03",
+        "SUB14"
+      ]
+    },
+    {
+      "id": "T008",
+      "name": "Mr. Bajaj I",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB03",
+        "SUB09",
+        "SUB07",
+        "LAB02"
+      ]
+    },
+    {
+      "id": "T009",
+      "name": "Mr. Bajaj J",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB03",
+        "SUB06",
+        "SUB12",
+        "SUB09"
+      ]
+    },
+    {
+      "id": "T010",
+      "name": "Ms. Gupta K",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB06",
+        "LAB01",
+        "SUB11",
+        "SUB01"
+      ]
+    },
+    {
+      "id": "T011",
+      "name": "Ms. Iyer L",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB01",
+        "SUB14",
+        "LAB02",
+        "SEM02"
+      ]
+    },
+    {
+      "id": "T012",
+      "name": "Dr. Reddy M",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB11",
+        "SUB09",
+        "SUB06",
+        "SUB10"
+      ]
+    },
+    {
+      "id": "T013",
+      "name": "Mr. Singh N",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "LAB05",
+        "SUB02",
+        "SUB13",
+        "SUB05"
+      ]
+    },
+    {
+      "id": "T014",
+      "name": "Prof. Malhotra O",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB13",
+        "LAB01",
+        "SUB11",
+        "SUB04"
+      ]
+    },
+    {
+      "id": "T015",
+      "name": "Ms. Sethi P",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB09",
+        "SUB07",
+        "SUB04",
+        "SUB06"
+      ]
+    },
+    {
+      "id": "T016",
+      "name": "Ms. Sethi Q",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "LAB02",
+        "SUB05",
+        "SUB08",
+        "SUB03"
+      ]
+    },
+    {
+      "id": "T017",
+      "name": "Mr. Singh R",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB05",
+        "SUB03",
+        "SEM01",
+        "SUB04"
+      ]
+    },
+    {
+      "id": "T018",
+      "name": "Mr. Bajaj S",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB13",
+        "SUB06",
+        "LAB01",
+        "SEM02"
+      ]
+    },
+    {
+      "id": "T019",
+      "name": "Dr. Sharma T",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB06",
+        "SUB10",
+        "LAB02",
+        "SUB04"
+      ]
+    },
+    {
+      "id": "T020",
+      "name": "Ms. Sethi U",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "LAB01",
+        "SUB01",
+        "SEM01",
+        "LAB04"
+      ]
+    },
+    {
+      "id": "T021",
+      "name": "Dr. Reddy V",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB10",
+        "SUB08",
+        "LAB06",
+        "SUB01"
+      ]
+    },
+    {
+      "id": "T022",
+      "name": "Dr. Kapoor W",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "LAB05",
+        "LAB04",
+        "SUB14",
+        "LAB02"
+      ]
+    },
+    {
+      "id": "T023",
+      "name": "Dr. Sharma X",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SEM02",
+        "SUB08",
+        "LAB06",
+        "LAB02"
+      ]
+    },
+    {
+      "id": "T024",
+      "name": "Dr. Reddy Y",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB07",
+        "LAB03",
+        "SUB09",
+        "SUB02"
+      ]
+    },
+    {
+      "id": "T025",
+      "name": "Mr. Joshi Z",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "LAB05",
+        "SUB08",
+        "SUB02",
+        "SEM01"
+      ]
+    },
+    {
+      "id": "T026",
+      "name": "Mr. Joshi A",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "LAB01",
+        "SUB04",
+        "SEM01",
+        "SUB06"
+      ]
+    },
+    {
+      "id": "T027",
+      "name": "Prof. Malhotra B",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "LAB06",
+        "SUB10",
+        "LAB02",
+        "LAB03"
+      ]
+    },
+    {
+      "id": "T028",
+      "name": "Prof. Malhotra C",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SEM02",
+        "SUB12",
+        "SUB13",
+        "LAB02"
+      ]
+    },
+    {
+      "id": "T029",
+      "name": "Dr. Sharma D",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "LAB02",
+        "SUB04",
+        "SUB07",
+        "SEM01"
+      ]
+    },
+    {
+      "id": "T030",
+      "name": "Dr. Reddy E",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB04",
+        "SEM01",
+        "SUB13",
+        "LAB04"
+      ]
+    },
+    {
+      "id": "T031",
+      "name": "Dr. Kapoor F",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB04",
+        "LAB05",
+        "SUB12",
+        "SUB03"
+      ]
+    },
+    {
+      "id": "T032",
+      "name": "Dr. Patel G",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB12",
+        "SUB14",
+        "SUB03",
+        "SUB02"
+      ]
+    },
+    {
+      "id": "T033",
+      "name": "Dr. Kapoor H",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB12",
+        "LAB05",
+        "SUB07",
+        "SUB06"
+      ]
+    },
+    {
+      "id": "T034",
+      "name": "Ms. Gupta I",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "LAB06",
+        "LAB02",
+        "SUB01",
+        "LAB04"
+      ]
+    },
+    {
+      "id": "T035",
+      "name": "Ms. Sethi J",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SEM01",
+        "LAB06",
+        "SUB03",
+        "SUB04"
+      ]
+    },
+    {
+      "id": "T036",
+      "name": "Mr. Bajaj K",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "LAB04",
+        "SUB10",
+        "SUB13",
+        "LAB01"
+      ]
+    },
+    {
+      "id": "T037",
+      "name": "Prof. Verma L",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB12",
+        "SUB03",
+        "SUB10",
+        "LAB02"
+      ]
+    },
+    {
+      "id": "T038",
+      "name": "Ms. Sethi M",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB10",
+        "SUB09",
+        "SUB07",
+        "LAB05"
+      ]
+    },
+    {
+      "id": "T039",
+      "name": "Prof. Malhotra N",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB09",
+        "SUB14",
+        "SUB01",
+        "SUB10"
+      ]
+    },
+    {
+      "id": "T040",
+      "name": "Prof. Das O",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB03",
+        "SUB13",
+        "SUB11",
+        "SUB12"
+      ]
+    },
+    {
+      "id": "T041",
+      "name": "Ms. Gupta P",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "LAB03",
+        "SUB10",
+        "SEM02",
+        "LAB06"
+      ]
+    },
+    {
+      "id": "T042",
+      "name": "Dr. Patel Q",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB01",
+        "SUB11",
+        "SUB14",
+        "SUB03"
+      ]
+    },
+    {
+      "id": "T043",
+      "name": "Dr. Patel R",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB09",
+        "SUB12",
+        "SUB14",
+        "SUB02"
+      ]
+    },
+    {
+      "id": "T044",
+      "name": "Ms. Iyer S",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB09",
+        "LAB02",
+        "LAB01",
+        "SUB01"
+      ]
+    },
+    {
+      "id": "T045",
+      "name": "Dr. Reddy T",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "LAB01",
+        "LAB03",
+        "SEM01",
+        "SUB10"
+      ]
+    },
+    {
+      "id": "T046",
+      "name": "Dr. Sharma U",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SEM02",
+        "SUB04",
+        "SEM01",
+        "SUB12"
+      ]
+    },
+    {
+      "id": "T047",
+      "name": "Ms. Sethi V",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB06",
+        "SUB01",
+        "SUB09",
+        "SUB11"
+      ]
+    },
+    {
+      "id": "T048",
+      "name": "Mr. Khan W",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "LAB03",
+        "LAB02",
+        "SUB07",
+        "SUB04"
+      ]
+    },
+    {
+      "id": "T049",
+      "name": "Mr. Singh X",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB04",
+        "SUB10",
+        "LAB06",
+        "SUB06"
+      ]
+    },
+    {
+      "id": "T050",
+      "name": "Prof. Verma Y",
+      "max_lectures_per_week": 25,
+      "teaches_subjects": [
+        "SUB06",
+        "SUB09",
+        "SUB04",
+        "SEM02"
+      ]
+    }
+  ],
+  "subjects": [
+    {
+      "id": "SUB01",
+      "name": "Mathematics",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 4,
+      "is_lab": false
+    },
+    {
+      "id": "SUB02",
+      "name": "Physics",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 4,
+      "is_lab": false
+    },
+    {
+      "id": "SUB03",
+      "name": "Data Structures",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 4,
+      "is_lab": false
+    },
+    {
+      "id": "SUB04",
+      "name": "Algorithms",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 4,
+      "is_lab": false
+    },
+    {
+      "id": "SUB05",
+      "name": "Operating Systems",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 4,
+      "is_lab": false
+    },
+    {
+      "id": "SUB06",
+      "name": "Networking",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 4,
+      "is_lab": false
+    },
+    {
+      "id": "SUB07",
+      "name": "AI",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 4,
+      "is_lab": false
+    },
+    {
+      "id": "SUB08",
+      "name": "Machine Learning",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 4,
+      "is_lab": false
+    },
+    {
+      "id": "SUB09",
+      "name": "Cloud Computing",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 4,
+      "is_lab": false
+    },
+    {
+      "id": "SUB10",
+      "name": "Software Engineering",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 4,
+      "is_lab": false
+    },
+    {
+      "id": "SUB11",
+      "name": "DBMS",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 4,
+      "is_lab": false
+    },
+    {
+      "id": "SUB12",
+      "name": "Digital Electronics",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 4,
+      "is_lab": false
+    },
+    {
+      "id": "SUB13",
+      "name": "Microprocessors",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 4,
+      "is_lab": false
+    },
+    {
+      "id": "SUB14",
+      "name": "Compiler Design",
+      "requires_room_type": "classroom",
+      "min_lectures_per_week": 4,
+      "is_lab": false
+    },
+    {
+      "id": "LAB01",
+      "name": "Programming Lab",
+      "requires_room_type": "lab",
+      "min_lectures_per_week": 2,
+      "is_lab": true
+    },
+    {
+      "id": "LAB02",
+      "name": "DS Lab",
+      "requires_room_type": "lab",
+      "min_lectures_per_week": 2,
+      "is_lab": true
+    },
+    {
+      "id": "LAB03",
+      "name": "Networking Lab",
+      "requires_room_type": "lab",
+      "min_lectures_per_week": 2,
+      "is_lab": true
+    },
+    {
+      "id": "LAB04",
+      "name": "Physics Lab",
+      "requires_room_type": "lab",
+      "min_lectures_per_week": 2,
+      "is_lab": true
+    },
+    {
+      "id": "LAB05",
+      "name": "DBMS Lab",
+      "requires_room_type": "lab",
+      "min_lectures_per_week": 2,
+      "is_lab": true
+    },
+    {
+      "id": "LAB06",
+      "name": "Workshop",
+      "requires_room_type": "lab",
+      "min_lectures_per_week": 2,
+      "is_lab": true
+    },
+    {
+      "id": "SEM01",
+      "name": "Employability Skills",
+      "requires_room_type": "seminar_room",
+      "min_lectures_per_week": 2,
+      "is_lab": false
+    },
+    {
+      "id": "SEM02",
+      "name": "MOOCS Seminar",
+      "requires_room_type": "seminar_room",
+      "min_lectures_per_week": 2,
+      "is_lab": false
+    }
+  ],
+  "classes": [
+    {
+      "id": "CS1A",
+      "name": "Year 1 - Section A",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB09",
+          "teacher_id": "T015",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB02",
+          "teacher_id": "T013",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB04",
+          "teacher_id": "T015",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB07",
+          "teacher_id": "T006",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB11",
+          "teacher_id": "T014",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB01",
+          "teacher_id": "T045",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM02",
+          "teacher_id": "T011",
+          "min_per_week": 2
+        }
+      ]
+    },
+    {
+      "id": "CS1B",
+      "name": "Year 1 - Section B",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB07",
+          "teacher_id": "T038",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB14",
+          "teacher_id": "T042",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB11",
+          "teacher_id": "T040",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB09",
+          "teacher_id": "T043",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB02",
+          "teacher_id": "T013",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB06",
+          "teacher_id": "T027",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM01",
+          "teacher_id": "T030",
+          "min_per_week": 2
+        }
+      ]
+    },
+    {
+      "id": "CS1C",
+      "name": "Year 1 - Section C",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB12",
+          "teacher_id": "T040",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB13",
+          "teacher_id": "T036",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB11",
+          "teacher_id": "T047",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB14",
+          "teacher_id": "T039",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB07",
+          "teacher_id": "T015",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB04",
+          "teacher_id": "T022",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM02",
+          "teacher_id": "T011",
+          "min_per_week": 2
+        }
+      ]
+    },
+    {
+      "id": "CS1D",
+      "name": "Year 1 - Section D",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB14",
+          "teacher_id": "T007",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB12",
+          "teacher_id": "T046",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB04",
+          "teacher_id": "T035",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB03",
+          "teacher_id": "T042",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB05",
+          "teacher_id": "T016",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB03",
+          "teacher_id": "T027",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM02",
+          "teacher_id": "T018",
+          "min_per_week": 2
+        }
+      ]
+    },
+    {
+      "id": "CS1E",
+      "name": "Year 1 - Section E",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB13",
+          "teacher_id": "T028",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB04",
+          "teacher_id": "T019",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB09",
+          "teacher_id": "T015",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB10",
+          "teacher_id": "T039",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB03",
+          "teacher_id": "T037",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB03",
+          "teacher_id": "T007",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM02",
+          "teacher_id": "T046",
+          "min_per_week": 2
+        }
+      ]
+    },
+    {
+      "id": "CS1F",
+      "name": "Year 1 - Section F",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB09",
+          "teacher_id": "T012",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB04",
+          "teacher_id": "T029",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB07",
+          "teacher_id": "T006",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB08",
+          "teacher_id": "T001",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB03",
+          "teacher_id": "T001",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB06",
+          "teacher_id": "T001",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM01",
+          "teacher_id": "T029",
+          "min_per_week": 2
+        }
+      ]
+    },
+    {
+      "id": "CS2A",
+      "name": "Year 2 - Section A",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB09",
+          "teacher_id": "T012",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB06",
+          "teacher_id": "T010",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB11",
+          "teacher_id": "T012",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB03",
+          "teacher_id": "T009",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB02",
+          "teacher_id": "T024",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB05",
+          "teacher_id": "T005",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM02",
+          "teacher_id": "T046",
+          "min_per_week": 2
+        }
+      ]
+    },
+    {
+      "id": "CS2B",
+      "name": "Year 2 - Section B",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB03",
+          "teacher_id": "T040",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB11",
+          "teacher_id": "T014",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB01",
+          "teacher_id": "T042",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB09",
+          "teacher_id": "T012",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB07",
+          "teacher_id": "T015",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB04",
+          "teacher_id": "T036",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM01",
+          "teacher_id": "T046",
+          "min_per_week": 2
+        }
+      ]
+    },
+    {
+      "id": "CS2C",
+      "name": "Year 2 - Section C",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB05",
+          "teacher_id": "T013",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB11",
+          "teacher_id": "T003",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB10",
+          "teacher_id": "T049",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB14",
+          "teacher_id": "T039",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB08",
+          "teacher_id": "T001",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB02",
+          "teacher_id": "T019",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM02",
+          "teacher_id": "T046",
+          "min_per_week": 2
+        }
+      ]
+    },
+    {
+      "id": "CS2D",
+      "name": "Year 2 - Section D",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB07",
+          "teacher_id": "T029",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB02",
+          "teacher_id": "T032",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB10",
+          "teacher_id": "T036",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB13",
+          "teacher_id": "T013",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB12",
+          "teacher_id": "T037",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB03",
+          "teacher_id": "T027",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM01",
+          "teacher_id": "T025",
+          "min_per_week": 2
+        }
+      ]
+    },
+    {
+      "id": "CS2E",
+      "name": "Year 2 - Section E",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB03",
+          "teacher_id": "T008",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB06",
+          "teacher_id": "T004",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB10",
+          "teacher_id": "T049",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB04",
+          "teacher_id": "T049",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB09",
+          "teacher_id": "T039",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB03",
+          "teacher_id": "T002",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM01",
+          "teacher_id": "T017",
+          "min_per_week": 2
+        }
+      ]
+    },
+    {
+      "id": "CS2F",
+      "name": "Year 2 - Section F",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB10",
+          "teacher_id": "T049",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB06",
+          "teacher_id": "T033",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB12",
+          "teacher_id": "T046",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB03",
+          "teacher_id": "T031",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB07",
+          "teacher_id": "T015",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB01",
+          "teacher_id": "T026",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM01",
+          "teacher_id": "T025",
+          "min_per_week": 2
+        }
+      ]
+    },
+    {
+      "id": "CS3A",
+      "name": "Year 3 - Section A",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB12",
+          "teacher_id": "T033",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB06",
+          "teacher_id": "T026",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB07",
+          "teacher_id": "T029",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB05",
+          "teacher_id": "T017",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB08",
+          "teacher_id": "T007",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB06",
+          "teacher_id": "T021",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM02",
+          "teacher_id": "T050",
+          "min_per_week": 2
+        }
+      ]
+    },
+    {
+      "id": "CS3B",
+      "name": "Year 3 - Section B",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB10",
+          "teacher_id": "T027",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB01",
+          "teacher_id": "T039",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB06",
+          "teacher_id": "T012",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB14",
+          "teacher_id": "T002",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB07",
+          "teacher_id": "T024",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB04",
+          "teacher_id": "T036",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM01",
+          "teacher_id": "T002",
+          "min_per_week": 2
+        }
+      ]
+    },
+    {
+      "id": "CS3C",
+      "name": "Year 3 - Section C",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB01",
+          "teacher_id": "T039",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB11",
+          "teacher_id": "T014",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB12",
+          "teacher_id": "T009",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB09",
+          "teacher_id": "T043",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB04",
+          "teacher_id": "T026",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB06",
+          "teacher_id": "T034",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM01",
+          "teacher_id": "T045",
+          "min_per_week": 2
+        }
+      ]
+    },
+    {
+      "id": "CS3D",
+      "name": "Year 3 - Section D",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB02",
+          "teacher_id": "T024",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB01",
+          "teacher_id": "T010",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB12",
+          "teacher_id": "T006",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB07",
+          "teacher_id": "T029",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB11",
+          "teacher_id": "T010",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB05",
+          "teacher_id": "T025",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM01",
+          "teacher_id": "T045",
+          "min_per_week": 2
+        }
+      ]
+    },
+    {
+      "id": "CS3E",
+      "name": "Year 3 - Section E",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB11",
+          "teacher_id": "T040",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB01",
+          "teacher_id": "T044",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB08",
+          "teacher_id": "T007",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB02",
+          "teacher_id": "T025",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB13",
+          "teacher_id": "T030",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB02",
+          "teacher_id": "T048",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM02",
+          "teacher_id": "T050",
+          "min_per_week": 2
+        }
+      ]
+    },
+    {
+      "id": "CS3F",
+      "name": "Year 3 - Section F",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB14",
+          "teacher_id": "T002",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB05",
+          "teacher_id": "T016",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB08",
+          "teacher_id": "T016",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB10",
+          "teacher_id": "T005",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB11",
+          "teacher_id": "T047",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB04",
+          "teacher_id": "T034",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM02",
+          "teacher_id": "T023",
+          "min_per_week": 2
+        }
+      ]
+    },
+    {
+      "id": "CS4A",
+      "name": "Year 4 - Section A",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB05",
+          "teacher_id": "T016",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB14",
+          "teacher_id": "T043",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB01",
+          "teacher_id": "T044",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB12",
+          "teacher_id": "T040",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB08",
+          "teacher_id": "T007",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB06",
+          "teacher_id": "T035",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM02",
+          "teacher_id": "T050",
+          "min_per_week": 2
+        }
+      ]
+    },
+    {
+      "id": "CS4B",
+      "name": "Year 4 - Section B",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB13",
+          "teacher_id": "T013",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB11",
+          "teacher_id": "T012",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB08",
+          "teacher_id": "T016",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB02",
+          "teacher_id": "T013",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB14",
+          "teacher_id": "T011",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB01",
+          "teacher_id": "T045",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM01",
+          "teacher_id": "T017",
+          "min_per_week": 2
+        }
+      ]
+    },
+    {
+      "id": "CS4C",
+      "name": "Year 4 - Section C",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB13",
+          "teacher_id": "T013",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB11",
+          "teacher_id": "T014",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB14",
+          "teacher_id": "T005",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB01",
+          "teacher_id": "T039",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB06",
+          "teacher_id": "T019",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB04",
+          "teacher_id": "T022",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM02",
+          "teacher_id": "T018",
+          "min_per_week": 2
+        }
+      ]
+    },
+    {
+      "id": "CS4D",
+      "name": "Year 4 - Section D",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB11",
+          "teacher_id": "T040",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB14",
+          "teacher_id": "T003",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB06",
+          "teacher_id": "T026",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB08",
+          "teacher_id": "T021",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB03",
+          "teacher_id": "T037",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB04",
+          "teacher_id": "T030",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM01",
+          "teacher_id": "T045",
+          "min_per_week": 2
+        }
+      ]
+    },
+    {
+      "id": "CS4E",
+      "name": "Year 4 - Section E",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB01",
+          "teacher_id": "T039",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB03",
+          "teacher_id": "T009",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB04",
+          "teacher_id": "T035",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB02",
+          "teacher_id": "T025",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB12",
+          "teacher_id": "T033",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB03",
+          "teacher_id": "T045",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM01",
+          "teacher_id": "T029",
+          "min_per_week": 2
+        }
+      ]
+    },
+    {
+      "id": "CS4F",
+      "name": "Year 4 - Section F",
+      "student_count": 60,
+      "curriculum": [
+        {
+          "subject_id": "SUB03",
+          "teacher_id": "T009",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB11",
+          "teacher_id": "T014",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB10",
+          "teacher_id": "T037",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB07",
+          "teacher_id": "T006",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "SUB09",
+          "teacher_id": "T009",
+          "min_per_week": 4
+        },
+        {
+          "subject_id": "LAB01",
+          "teacher_id": "T003",
+          "min_per_week": 2
+        },
+        {
+          "subject_id": "SEM02",
+          "teacher_id": "T011",
+          "min_per_week": 2
+        }
+      ]
+    }
+  ]
+}

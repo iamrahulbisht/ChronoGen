@@ -1,0 +1,1906 @@
+[
+    {
+        "class_id": "CS6A",
+        "subject_id": "TCS-601",
+        "teacher_id": "RS",
+        "room_id": "CR605",
+        "day": 3,
+        "period": 3
+    },
+    {
+        "class_id": "CS6A",
+        "subject_id": "TCS-601",
+        "teacher_id": "RS",
+        "room_id": "CR605",
+        "day": 4,
+        "period": 6
+    },
+    {
+        "class_id": "CS6A",
+        "subject_id": "TCS-601",
+        "teacher_id": "RS",
+        "room_id": "CR605",
+        "day": 3,
+        "period": 4
+    },
+    {
+        "class_id": "CS6A",
+        "subject_id": "TCS-611",
+        "teacher_id": "AB",
+        "room_id": "CR603",
+        "day": 2,
+        "period": 7
+    },
+    {
+        "class_id": "CS6A",
+        "subject_id": "TCS-611",
+        "teacher_id": "AB",
+        "room_id": "CR603",
+        "day": 1,
+        "period": 8
+    },
+    {
+        "class_id": "CS6A",
+        "subject_id": "TCS-611",
+        "teacher_id": "AB",
+        "room_id": "CR603",
+        "day": 2,
+        "period": 2
+    },
+    {
+        "class_id": "CS6A",
+        "subject_id": "TCS-614",
+        "teacher_id": "AA",
+        "room_id": "CR601",
+        "day": 1,
+        "period": 1
+    },
+    {
+        "class_id": "CS6A",
+        "subject_id": "TCS-614",
+        "teacher_id": "AA",
+        "room_id": "CR601",
+        "day": 3,
+        "period": 6
+    },
+    {
+        "class_id": "CS6A",
+        "subject_id": "TCS-614",
+        "teacher_id": "AA",
+        "room_id": "CR601",
+        "day": 5,
+        "period": 6
+    },
+    {
+        "class_id": "CS6A",
+        "subject_id": "TCS-695",
+        "teacher_id": "PK",
+        "room_id": "CR402",
+        "day": 4,
+        "period": 2
+    },
+    {
+        "class_id": "CS6A",
+        "subject_id": "TCS-695",
+        "teacher_id": "PK",
+        "room_id": "CR402",
+        "day": 3,
+        "period": 7
+    },
+    {
+        "class_id": "CS6A",
+        "subject_id": "TCS-695",
+        "teacher_id": "PK",
+        "room_id": "CR402",
+        "day": 5,
+        "period": 4
+    },
+    {
+        "class_id": "CS6A",
+        "subject_id": "TCS-693",
+        "teacher_id": "SC",
+        "room_id": "CR601",
+        "day": 2,
+        "period": 3
+    },
+    {
+        "class_id": "CS6A",
+        "subject_id": "TCS-693",
+        "teacher_id": "SC",
+        "room_id": "CR601",
+        "day": 3,
+        "period": 8
+    },
+    {
+        "class_id": "CS6A",
+        "subject_id": "TCS-693",
+        "teacher_id": "SC",
+        "room_id": "CR601",
+        "day": 4,
+        "period": 5
+    },
+    {
+        "class_id": "CS6A",
+        "subject_id": "PCS-601",
+        "teacher_id": "VD",
+        "room_id": "LAB2",
+        "day": 5,
+        "period": 7
+    },
+    {
+        "class_id": "CS6A",
+        "subject_id": "PCS-614",
+        "teacher_id": "KU",
+        "room_id": "LAB4",
+        "day": 3,
+        "period": 1
+    },
+    {
+        "class_id": "CS6A",
+        "subject_id": "PCS-693",
+        "teacher_id": "MU",
+        "room_id": "LAB4",
+        "day": 1,
+        "period": 3
+    },
+    {
+        "class_id": "CS6A",
+        "subject_id": "XCS-601",
+        "teacher_id": "DT",
+        "room_id": "CR601",
+        "day": 5,
+        "period": 5
+    },
+    {
+        "class_id": "CS6A",
+        "subject_id": "XCS-601",
+        "teacher_id": "DT",
+        "room_id": "CR601",
+        "day": 2,
+        "period": 6
+    },
+    {
+        "class_id": "CS6A",
+        "subject_id": "PESE-600",
+        "teacher_id": "LS",
+        "room_id": "SEMR2",
+        "day": 4,
+        "period": 3
+    },
+    {
+        "class_id": "CS6A",
+        "subject_id": "SCS-601",
+        "teacher_id": "SKS",
+        "room_id": "SEMR1",
+        "day": 1,
+        "period": 6
+    },
+    {
+        "class_id": "CS6B",
+        "subject_id": "TCS-601",
+        "teacher_id": "DVP",
+        "room_id": "CR603",
+        "day": 1,
+        "period": 3
+    },
+    {
+        "class_id": "CS6B",
+        "subject_id": "TCS-601",
+        "teacher_id": "DVP",
+        "room_id": "CR603",
+        "day": 4,
+        "period": 3
+    },
+    {
+        "class_id": "CS6B",
+        "subject_id": "TCS-601",
+        "teacher_id": "DVP",
+        "room_id": "CR603",
+        "day": 1,
+        "period": 4
+    },
+    {
+        "class_id": "CS6B",
+        "subject_id": "TCS-611",
+        "teacher_id": "AB",
+        "room_id": "CR603",
+        "day": 4,
+        "period": 5
+    },
+    {
+        "class_id": "CS6B",
+        "subject_id": "TCS-611",
+        "teacher_id": "AB",
+        "room_id": "CR603",
+        "day": 1,
+        "period": 5
+    },
+    {
+        "class_id": "CS6B",
+        "subject_id": "TCS-611",
+        "teacher_id": "AB",
+        "room_id": "CR603",
+        "day": 4,
+        "period": 2
+    },
+    {
+        "class_id": "CS6B",
+        "subject_id": "TCS-666",
+        "teacher_id": "SJ",
+        "room_id": "CR602",
+        "day": 5,
+        "period": 3
+    },
+    {
+        "class_id": "CS6B",
+        "subject_id": "TCS-666",
+        "teacher_id": "SJ",
+        "room_id": "CR602",
+        "day": 2,
+        "period": 3
+    },
+    {
+        "class_id": "CS6B",
+        "subject_id": "TCS-666",
+        "teacher_id": "SJ",
+        "room_id": "CR602",
+        "day": 1,
+        "period": 7
+    },
+    {
+        "class_id": "CS6B",
+        "subject_id": "TCS-695",
+        "teacher_id": "PK",
+        "room_id": "CR603",
+        "day": 3,
+        "period": 3
+    },
+    {
+        "class_id": "CS6B",
+        "subject_id": "TCS-695",
+        "teacher_id": "PK",
+        "room_id": "CR603",
+        "day": 5,
+        "period": 5
+    },
+    {
+        "class_id": "CS6B",
+        "subject_id": "TCS-695",
+        "teacher_id": "PK",
+        "room_id": "CR603",
+        "day": 2,
+        "period": 5
+    },
+    {
+        "class_id": "CS6B",
+        "subject_id": "TCS-693",
+        "teacher_id": "HP",
+        "room_id": "CR403",
+        "day": 5,
+        "period": 6
+    },
+    {
+        "class_id": "CS6B",
+        "subject_id": "TCS-693",
+        "teacher_id": "HP",
+        "room_id": "CR403",
+        "day": 2,
+        "period": 2
+    },
+    {
+        "class_id": "CS6B",
+        "subject_id": "TCS-693",
+        "teacher_id": "HP",
+        "room_id": "CR403",
+        "day": 3,
+        "period": 7
+    },
+    {
+        "class_id": "CS6B",
+        "subject_id": "PCS-601",
+        "teacher_id": "VD",
+        "room_id": "LAB3",
+        "day": 1,
+        "period": 1
+    },
+    {
+        "class_id": "CS6B",
+        "subject_id": "PCS-666",
+        "teacher_id": "SJ",
+        "room_id": "LAB1",
+        "day": 3,
+        "period": 5
+    },
+    {
+        "class_id": "CS6B",
+        "subject_id": "PCS-693",
+        "teacher_id": "SP",
+        "room_id": "LAB3",
+        "day": 4,
+        "period": 7
+    },
+    {
+        "class_id": "CS6B",
+        "subject_id": "XCS-601",
+        "teacher_id": "PA",
+        "room_id": "CR401",
+        "day": 5,
+        "period": 1
+    },
+    {
+        "class_id": "CS6B",
+        "subject_id": "XCS-601",
+        "teacher_id": "PA",
+        "room_id": "CR401",
+        "day": 2,
+        "period": 1
+    },
+    {
+        "class_id": "CS6B",
+        "subject_id": "PESE-600",
+        "teacher_id": "MP",
+        "room_id": "SEMR1",
+        "day": 3,
+        "period": 1
+    },
+    {
+        "class_id": "CS6B",
+        "subject_id": "SCS-601",
+        "teacher_id": "RS",
+        "room_id": "SEMR2",
+        "day": 2,
+        "period": 4
+    },
+    {
+        "class_id": "CS6C",
+        "subject_id": "TCS-601",
+        "teacher_id": "MK",
+        "room_id": "CR602",
+        "day": 3,
+        "period": 5
+    },
+    {
+        "class_id": "CS6C",
+        "subject_id": "TCS-601",
+        "teacher_id": "MK",
+        "room_id": "CR602",
+        "day": 5,
+        "period": 7
+    },
+    {
+        "class_id": "CS6C",
+        "subject_id": "TCS-601",
+        "teacher_id": "MK",
+        "room_id": "CR602",
+        "day": 3,
+        "period": 4
+    },
+    {
+        "class_id": "CS6C",
+        "subject_id": "TCS-611",
+        "teacher_id": "AB",
+        "room_id": "CR401",
+        "day": 2,
+        "period": 3
+    },
+    {
+        "class_id": "CS6C",
+        "subject_id": "TCS-611",
+        "teacher_id": "AB",
+        "room_id": "CR401",
+        "day": 3,
+        "period": 7
+    },
+    {
+        "class_id": "CS6C",
+        "subject_id": "TCS-611",
+        "teacher_id": "AB",
+        "room_id": "CR401",
+        "day": 5,
+        "period": 3
+    },
+    {
+        "class_id": "CS6C",
+        "subject_id": "TCS-614",
+        "teacher_id": "AB",
+        "room_id": "CR604",
+        "day": 1,
+        "period": 2
+    },
+    {
+        "class_id": "CS6C",
+        "subject_id": "TCS-614",
+        "teacher_id": "AB",
+        "room_id": "CR604",
+        "day": 4,
+        "period": 6
+    },
+    {
+        "class_id": "CS6C",
+        "subject_id": "TCS-614",
+        "teacher_id": "AB",
+        "room_id": "CR604",
+        "day": 1,
+        "period": 6
+    },
+    {
+        "class_id": "CS6C",
+        "subject_id": "TCS-651",
+        "teacher_id": "AD",
+        "room_id": "CR403",
+        "day": 3,
+        "period": 6
+    },
+    {
+        "class_id": "CS6C",
+        "subject_id": "TCS-651",
+        "teacher_id": "AD",
+        "room_id": "CR403",
+        "day": 5,
+        "period": 2
+    },
+    {
+        "class_id": "CS6C",
+        "subject_id": "TCS-651",
+        "teacher_id": "AD",
+        "room_id": "CR403",
+        "day": 1,
+        "period": 4
+    },
+    {
+        "class_id": "CS6C",
+        "subject_id": "TCS-693",
+        "teacher_id": "SP",
+        "room_id": "CR605",
+        "day": 5,
+        "period": 4
+    },
+    {
+        "class_id": "CS6C",
+        "subject_id": "TCS-693",
+        "teacher_id": "SP",
+        "room_id": "CR605",
+        "day": 2,
+        "period": 7
+    },
+    {
+        "class_id": "CS6C",
+        "subject_id": "TCS-693",
+        "teacher_id": "SP",
+        "room_id": "CR605",
+        "day": 3,
+        "period": 2
+    },
+    {
+        "class_id": "CS6C",
+        "subject_id": "PCS-601",
+        "teacher_id": "VD",
+        "room_id": "LAB3",
+        "day": 5,
+        "period": 5
+    },
+    {
+        "class_id": "CS6C",
+        "subject_id": "PCS-614",
+        "teacher_id": "KU",
+        "room_id": "LAB3",
+        "day": 2,
+        "period": 1
+    },
+    {
+        "class_id": "CS6C",
+        "subject_id": "PCS-693",
+        "teacher_id": "MU",
+        "room_id": "LAB4",
+        "day": 4,
+        "period": 7
+    },
+    {
+        "class_id": "CS6C",
+        "subject_id": "XCS-601",
+        "teacher_id": "NB",
+        "room_id": "CR402",
+        "day": 2,
+        "period": 4
+    },
+    {
+        "class_id": "CS6C",
+        "subject_id": "XCS-601",
+        "teacher_id": "NB",
+        "room_id": "CR402",
+        "day": 2,
+        "period": 8
+    },
+    {
+        "class_id": "CS6C",
+        "subject_id": "PESE-600",
+        "teacher_id": "NJ",
+        "room_id": "SEMR2",
+        "day": 1,
+        "period": 7
+    },
+    {
+        "class_id": "CS6C",
+        "subject_id": "SCS-601",
+        "teacher_id": "SJ",
+        "room_id": "SEMR1",
+        "day": 1,
+        "period": 3
+    },
+    {
+        "class_id": "CS6D",
+        "subject_id": "TCS-601",
+        "teacher_id": "RS",
+        "room_id": "CR601",
+        "day": 3,
+        "period": 5
+    },
+    {
+        "class_id": "CS6D",
+        "subject_id": "TCS-601",
+        "teacher_id": "RS",
+        "room_id": "CR601",
+        "day": 5,
+        "period": 1
+    },
+    {
+        "class_id": "CS6D",
+        "subject_id": "TCS-601",
+        "teacher_id": "RS",
+        "room_id": "CR601",
+        "day": 4,
+        "period": 8
+    },
+    {
+        "class_id": "CS6D",
+        "subject_id": "TCS-611",
+        "teacher_id": "AB",
+        "room_id": "CR602",
+        "day": 2,
+        "period": 6
+    },
+    {
+        "class_id": "CS6D",
+        "subject_id": "TCS-611",
+        "teacher_id": "AB",
+        "room_id": "CR602",
+        "day": 5,
+        "period": 6
+    },
+    {
+        "class_id": "CS6D",
+        "subject_id": "TCS-611",
+        "teacher_id": "AB",
+        "room_id": "CR602",
+        "day": 4,
+        "period": 4
+    },
+    {
+        "class_id": "CS6D",
+        "subject_id": "TCS-614",
+        "teacher_id": "AA",
+        "room_id": "CR401",
+        "day": 1,
+        "period": 3
+    },
+    {
+        "class_id": "CS6D",
+        "subject_id": "TCS-614",
+        "teacher_id": "AA",
+        "room_id": "CR401",
+        "day": 2,
+        "period": 8
+    },
+    {
+        "class_id": "CS6D",
+        "subject_id": "TCS-614",
+        "teacher_id": "AA",
+        "room_id": "CR403",
+        "day": 2,
+        "period": 3
+    },
+    {
+        "class_id": "CS6D",
+        "subject_id": "TCS-651",
+        "teacher_id": "AD",
+        "room_id": "CR403",
+        "day": 5,
+        "period": 7
+    },
+    {
+        "class_id": "CS6D",
+        "subject_id": "TCS-651",
+        "teacher_id": "AD",
+        "room_id": "CR403",
+        "day": 4,
+        "period": 7
+    },
+    {
+        "class_id": "CS6D",
+        "subject_id": "TCS-651",
+        "teacher_id": "AD",
+        "room_id": "CR403",
+        "day": 2,
+        "period": 1
+    },
+    {
+        "class_id": "CS6D",
+        "subject_id": "TCS-693",
+        "teacher_id": "SC",
+        "room_id": "CR601",
+        "day": 3,
+        "period": 1
+    },
+    {
+        "class_id": "CS6D",
+        "subject_id": "TCS-693",
+        "teacher_id": "SC",
+        "room_id": "CR601",
+        "day": 5,
+        "period": 3
+    },
+    {
+        "class_id": "CS6D",
+        "subject_id": "TCS-693",
+        "teacher_id": "SC",
+        "room_id": "CR601",
+        "day": 2,
+        "period": 2
+    },
+    {
+        "class_id": "CS6D",
+        "subject_id": "PCS-601",
+        "teacher_id": "VD",
+        "room_id": "LAB3",
+        "day": 1,
+        "period": 7
+    },
+    {
+        "class_id": "CS6D",
+        "subject_id": "PCS-614",
+        "teacher_id": "KU",
+        "room_id": "LAB3",
+        "day": 3,
+        "period": 3
+    },
+    {
+        "class_id": "CS6D",
+        "subject_id": "PCS-693",
+        "teacher_id": "SP",
+        "room_id": "LAB3",
+        "day": 1,
+        "period": 5
+    },
+    {
+        "class_id": "CS6D",
+        "subject_id": "XCS-601",
+        "teacher_id": "MP",
+        "room_id": "CR602",
+        "day": 4,
+        "period": 3
+    },
+    {
+        "class_id": "CS6D",
+        "subject_id": "XCS-601",
+        "teacher_id": "MP",
+        "room_id": "CR602",
+        "day": 4,
+        "period": 5
+    },
+    {
+        "class_id": "CS6D",
+        "subject_id": "PESE-600",
+        "teacher_id": "SK",
+        "room_id": "SEMR1",
+        "day": 4,
+        "period": 1
+    },
+    {
+        "class_id": "CS6D",
+        "subject_id": "SCS-601",
+        "teacher_id": "AA",
+        "room_id": "SEMR1",
+        "day": 2,
+        "period": 5
+    },
+    {
+        "class_id": "CS6E",
+        "subject_id": "TCS-601",
+        "teacher_id": "DVP",
+        "room_id": "CR606",
+        "day": 3,
+        "period": 8
+    },
+    {
+        "class_id": "CS6E",
+        "subject_id": "TCS-601",
+        "teacher_id": "DVP",
+        "room_id": "CR606",
+        "day": 5,
+        "period": 3
+    },
+    {
+        "class_id": "CS6E",
+        "subject_id": "TCS-601",
+        "teacher_id": "DVP",
+        "room_id": "CR606",
+        "day": 5,
+        "period": 4
+    },
+    {
+        "class_id": "CS6E",
+        "subject_id": "TCS-611",
+        "teacher_id": "AB",
+        "room_id": "CR601",
+        "day": 3,
+        "period": 3
+    },
+    {
+        "class_id": "CS6E",
+        "subject_id": "TCS-611",
+        "teacher_id": "AB",
+        "room_id": "CR601",
+        "day": 2,
+        "period": 8
+    },
+    {
+        "class_id": "CS6E",
+        "subject_id": "TCS-611",
+        "teacher_id": "AB",
+        "room_id": "CR601",
+        "day": 2,
+        "period": 4
+    },
+    {
+        "class_id": "CS6E",
+        "subject_id": "TCS-614",
+        "teacher_id": "AB",
+        "room_id": "CR402",
+        "day": 5,
+        "period": 7
+    },
+    {
+        "class_id": "CS6E",
+        "subject_id": "TCS-614",
+        "teacher_id": "AB",
+        "room_id": "CR402",
+        "day": 5,
+        "period": 2
+    },
+    {
+        "class_id": "CS6E",
+        "subject_id": "TCS-614",
+        "teacher_id": "AB",
+        "room_id": "CR402",
+        "day": 4,
+        "period": 1
+    },
+    {
+        "class_id": "CS6E",
+        "subject_id": "TCS-695",
+        "teacher_id": "PK",
+        "room_id": "CR401",
+        "day": 4,
+        "period": 7
+    },
+    {
+        "class_id": "CS6E",
+        "subject_id": "TCS-695",
+        "teacher_id": "PK",
+        "room_id": "CR401",
+        "day": 3,
+        "period": 4
+    },
+    {
+        "class_id": "CS6E",
+        "subject_id": "TCS-695",
+        "teacher_id": "PK",
+        "room_id": "CR401",
+        "day": 1,
+        "period": 2
+    },
+    {
+        "class_id": "CS6E",
+        "subject_id": "TCS-693",
+        "teacher_id": "HP",
+        "room_id": "CR606",
+        "day": 4,
+        "period": 4
+    },
+    {
+        "class_id": "CS6E",
+        "subject_id": "TCS-693",
+        "teacher_id": "HP",
+        "room_id": "CR606",
+        "day": 4,
+        "period": 3
+    },
+    {
+        "class_id": "CS6E",
+        "subject_id": "TCS-693",
+        "teacher_id": "HP",
+        "room_id": "CR606",
+        "day": 1,
+        "period": 8
+    },
+    {
+        "class_id": "CS6E",
+        "subject_id": "PCS-601",
+        "teacher_id": "VD",
+        "room_id": "LAB2",
+        "day": 3,
+        "period": 1
+    },
+    {
+        "class_id": "CS6E",
+        "subject_id": "PCS-614",
+        "teacher_id": "KU",
+        "room_id": "LAB3",
+        "day": 1,
+        "period": 3
+    },
+    {
+        "class_id": "CS6E",
+        "subject_id": "PCS-693",
+        "teacher_id": "MU",
+        "room_id": "LAB2",
+        "day": 2,
+        "period": 5
+    },
+    {
+        "class_id": "CS6E",
+        "subject_id": "XCS-601",
+        "teacher_id": "NJ",
+        "room_id": "CR601",
+        "day": 3,
+        "period": 7
+    },
+    {
+        "class_id": "CS6E",
+        "subject_id": "XCS-601",
+        "teacher_id": "NJ",
+        "room_id": "CR601",
+        "day": 4,
+        "period": 6
+    },
+    {
+        "class_id": "CS6E",
+        "subject_id": "PESE-600",
+        "teacher_id": "LS",
+        "room_id": "SEMR1",
+        "day": 5,
+        "period": 5
+    },
+    {
+        "class_id": "CS6E",
+        "subject_id": "SCS-601",
+        "teacher_id": "SP",
+        "room_id": "SEMR1",
+        "day": 5,
+        "period": 1
+    },
+    {
+        "class_id": "CS6F",
+        "subject_id": "TCS-601",
+        "teacher_id": "MK",
+        "room_id": "CR602",
+        "day": 5,
+        "period": 1
+    },
+    {
+        "class_id": "CS6F",
+        "subject_id": "TCS-601",
+        "teacher_id": "MK",
+        "room_id": "CR602",
+        "day": 5,
+        "period": 2
+    },
+    {
+        "class_id": "CS6F",
+        "subject_id": "TCS-601",
+        "teacher_id": "MK",
+        "room_id": "CR602",
+        "day": 5,
+        "period": 5
+    },
+    {
+        "class_id": "CS6F",
+        "subject_id": "TCS-611",
+        "teacher_id": "AB",
+        "room_id": "CR605",
+        "day": 1,
+        "period": 7
+    },
+    {
+        "class_id": "CS6F",
+        "subject_id": "TCS-611",
+        "teacher_id": "AB",
+        "room_id": "CR605",
+        "day": 4,
+        "period": 7
+    },
+    {
+        "class_id": "CS6F",
+        "subject_id": "TCS-611",
+        "teacher_id": "AB",
+        "room_id": "CR605",
+        "day": 5,
+        "period": 8
+    },
+    {
+        "class_id": "CS6F",
+        "subject_id": "TCS-614",
+        "teacher_id": "AA",
+        "room_id": "CR601",
+        "day": 1,
+        "period": 4
+    },
+    {
+        "class_id": "CS6F",
+        "subject_id": "TCS-614",
+        "teacher_id": "AA",
+        "room_id": "CR601",
+        "day": 3,
+        "period": 4
+    },
+    {
+        "class_id": "CS6F",
+        "subject_id": "TCS-614",
+        "teacher_id": "AA",
+        "room_id": "CR601",
+        "day": 1,
+        "period": 8
+    },
+    {
+        "class_id": "CS6F",
+        "subject_id": "TCS-695",
+        "teacher_id": "PK",
+        "room_id": "CR402",
+        "day": 3,
+        "period": 5
+    },
+    {
+        "class_id": "CS6F",
+        "subject_id": "TCS-695",
+        "teacher_id": "PK",
+        "room_id": "CR402",
+        "day": 4,
+        "period": 4
+    },
+    {
+        "class_id": "CS6F",
+        "subject_id": "TCS-695",
+        "teacher_id": "PK",
+        "room_id": "CR402",
+        "day": 1,
+        "period": 3
+    },
+    {
+        "class_id": "CS6F",
+        "subject_id": "TCS-693",
+        "teacher_id": "SP",
+        "room_id": "CR605",
+        "day": 3,
+        "period": 6
+    },
+    {
+        "class_id": "CS6F",
+        "subject_id": "TCS-693",
+        "teacher_id": "SP",
+        "room_id": "CR605",
+        "day": 5,
+        "period": 3
+    },
+    {
+        "class_id": "CS6F",
+        "subject_id": "TCS-693",
+        "teacher_id": "SP",
+        "room_id": "CR605",
+        "day": 2,
+        "period": 4
+    },
+    {
+        "class_id": "CS6F",
+        "subject_id": "PCS-601",
+        "teacher_id": "VD",
+        "room_id": "LAB2",
+        "day": 1,
+        "period": 5
+    },
+    {
+        "class_id": "CS6F",
+        "subject_id": "PCS-614",
+        "teacher_id": "KU",
+        "room_id": "LAB3",
+        "day": 2,
+        "period": 5
+    },
+    {
+        "class_id": "CS6F",
+        "subject_id": "PCS-693",
+        "teacher_id": "SP",
+        "room_id": "LAB2",
+        "day": 1,
+        "period": 1
+    },
+    {
+        "class_id": "CS6F",
+        "subject_id": "XCS-601",
+        "teacher_id": "LS",
+        "room_id": "CR402",
+        "day": 3,
+        "period": 8
+    },
+    {
+        "class_id": "CS6F",
+        "subject_id": "XCS-601",
+        "teacher_id": "LS",
+        "room_id": "CR402",
+        "day": 2,
+        "period": 3
+    },
+    {
+        "class_id": "CS6F",
+        "subject_id": "PESE-600",
+        "teacher_id": "MP",
+        "room_id": "SEMR2",
+        "day": 2,
+        "period": 1
+    },
+    {
+        "class_id": "CS6F",
+        "subject_id": "SCS-601",
+        "teacher_id": "AB",
+        "room_id": "SEMR1",
+        "day": 4,
+        "period": 8
+    },
+    {
+        "class_id": "CS4A",
+        "subject_id": "TCS-408",
+        "teacher_id": "KM",
+        "room_id": "CR402",
+        "day": 2,
+        "period": 5
+    },
+    {
+        "class_id": "CS4A",
+        "subject_id": "TCS-408",
+        "teacher_id": "KM",
+        "room_id": "CR402",
+        "day": 3,
+        "period": 6
+    },
+    {
+        "class_id": "CS4A",
+        "subject_id": "TCS-408",
+        "teacher_id": "KM",
+        "room_id": "CR402",
+        "day": 5,
+        "period": 3
+    },
+    {
+        "class_id": "CS4A",
+        "subject_id": "TCS-402",
+        "teacher_id": "RS",
+        "room_id": "CR606",
+        "day": 1,
+        "period": 5
+    },
+    {
+        "class_id": "CS4A",
+        "subject_id": "TCS-402",
+        "teacher_id": "RS",
+        "room_id": "CR606",
+        "day": 4,
+        "period": 5
+    },
+    {
+        "class_id": "CS4A",
+        "subject_id": "TCS-402",
+        "teacher_id": "RS",
+        "room_id": "CR606",
+        "day": 1,
+        "period": 6
+    },
+    {
+        "class_id": "CS4A",
+        "subject_id": "TCS-403",
+        "teacher_id": "GSJ",
+        "room_id": "CR603",
+        "day": 2,
+        "period": 6
+    },
+    {
+        "class_id": "CS4A",
+        "subject_id": "TCS-403",
+        "teacher_id": "GSJ",
+        "room_id": "CR603",
+        "day": 1,
+        "period": 2
+    },
+    {
+        "class_id": "CS4A",
+        "subject_id": "TCS-403",
+        "teacher_id": "GSJ",
+        "room_id": "CR603",
+        "day": 4,
+        "period": 7
+    },
+    {
+        "class_id": "CS4A",
+        "subject_id": "TCS-409",
+        "teacher_id": "SKS",
+        "room_id": "CR401",
+        "day": 4,
+        "period": 8
+    },
+    {
+        "class_id": "CS4A",
+        "subject_id": "TCS-409",
+        "teacher_id": "SKS",
+        "room_id": "CR401",
+        "day": 1,
+        "period": 8
+    },
+    {
+        "class_id": "CS4A",
+        "subject_id": "TCS-409",
+        "teacher_id": "SKS",
+        "room_id": "CR401",
+        "day": 5,
+        "period": 8
+    },
+    {
+        "class_id": "CS4A",
+        "subject_id": "TCS-421",
+        "teacher_id": "ASB",
+        "room_id": "CR601",
+        "day": 3,
+        "period": 2
+    },
+    {
+        "class_id": "CS4A",
+        "subject_id": "TCS-421",
+        "teacher_id": "ASB",
+        "room_id": "CR601",
+        "day": 1,
+        "period": 3
+    },
+    {
+        "class_id": "CS4A",
+        "subject_id": "TCS-421",
+        "teacher_id": "ASB",
+        "room_id": "CR601",
+        "day": 5,
+        "period": 7
+    },
+    {
+        "class_id": "CS4A",
+        "subject_id": "PCS-408",
+        "teacher_id": "KM",
+        "room_id": "LAB1",
+        "day": 4,
+        "period": 1
+    },
+    {
+        "class_id": "CS4A",
+        "subject_id": "PCS-403",
+        "teacher_id": "GSJ",
+        "room_id": "LAB4",
+        "day": 2,
+        "period": 1
+    },
+    {
+        "class_id": "CS4A",
+        "subject_id": "PCS-409",
+        "teacher_id": "AG",
+        "room_id": "LAB1",
+        "day": 4,
+        "period": 3
+    },
+    {
+        "class_id": "CS4A",
+        "subject_id": "XCS-401",
+        "teacher_id": "SA",
+        "room_id": "CR605",
+        "day": 5,
+        "period": 5
+    },
+    {
+        "class_id": "CS4A",
+        "subject_id": "XCS-401",
+        "teacher_id": "SA",
+        "room_id": "CR605",
+        "day": 1,
+        "period": 1
+    },
+    {
+        "class_id": "CS4A",
+        "subject_id": "PESE-400",
+        "teacher_id": "SA",
+        "room_id": "SEMR2",
+        "day": 3,
+        "period": 3
+    },
+    {
+        "class_id": "CS4B",
+        "subject_id": "TCS-408",
+        "teacher_id": "DC",
+        "room_id": "CR606",
+        "day": 2,
+        "period": 3
+    },
+    {
+        "class_id": "CS4B",
+        "subject_id": "TCS-408",
+        "teacher_id": "DC",
+        "room_id": "CR606",
+        "day": 3,
+        "period": 7
+    },
+    {
+        "class_id": "CS4B",
+        "subject_id": "TCS-408",
+        "teacher_id": "DC",
+        "room_id": "CR606",
+        "day": 2,
+        "period": 2
+    },
+    {
+        "class_id": "CS4B",
+        "subject_id": "TCS-402",
+        "teacher_id": "AA",
+        "room_id": "CR603",
+        "day": 4,
+        "period": 8
+    },
+    {
+        "class_id": "CS4B",
+        "subject_id": "TCS-402",
+        "teacher_id": "AA",
+        "room_id": "CR605",
+        "day": 5,
+        "period": 2
+    },
+    {
+        "class_id": "CS4B",
+        "subject_id": "TCS-402",
+        "teacher_id": "AA",
+        "room_id": "CR605",
+        "day": 4,
+        "period": 1
+    },
+    {
+        "class_id": "CS4B",
+        "subject_id": "TCS-403",
+        "teacher_id": "AB",
+        "room_id": "CR602",
+        "day": 5,
+        "period": 4
+    },
+    {
+        "class_id": "CS4B",
+        "subject_id": "TCS-403",
+        "teacher_id": "AB",
+        "room_id": "CR602",
+        "day": 2,
+        "period": 1
+    },
+    {
+        "class_id": "CS4B",
+        "subject_id": "TCS-403",
+        "teacher_id": "AB",
+        "room_id": "CR402",
+        "day": 4,
+        "period": 3
+    },
+    {
+        "class_id": "CS4B",
+        "subject_id": "TCS-409",
+        "teacher_id": "SC",
+        "room_id": "CR605",
+        "day": 1,
+        "period": 2
+    },
+    {
+        "class_id": "CS4B",
+        "subject_id": "TCS-409",
+        "teacher_id": "SC",
+        "room_id": "CR605",
+        "day": 4,
+        "period": 4
+    },
+    {
+        "class_id": "CS4B",
+        "subject_id": "TCS-409",
+        "teacher_id": "SC",
+        "room_id": "CR605",
+        "day": 1,
+        "period": 3
+    },
+    {
+        "class_id": "CS4B",
+        "subject_id": "TCS-464",
+        "teacher_id": "SJ",
+        "room_id": "CR403",
+        "day": 3,
+        "period": 1
+    },
+    {
+        "class_id": "CS4B",
+        "subject_id": "TCS-464",
+        "teacher_id": "SJ",
+        "room_id": "CR403",
+        "day": 5,
+        "period": 1
+    },
+    {
+        "class_id": "CS4B",
+        "subject_id": "TCS-464",
+        "teacher_id": "SJ",
+        "room_id": "CR403",
+        "day": 1,
+        "period": 1
+    },
+    {
+        "class_id": "CS4B",
+        "subject_id": "PCS-408",
+        "teacher_id": "DC",
+        "room_id": "LAB3",
+        "day": 5,
+        "period": 7
+    },
+    {
+        "class_id": "CS4B",
+        "subject_id": "PCS-403",
+        "teacher_id": "AB",
+        "room_id": "LAB3",
+        "day": 3,
+        "period": 5
+    },
+    {
+        "class_id": "CS4B",
+        "subject_id": "PCS-409",
+        "teacher_id": "AG",
+        "room_id": "LAB2",
+        "day": 4,
+        "period": 5
+    },
+    {
+        "class_id": "CS4B",
+        "subject_id": "PCS-464",
+        "teacher_id": "SJ",
+        "room_id": "LAB2",
+        "day": 3,
+        "period": 3
+    },
+    {
+        "class_id": "CS4B",
+        "subject_id": "XCS-401",
+        "teacher_id": "GP",
+        "room_id": "CR602",
+        "day": 1,
+        "period": 4
+    },
+    {
+        "class_id": "CS4B",
+        "subject_id": "XCS-401",
+        "teacher_id": "GP",
+        "room_id": "CR602",
+        "day": 2,
+        "period": 8
+    },
+    {
+        "class_id": "CS4B",
+        "subject_id": "PESE-400",
+        "teacher_id": "NJ",
+        "room_id": "SEMR2",
+        "day": 5,
+        "period": 5
+    },
+    {
+        "class_id": "CS4C",
+        "subject_id": "TCS-408",
+        "teacher_id": "KM",
+        "room_id": "CR601",
+        "day": 5,
+        "period": 8
+    },
+    {
+        "class_id": "CS4C",
+        "subject_id": "TCS-408",
+        "teacher_id": "KM",
+        "room_id": "CR601",
+        "day": 1,
+        "period": 2
+    },
+    {
+        "class_id": "CS4C",
+        "subject_id": "TCS-408",
+        "teacher_id": "KM",
+        "room_id": "CR601",
+        "day": 1,
+        "period": 6
+    },
+    {
+        "class_id": "CS4C",
+        "subject_id": "TCS-402",
+        "teacher_id": "SKS",
+        "room_id": "CR601",
+        "day": 4,
+        "period": 3
+    },
+    {
+        "class_id": "CS4C",
+        "subject_id": "TCS-402",
+        "teacher_id": "SKS",
+        "room_id": "CR601",
+        "day": 1,
+        "period": 5
+    },
+    {
+        "class_id": "CS4C",
+        "subject_id": "TCS-402",
+        "teacher_id": "SKS",
+        "room_id": "CR601",
+        "day": 2,
+        "period": 1
+    },
+    {
+        "class_id": "CS4C",
+        "subject_id": "TCS-403",
+        "teacher_id": "GSJ",
+        "room_id": "CR602",
+        "day": 3,
+        "period": 2
+    },
+    {
+        "class_id": "CS4C",
+        "subject_id": "TCS-403",
+        "teacher_id": "GSJ",
+        "room_id": "CR602",
+        "day": 4,
+        "period": 6
+    },
+    {
+        "class_id": "CS4C",
+        "subject_id": "TCS-403",
+        "teacher_id": "GSJ",
+        "room_id": "CR602",
+        "day": 1,
+        "period": 8
+    },
+    {
+        "class_id": "CS4C",
+        "subject_id": "TCS-409",
+        "teacher_id": "SC",
+        "room_id": "CR402",
+        "day": 5,
+        "period": 5
+    },
+    {
+        "class_id": "CS4C",
+        "subject_id": "TCS-409",
+        "teacher_id": "SC",
+        "room_id": "CR601",
+        "day": 4,
+        "period": 1
+    },
+    {
+        "class_id": "CS4C",
+        "subject_id": "TCS-409",
+        "teacher_id": "SC",
+        "room_id": "CR402",
+        "day": 3,
+        "period": 3
+    },
+    {
+        "class_id": "CS4C",
+        "subject_id": "TCS-421",
+        "teacher_id": "HP",
+        "room_id": "CR606",
+        "day": 5,
+        "period": 7
+    },
+    {
+        "class_id": "CS4C",
+        "subject_id": "TCS-421",
+        "teacher_id": "HP",
+        "room_id": "CR606",
+        "day": 2,
+        "period": 8
+    },
+    {
+        "class_id": "CS4C",
+        "subject_id": "TCS-421",
+        "teacher_id": "HP",
+        "room_id": "CR606",
+        "day": 1,
+        "period": 7
+    },
+    {
+        "class_id": "CS4C",
+        "subject_id": "PCS-408",
+        "teacher_id": "KM",
+        "room_id": "LAB2",
+        "day": 1,
+        "period": 3
+    },
+    {
+        "class_id": "CS4C",
+        "subject_id": "PCS-403",
+        "teacher_id": "GSJ",
+        "room_id": "LAB4",
+        "day": 2,
+        "period": 3
+    },
+    {
+        "class_id": "CS4C",
+        "subject_id": "PCS-409",
+        "teacher_id": "AG",
+        "room_id": "LAB4",
+        "day": 3,
+        "period": 7
+    },
+    {
+        "class_id": "CS4C",
+        "subject_id": "XCS-401",
+        "teacher_id": "DT",
+        "room_id": "CR402",
+        "day": 3,
+        "period": 4
+    },
+    {
+        "class_id": "CS4C",
+        "subject_id": "XCS-401",
+        "teacher_id": "DT",
+        "room_id": "CR402",
+        "day": 5,
+        "period": 6
+    },
+    {
+        "class_id": "CS4C",
+        "subject_id": "PESE-400",
+        "teacher_id": "SK",
+        "room_id": "SEMR1",
+        "day": 3,
+        "period": 5
+    },
+    {
+        "class_id": "CS4D",
+        "subject_id": "TCS-408",
+        "teacher_id": "DC",
+        "room_id": "CR605",
+        "day": 3,
+        "period": 8
+    },
+    {
+        "class_id": "CS4D",
+        "subject_id": "TCS-408",
+        "teacher_id": "DC",
+        "room_id": "CR605",
+        "day": 1,
+        "period": 6
+    },
+    {
+        "class_id": "CS4D",
+        "subject_id": "TCS-408",
+        "teacher_id": "DC",
+        "room_id": "CR605",
+        "day": 4,
+        "period": 3
+    },
+    {
+        "class_id": "CS4D",
+        "subject_id": "TCS-402",
+        "teacher_id": "MK",
+        "room_id": "CR606",
+        "day": 3,
+        "period": 3
+    },
+    {
+        "class_id": "CS4D",
+        "subject_id": "TCS-402",
+        "teacher_id": "MK",
+        "room_id": "CR606",
+        "day": 4,
+        "period": 6
+    },
+    {
+        "class_id": "CS4D",
+        "subject_id": "TCS-402",
+        "teacher_id": "MK",
+        "room_id": "CR606",
+        "day": 4,
+        "period": 8
+    },
+    {
+        "class_id": "CS4D",
+        "subject_id": "TCS-403",
+        "teacher_id": "MOP",
+        "room_id": "CR601",
+        "day": 2,
+        "period": 7
+    },
+    {
+        "class_id": "CS4D",
+        "subject_id": "TCS-403",
+        "teacher_id": "MOP",
+        "room_id": "CR601",
+        "day": 2,
+        "period": 5
+    },
+    {
+        "class_id": "CS4D",
+        "subject_id": "TCS-403",
+        "teacher_id": "MOP",
+        "room_id": "CR601",
+        "day": 5,
+        "period": 4
+    },
+    {
+        "class_id": "CS4D",
+        "subject_id": "TCS-409",
+        "teacher_id": "SKS",
+        "room_id": "CR606",
+        "day": 3,
+        "period": 1
+    },
+    {
+        "class_id": "CS4D",
+        "subject_id": "TCS-409",
+        "teacher_id": "SKS",
+        "room_id": "CR606",
+        "day": 5,
+        "period": 2
+    },
+    {
+        "class_id": "CS4D",
+        "subject_id": "TCS-409",
+        "teacher_id": "SKS",
+        "room_id": "CR606",
+        "day": 5,
+        "period": 1
+    },
+    {
+        "class_id": "CS4D",
+        "subject_id": "TCS-421",
+        "teacher_id": "ASB",
+        "room_id": "CR605",
+        "day": 5,
+        "period": 6
+    },
+    {
+        "class_id": "CS4D",
+        "subject_id": "TCS-421",
+        "teacher_id": "ASB",
+        "room_id": "CR605",
+        "day": 2,
+        "period": 2
+    },
+    {
+        "class_id": "CS4D",
+        "subject_id": "TCS-421",
+        "teacher_id": "ASB",
+        "room_id": "CR605",
+        "day": 4,
+        "period": 2
+    },
+    {
+        "class_id": "CS4D",
+        "subject_id": "PCS-408",
+        "teacher_id": "DC",
+        "room_id": "LAB2",
+        "day": 1,
+        "period": 7
+    },
+    {
+        "class_id": "CS4D",
+        "subject_id": "PCS-403",
+        "teacher_id": "MOP",
+        "room_id": "LAB4",
+        "day": 5,
+        "period": 7
+    },
+    {
+        "class_id": "CS4D",
+        "subject_id": "PCS-409",
+        "teacher_id": "AG",
+        "room_id": "LAB1",
+        "day": 1,
+        "period": 3
+    },
+    {
+        "class_id": "CS4D",
+        "subject_id": "XCS-401",
+        "teacher_id": "LS",
+        "room_id": "CR403",
+        "day": 4,
+        "period": 1
+    },
+    {
+        "class_id": "CS4D",
+        "subject_id": "XCS-401",
+        "teacher_id": "LS",
+        "room_id": "CR403",
+        "day": 1,
+        "period": 2
+    },
+    {
+        "class_id": "CS4D",
+        "subject_id": "PESE-400",
+        "teacher_id": "KJ",
+        "room_id": "SEMR2",
+        "day": 3,
+        "period": 5
+    },
+    {
+        "class_id": "CS4E",
+        "subject_id": "TCS-408",
+        "teacher_id": "DC",
+        "room_id": "CR401",
+        "day": 4,
+        "period": 5
+    },
+    {
+        "class_id": "CS4E",
+        "subject_id": "TCS-408",
+        "teacher_id": "DC",
+        "room_id": "CR401",
+        "day": 3,
+        "period": 3
+    },
+    {
+        "class_id": "CS4E",
+        "subject_id": "TCS-408",
+        "teacher_id": "DC",
+        "room_id": "CR401",
+        "day": 5,
+        "period": 6
+    },
+    {
+        "class_id": "CS4E",
+        "subject_id": "TCS-402",
+        "teacher_id": "MK",
+        "room_id": "CR604",
+        "day": 1,
+        "period": 8
+    },
+    {
+        "class_id": "CS4E",
+        "subject_id": "TCS-402",
+        "teacher_id": "MK",
+        "room_id": "CR604",
+        "day": 4,
+        "period": 1
+    },
+    {
+        "class_id": "CS4E",
+        "subject_id": "TCS-402",
+        "teacher_id": "MK",
+        "room_id": "CR604",
+        "day": 3,
+        "period": 6
+    },
+    {
+        "class_id": "CS4E",
+        "subject_id": "TCS-403",
+        "teacher_id": "MOP",
+        "room_id": "CR401",
+        "day": 4,
+        "period": 2
+    },
+    {
+        "class_id": "CS4E",
+        "subject_id": "TCS-403",
+        "teacher_id": "MOP",
+        "room_id": "CR401",
+        "day": 1,
+        "period": 7
+    },
+    {
+        "class_id": "CS4E",
+        "subject_id": "TCS-403",
+        "teacher_id": "MOP",
+        "room_id": "CR401",
+        "day": 1,
+        "period": 5
+    },
+    {
+        "class_id": "CS4E",
+        "subject_id": "TCS-409",
+        "teacher_id": "MK",
+        "room_id": "CR401",
+        "day": 2,
+        "period": 6
+    },
+    {
+        "class_id": "CS4E",
+        "subject_id": "TCS-409",
+        "teacher_id": "MK",
+        "room_id": "CR401",
+        "day": 5,
+        "period": 4
+    },
+    {
+        "class_id": "CS4E",
+        "subject_id": "TCS-409",
+        "teacher_id": "MK",
+        "room_id": "CR401",
+        "day": 4,
+        "period": 3
+    },
+    {
+        "class_id": "CS4E",
+        "subject_id": "TCS-421",
+        "teacher_id": "SJ",
+        "room_id": "CR606",
+        "day": 4,
+        "period": 7
+    },
+    {
+        "class_id": "CS4E",
+        "subject_id": "TCS-421",
+        "teacher_id": "SJ",
+        "room_id": "CR606",
+        "day": 2,
+        "period": 1
+    },
+    {
+        "class_id": "CS4E",
+        "subject_id": "TCS-421",
+        "teacher_id": "SJ",
+        "room_id": "CR606",
+        "day": 2,
+        "period": 4
+    },
+    {
+        "class_id": "CS4E",
+        "subject_id": "PCS-408",
+        "teacher_id": "DC",
+        "room_id": "LAB1",
+        "day": 5,
+        "period": 1
+    },
+    {
+        "class_id": "CS4E",
+        "subject_id": "PCS-403",
+        "teacher_id": "MOP",
+        "room_id": "LAB4",
+        "day": 1,
+        "period": 1
+    },
+    {
+        "class_id": "CS4E",
+        "subject_id": "PCS-409",
+        "teacher_id": "AG",
+        "room_id": "LAB4",
+        "day": 2,
+        "period": 7
+    },
+    {
+        "class_id": "CS4E",
+        "subject_id": "XCS-401",
+        "teacher_id": "NB",
+        "room_id": "CR403",
+        "day": 4,
+        "period": 6
+    },
+    {
+        "class_id": "CS4E",
+        "subject_id": "XCS-401",
+        "teacher_id": "NB",
+        "room_id": "CR403",
+        "day": 1,
+        "period": 6
+    },
+    {
+        "class_id": "CS4E",
+        "subject_id": "PESE-400",
+        "teacher_id": "KJ",
+        "room_id": "SEMR1",
+        "day": 5,
+        "period": 7
+    }
+]
