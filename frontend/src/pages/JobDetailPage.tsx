@@ -1,21 +1,4 @@
 import { useState } from 'react'
-<<<<<<< Updated upstream
-import { useParams, useNavigate } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
-import { getJob } from '../api/jobs'
-import { downloadExport, downloadAllZip } from '../api/exports'
-import { BASE_URL } from '../api/client'
-import Badge from '../components/ui/Badge'
-import Button from '../components/ui/Button'
-import Spinner from '../components/ui/Spinner'
-import Modal from '../components/ui/Modal'
-import { formatDate, formatScore, truncateId } from '../utils/formatters'
-import { Copy, Download, Eye, FileText, Image, FileJson } from 'lucide-react'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine, BarChart, Bar, Cell } from 'recharts'
-import toast from 'react-hot-toast'
-<<<<<<< HEAD
-=======
-=======
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { getJob, getTimetable } from '../api/jobs'
@@ -26,11 +9,10 @@ import Badge from '../components/ui/Badge'
 import Button from '../components/ui/Button'
 import Spinner from '../components/ui/Spinner'
 import { formatDate, truncateId, formatScore } from '../utils/formatters'
-import { Copy, Download, Undo2, Redo2, Trash2, Plus, ArrowLeft, TrendingUp, Calendar, FileText, FileJson, Image, CheckCircle2, AlertCircle } from 'lucide-react'
+import { Copy, Download, Undo2, Redo2, Trash2, Plus, ArrowLeft, TrendingUp, Calendar, FileText, FileJson, Image, CheckCircle2, AlertCircle, X } from 'lucide-react'
 import ImpactPanel from '../components/ImpactPanel'
 import { analyzeChange, commitChange, undoChange, redoChange, getSubstitutes } from '../api/analyzer'
 import type { AnalyzeChangeResponse, SubstituteTeacher } from '../api/analyzer'
->>>>>>> Stashed changes
 import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 import toast from 'react-hot-toast'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, Cell, AreaChart, Area } from 'recharts'
@@ -54,27 +36,14 @@ const CONSTRAINT_DESCRIPTIONS: Record<string, string> = {
     'S9_late_period': 'Avoid scheduling difficult subjects in the last periods.',
     'S10_room_spread': 'Classes of the same year are spread too far apart across rooms.'
 };
+
 type ViewMode = 'class' | 'teacher' | 'room'
 type TabMode = 'timetable' | 'analytics'
->>>>>>> cc0e994 (added API folder which holds the routes and schemas, resolved branch conflicts, and stabilized timetable editor)
-
-import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 
 export default function JobDetailPage() {
   const { jobId } = useParams<{ jobId: string }>()
   const { institutionId } = useInstitutionStore()
   const nav = useNavigate()
-<<<<<<< HEAD
-  const [preview, setPreview] = useState<{ type: string, title: string, url: string, content?: string, loading?: boolean } | null>(null)
-=======
-<<<<<<< Updated upstream
-
-  const [preview, setPreview] = useState<PreviewType>(null)
-  const [jsonContent, setJsonContent] = useState<string>('')
-  const [jsonLoading, setJsonLoading] = useState(false)
-  const [htmlContent, setHtmlContent] = useState<string>('')
-  const [htmlLoading, setHtmlLoading] = useState(false)
-=======
   const queryClient = useQueryClient()
   
   // Tabs
@@ -87,16 +56,12 @@ export default function JobDetailPage() {
   const [preview, setPreview] = useState<{ type: string, title: string, url: string, content?: string, loading?: boolean } | null>(null)
   const [substitutes, setSubstitutes] = useState<SubstituteTeacher[] | null>(null);
   const [isFindingSubstitutes, setIsFindingSubstitutes] = useState(false);
->>>>>>> Stashed changes
->>>>>>> cc0e994 (added API folder which holds the routes and schemas, resolved branch conflicts, and stabilized timetable editor)
 
   // Edit states
-  const [sourceSlot, setSourceSlot] = useState<{class_id: string, day: number, period: number, isFree?: boolean} | null>(null)
+  const [sourceSlot, setSourceSlot] = useState<{class_id: string, day: number, period: number, isFree?: boolean, data?: any} | null>(null)
   const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [analysisResult, setAnalysisResult] = useState<AnalyzeChangeResponse | null>(null)
   const [simulatedChanges, setSimulatedChanges] = useState<any[] | null>(null)
-  const [showAddModal, setShowAddModal] = useState(false)
-  const [addForm, setAddForm] = useState({ subject: 'EXTRA', teacher: 'T1', room: '101' })
 
   // Data fetching
   const { data: job, isLoading: jobLoading } = useQuery({
@@ -116,13 +81,6 @@ export default function JobDetailPage() {
   const isPolling = job?.status === 'pending' || job?.status === 'running'
   const isFailed = job?.status === 'failed'
 
-<<<<<<< HEAD
-  const fitnessData = (res?.fitness_history || []).map((h: Record<string, number>, i: number) => ({ gen: i, ...h }))
-
-  const constraintData = bd ? Object.entries(bd).map(([k, v]) => ({
-    name: k, value: v as number, fill: k.startsWith('H') ? '#ef4444' : v === 0 ? '#22c55e' : '#f59e0b',
-  })) : []
-=======
   const lunchAfter = inst?.lunch_break_after_period ?? 4
   const periodsPerDay = inst?.periods_per_day ?? 8
   const entities = tt ? (view === 'class' ? Object.keys(tt.timetable) : view === 'teacher' ? Object.keys(tt.teacher_timetable) : Object.keys(tt.room_timetable)).sort() : []
@@ -145,7 +103,6 @@ export default function JobDetailPage() {
     Object.assign(flatBreakdown, rawBreakdown)
   }
 
-  // Include ALL defined constraints, even if 0, to show a complete status
   const constraintData = Object.keys(CONSTRAINT_DESCRIPTIONS).map(key => {
     const val = flatBreakdown[key] || 0
     return {
@@ -154,7 +111,6 @@ export default function JobDetailPage() {
       fill: key.startsWith('H') ? (val > 0 ? '#ef4444' : '#22c55e') : (val > 0 ? '#f59e0b' : '#22c55e'),
     }
   })
->>>>>>> cc0e994 (added API folder which holds the routes and schemas, resolved branch conflicts, and stabilized timetable editor)
 
   // Handlers
   const copyId = () => { navigator.clipboard.writeText(jobId!); toast.success('Copied ID') }
@@ -164,25 +120,10 @@ export default function JobDetailPage() {
      else downloadExport(jobId!, 'room-csv', sel.replace(/ /g, '_'))
   }
 
-<<<<<<< HEAD
-  const handlePreview = async (type: string, title: string) => {
-    const url = `${BASE_URL}/api/v1/jobs/${jobId}/exports/${type}`
-    if (type === 'convergence-plot') {
-      setPreview({ type, title, url })
-    } else {
-      setPreview({ type, title, url, loading: true })
-      try {
-        const fetchRes = await fetch(url)
-        let text = await fetchRes.text()
-        
-        // If it's an HTML report, we must fix relative image links (like convergence_plot.png) 
-        // to point directly to the backend API export route to avoid broken images in the iframe.
-=======
   const handleSlotClick = async (dayIndex: number, period: number, slotData: any) => {
     const isFree = !slotData || slotData.subject === 'FREE';
     const actualPeriod = slotData?.is_lab_second_hour ? period - 1 : period;
 
-    // Resolve the class_id based on the current view
     let classId: string | undefined;
     if (view === 'class') {
       classId = sel; 
@@ -191,13 +132,11 @@ export default function JobDetailPage() {
     }
 
     if (!sourceSlot) {
-      // First click: selecting a SOURCE
       if (!classId || (isFree && view !== 'class')) return; 
       setSourceSlot({ class_id: classId, day: dayIndex + 1, period: actualPeriod, isFree, data: slotData });
       return;
     }
 
-    // Toggle logic: if clicking the exact same slot again, unselect
     if (sourceSlot.day === dayIndex + 1 && 
         sourceSlot.period === actualPeriod && 
         sourceSlot.class_id === (classId || sourceSlot.class_id)) {
@@ -205,50 +144,44 @@ export default function JobDetailPage() {
       return;
     }
 
-    // If we already have a source, this click is a TARGET for a move/swap
     if (sourceSlot.isFree) { 
-      // If previous selection was just an empty slot, treat this click as a new SOURCE selection
       if (!classId || (isFree && view !== 'class')) return;
       setSourceSlot({ class_id: classId, day: dayIndex + 1, period: actualPeriod, isFree, data: slotData }); 
       return; 
     }
-      setIsAnalyzing(true);
-      try {
-        const changes = [{ 
-          class_id: sourceSlot.class_id, 
-          day: sourceSlot.day, 
-          period: sourceSlot.period, 
-          new_day: dayIndex + 1, 
-          new_period: actualPeriod 
-        }];
 
-        // If target slot is occupied, perform a SWAP
-        if (!isFree && classId) {
-          changes.push({
-            class_id: classId,
-            day: dayIndex + 1,
-            period: actualPeriod,
-            new_day: sourceSlot.day,
-            new_period: sourceSlot.period
-          });
-        }
+    setIsAnalyzing(true);
+    try {
+      const changes = [{ 
+        class_id: sourceSlot.class_id, 
+        day: sourceSlot.day, 
+        period: sourceSlot.period, 
+        new_day: dayIndex + 1, 
+        new_period: actualPeriod 
+      }];
 
-        const result = await analyzeChange(jobId!, changes);
-        setSimulatedChanges(changes);
-        setAnalysisResult(result);
-      } catch (e) { 
-        console.error(e); 
-        toast.error('Analysis failed. Please check if IDs are valid.');
-      } finally { setIsAnalyzing(false); }
+      if (!isFree && classId) {
+        changes.push({
+          class_id: classId,
+          day: dayIndex + 1,
+          period: actualPeriod,
+          new_day: sourceSlot.day,
+          new_period: sourceSlot.period
+        });
+      }
+
+      const result = await analyzeChange(jobId!, changes);
+      setSimulatedChanges(changes);
+      setAnalysisResult(result);
+    } catch (e) { 
+      console.error(e); 
+      toast.error('Analysis failed.');
+    } finally { setIsAnalyzing(false); }
   };
 
   const handleCancel = () => { 
-    setSourceSlot(null); 
-    setAnalysisResult(null); 
-    setSimulatedChanges(null);
-    setIsAnalyzing(false); 
-    setSubstitutes(null);
-    setIsFindingSubstitutes(false);
+    setSourceSlot(null); setAnalysisResult(null); setSimulatedChanges(null);
+    setIsAnalyzing(false); setSubstitutes(null); setIsFindingSubstitutes(false);
   };
   const handleApply = async (newChromosome: any[]) => { await commitChange(jobId!, newChromosome); queryClient.invalidateQueries({ queryKey: ['timetable', jobId, pareto] }); handleCancel(); };
   const handleUndo = async () => { await undoChange(jobId!); queryClient.invalidateQueries({ queryKey: ['timetable', jobId, pareto] }); };
@@ -260,10 +193,8 @@ export default function JobDetailPage() {
     try {
       const res = await getSubstitutes(jobId!, sourceSlot.class_id, sourceSlot.day, sourceSlot.period);
       setSubstitutes(res.substitutes);
-    } catch (e) { 
-      console.error(e); 
-      toast.error('Failed to find substitutes');
-    } finally { setIsFindingSubstitutes(false); }
+    } catch (e) { toast.error('Failed to find substitutes'); } 
+    finally { setIsFindingSubstitutes(false); }
   };
 
   const handleDeleteSlot = async () => {
@@ -283,7 +214,7 @@ export default function JobDetailPage() {
     try {
       const changes = [{ 
         class_id: sourceSlot.class_id, 
-        day: 0, period: 0, // 0 denotes "new"
+        day: 0, period: 0, 
         new_day: sourceSlot.day, 
         new_period: sourceSlot.period,
         subject_id: subject,
@@ -296,24 +227,6 @@ export default function JobDetailPage() {
     } catch (e) { console.error(e); } finally { setIsAnalyzing(false); }
   };
 
-<<<<<<< Updated upstream
-  // ── Preview handlers ──
-  const openHtmlPreview = async () => {
-    setHtmlLoading(true)
-    try {
-      const res = await fetch(exportUrl(jobId!, 'html-report'))
-      let text = await res.text()
-      // Inject <base> so relative image paths (e.g. convergence_plot.png) resolve
-      // to the backend's static file mount: /output/{jobId}/visual_charts/
-      const baseHref = `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/output/${jobId}/visual_charts/`
-      text = text.replace(/<head>/i, `<head><base href="${baseHref}">`)
-      setHtmlContent(text)
-      setPreview('html')
-    } catch (e) {
-      toast.error('Failed to load HTML report')
-    } finally {
-      setHtmlLoading(false)
-=======
   const handlePreview = async (type: string, title: string) => {
     const url = `${BASE_URL}/api/v1/jobs/${jobId}/exports/${type}`
     if (type === 'convergence-plot') { setPreview({ type, title, url }) } 
@@ -321,61 +234,19 @@ export default function JobDetailPage() {
       setPreview({ type, title, url, loading: true })
       try {
         const fetchRes = await fetch(url); let text = await fetchRes.text()
->>>>>>> cc0e994 (added API folder which holds the routes and schemas, resolved branch conflicts, and stabilized timetable editor)
         if (type === 'html-report') {
           const plotUrl = `${BASE_URL}/api/v1/jobs/${jobId}/exports/convergence-plot`
           text = text.replace(/src=["'][^"']*\bconvergence_plot\.png["']/gi, `src="${plotUrl}"`)
         }
-<<<<<<< HEAD
-=======
         setPreview({ type, title, url, content: text, loading: false })
       } catch { toast.error('Failed to load preview'); setPreview(null) }
->>>>>>> Stashed changes
-    }
-  }
-  const openImagePreview = () => setPreview('image')
-  const openJsonPreview = async () => {
-    setJsonLoading(true)
-    try {
-      const res = await api.get(exportUrl(jobId!, 'chromosome').replace(api.defaults.baseURL || '', ''))
-      setJsonContent(JSON.stringify(res.data, null, 2))
-      setPreview('json')
-    } catch (e) {
-      toast.error('Failed to load chromosome JSON')
-    } finally {
-      setJsonLoading(false)
-    }
-  }
-  const closePreview = () => { setPreview(null); setJsonContent(''); setHtmlContent('') }
->>>>>>> cc0e994 (added API folder which holds the routes and schemas, resolved branch conflicts, and stabilized timetable editor)
-
-        setPreview({ type, title, url, content: text, loading: false })
-      } catch {
-        toast.error('Failed to load preview')
-        setPreview(null)
-      }
     }
   }
 
   if (jobLoading) return <div className="flex justify-center py-20"><Spinner size={32} /></div>
+  if (!job) return <div>Job not found</div>
 
   return (
-<<<<<<< Updated upstream
-    <div className="space-y-6">
-      <div className="bg-surface border border-border rounded-lg p-5">
-        <div className="flex items-center gap-3 mb-3">
-          <span className="font-code text-sm text-text-secondary">{truncateId(jobId!, 12)}</span>
-          <button onClick={copyId} className="text-text-muted hover:text-accent"><Copy size={14} /></button>
-          <Badge>{job.algorithm}</Badge>
-          <Badge variant={job.status}>
-            {job.status}
-          </Badge>
-        </div>
-        <div className="flex gap-6 text-xs text-text-secondary">
-          <span>Created: {formatDate(job.created_at)}</span>
-          {job.started_at && <span>Started: {formatDate(job.started_at)}</span>}
-          {job.completed_at && <span>Completed: {formatDate(job.completed_at)}</span>}
-=======
     <div className="flex flex-col h-[calc(100vh-80px)] overflow-hidden">
       {/* Header Bar */}
       <div className="bg-surface border border-border rounded-xl p-4 mb-4 shadow-sm flex-shrink-0">
@@ -411,155 +282,10 @@ export default function JobDetailPage() {
           <div className="flex gap-2">
              <Button size="sm" variant="secondary" onClick={() => downloadAllZip(jobId!)} className="h-9"><Download size={14} /></Button>
           </div>
->>>>>>> Stashed changes
         </div>
       </div>
 
       {isPolling && (
-<<<<<<< HEAD
-        <div className="bg-blue-500/5 border border-blue-500/20 rounded-lg p-8 flex flex-col items-center justify-center gap-5">
-          <div className="w-64 h-64 sm:w-80 sm:h-80 aspect-square flex items-center justify-center relative">
-            <DotLottieReact
-              src="https://lottie.host/bd567b7c-53e5-4ee5-981e-918a05b6c55f/bNS86uJ1qE.lottie"
-              loop
-              autoplay
-              style={{ width: '100%', height: '100%' }}
-            />
-=======
-<<<<<<< Updated upstream
-        <div className="bg-surface border border-blue-500/20 rounded-lg p-6 flex flex-col items-center gap-4">
-          <DotLottieReact
-            src="https://lottie.host/bd567b7c-53e5-4ee5-981e-918a05b6c55f/bNS86uJ1qE.lottie"
-            loop autoplay style={{ width: 200, height: 200 }}
-          />
-          <div className="text-center">
-            <p className="text-sm text-blue-400 font-medium">
-              {job.status === 'pending' ? 'Queued — waiting to start...' : 'Algorithm is running...'}
-            </p>
-            <p className="text-xs text-text-muted mt-1">Checking every 3 seconds</p>
->>>>>>> cc0e994 (added API folder which holds the routes and schemas, resolved branch conflicts, and stabilized timetable editor)
-          </div>
-          <p className="text-sm font-medium text-blue-400">Job is {job.status}... generating timetable</p>
-        </div>
-      )}
-
-      {isFailed && (
-        <div className="bg-red-500/5 border border-red-500/20 rounded-lg p-5 space-y-3">
-          <p className="text-sm text-danger font-medium">Job Failed</p>
-          <pre className="text-xs text-text-secondary font-code bg-elevated rounded p-3 overflow-x-auto max-h-60">{job.error_message}</pre>
-        </div>
-      )}
-
-      {isCompleted && res && (
-        <>
-          <div className="grid grid-cols-3 gap-4">
-            {[{ label: 'Fitness Score', value: formatScore(res.fitness_score), color: 'text-accent' },
-              { label: 'Total Penalty', value: formatScore(res.total_penalty), color: 'text-warning' },
-              { label: 'Generations', value: formatScore(res.generations_run), color: 'text-text-primary' },
-            ].map(s => (
-              <div key={s.label} className="bg-surface border border-border rounded-lg p-4">
-                <p className="text-xs text-text-secondary mb-1">{s.label}</p>
-                <p className={`font-display text-2xl font-bold tabular-nums ${s.color}`}>{s.value}</p>
-              </div>
-            ))}
-          </div>
-
-          {fitnessData.length > 0 && (
-            <div className="bg-surface border border-border rounded-lg p-5">
-              <h3 className="font-display text-sm font-bold mb-4">Fitness History</h3>
-              <ResponsiveContainer width="100%" height={280}>
-                <LineChart data={fitnessData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#242430" />
-                  <XAxis dataKey="gen" stroke="#44445a" tick={{ fontSize: 11 }} />
-                  <YAxis stroke="#44445a" tick={{ fontSize: 11 }} domain={['dataMin - 100', 'dataMax + 100']} />
-                  <Tooltip contentStyle={{ background: '#111118', border: '1px solid #242430', borderRadius: 6, fontSize: 12 }} />
-                  <ReferenceLine y={job.ga_config.target_fitness} stroke="#6c63ff" strokeDasharray="8 4" label={{ value: 'Target', fill: '#6c63ff', fontSize: 10 }} />
-                  <Line type="monotone" dataKey="best" stroke="#6c63ff" strokeWidth={2} dot={false} />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
-          )}
-
-          {constraintData.length > 0 && (
-            <div className="bg-surface border border-border rounded-lg p-5">
-              <h3 className="font-display text-sm font-bold mb-4">Constraint Breakdown</h3>
-              <ResponsiveContainer width="100%" height={constraintData.length * 30 + 40}>
-                <BarChart layout="vertical" data={constraintData} margin={{ left: 120 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#242430" horizontal={false} />
-                  <XAxis type="number" stroke="#44445a" tick={{ fontSize: 11 }} />
-                  <YAxis type="category" dataKey="name" stroke="#44445a" tick={{ fontSize: 11, fontFamily: 'JetBrains Mono' }} width={110} />
-                  <Tooltip contentStyle={{ background: '#111118', border: '1px solid #242430', borderRadius: 6, fontSize: 12 }} />
-                  <Bar dataKey="value" radius={[0, 4, 4, 0]} minPointSize={4}>
-                    {constraintData.map((d, i) => <Cell key={`cell-${i}`} fill={d.fill || '#fff'} />)}
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          )}
-
-          <div className="flex flex-wrap gap-3">
-            <Button onClick={() => nav(`/jobs/${jobId}/timetable`)}><Eye size={14} className="mr-1.5" />View Timetable</Button>
-            <Button variant="secondary" onClick={() => downloadAllZip(jobId!)}><Download size={14} className="mr-1.5" />Download ZIP</Button>
-            <Button variant="secondary" onClick={() => handlePreview('html-report', 'HTML Report')}><FileText size={14} className="mr-1.5" />HTML Report</Button>
-            <Button variant="secondary" onClick={() => handlePreview('chromosome', 'Chromosome')}><FileJson size={14} className="mr-1.5" />Chromosome</Button>
-            <Button variant="secondary" onClick={() => handlePreview('convergence-plot', 'Convergence Plot')}><Image size={14} className="mr-1.5" />Convergence Plot</Button>
-          </div>
-        </>
-      )}
-
-      <Modal open={!!preview} onClose={() => setPreview(null)} title={`Preview: ${preview?.title}`} wide>
-        {preview && (
-          <div className="space-y-4">
-            <div className="bg-elevated rounded border border-border flex justify-center items-start overflow-hidden overflow-y-auto max-h-[70vh]">
-              {preview.loading ? (
-                <div className="p-16"><Spinner size={32} /></div>
-              ) : preview.type === 'convergence-plot' ? (
-                <img src={preview.url} alt="Convergence Plot" className="w-full object-contain" />
-              ) : preview.type === 'html-report' ? (
-                <iframe srcDoc={preview.content} className="w-full h-[70vh] bg-white border-none" sandbox="allow-same-origin allow-scripts" />
-              ) : (
-                <pre className="text-[10px] font-code p-4 text-text-secondary w-full whitespace-pre-wrap">
-                  {preview.content}
-                </pre>
-              )}
-            </div>
-<<<<<<< HEAD
-            <div className="flex justify-end gap-2">
-              <Button variant="secondary" onClick={() => setPreview(null)}>Close</Button>
-              <Button onClick={() => downloadExport(jobId!, preview.type)}><Download size={14} className="mr-1.5" />Download File</Button>
-=======
-            <iframe
-              srcDoc={htmlContent}
-              className="flex-1 w-full bg-white"
-              title="HTML Report"
-            />
-          </div>
-        </div>
-      )}
-
-      {/* Convergence Plot Preview */}
-      {preview === 'image' && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm" onClick={closePreview}>
-          <div className="max-w-[90vw] max-h-[90vh] bg-surface border border-border rounded-lg flex flex-col overflow-hidden" onClick={e => e.stopPropagation()}>
-            <div className="flex items-center justify-between px-5 py-3 border-b border-border bg-elevated">
-              <div className="flex items-center gap-2">
-                <Image size={16} className="text-green-400" />
-                <span className="font-display text-sm font-bold">Convergence Plot</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Button size="sm" variant="secondary" onClick={() => downloadExport(jobId!, 'convergence-plot')}>
-                  <Download size={12} className="mr-1" />Download
-                </Button>
-                <button onClick={closePreview} className="text-text-muted hover:text-text-primary"><X size={18} /></button>
-              </div>
-            </div>
-            <div className="p-4 flex justify-center overflow-auto">
-              <img
-                src={convergencePlotUrl}
-                alt="Convergence Plot"
-                className="max-w-full max-h-[75vh] rounded"
-              />
-=======
         <div className="flex-1 flex flex-col items-center justify-center bg-surface/30 rounded-2xl border border-dashed border-border p-12">
           <div className="w-64 h-64">
              <DotLottieReact src="https://lottie.host/bd567b7c-53e5-4ee5-981e-918a05b6c55f/bNS86uJ1qE.lottie" loop autoplay />
@@ -603,7 +329,6 @@ export default function JobDetailPage() {
           <div className="flex-1 flex flex-col min-h-0 min-w-0">
             {activeTab === 'timetable' ? (
               <div className="flex-1 flex flex-col min-h-0 space-y-4 pr-2">
-                {/* Controls */}
                 <div className="flex items-center gap-3 bg-elevated/30 p-2 rounded-xl border border-border/50 flex-shrink-0">
                   <div className="flex bg-elevated rounded-lg p-1 border border-border">
                     {(['class', 'teacher', 'room'] as ViewMode[]).map(v => (
@@ -615,15 +340,14 @@ export default function JobDetailPage() {
                     {entities.map(e => <option key={e} value={e}>{e}</option>)}
                   </select>
                   <div className="flex bg-elevated rounded-lg p-1 border border-border">
-                    <button onClick={handleUndo} className="p-1.5 hover:bg-surface rounded text-text-secondary hover:text-accent"><Undo2 size={16} /></button>
-                    <button onClick={handleRedo} className="p-1.5 hover:bg-surface rounded text-text-secondary hover:text-accent"><Redo2 size={16} /></button>
+                    <button onClick={handleUndo} title="Undo" className="p-1.5 hover:bg-surface rounded text-text-secondary hover:text-accent"><Undo2 size={16} /></button>
+                    <button onClick={handleRedo} title="Redo" className="p-1.5 hover:bg-surface rounded text-text-secondary hover:text-accent"><Redo2 size={16} /></button>
                   </div>
                   <div className="ml-auto">
                      <Button size="sm" variant="secondary" onClick={handleExportCsv} className="h-9 text-[10px]"><Download size={14} className="mr-1" />Export CSV</Button>
                   </div>
                 </div>
 
-                {/* Grid */}
                 <div className="flex-1 min-h-0 relative">
                   {ttLoading ? <div className="flex justify-center py-20"><Spinner size={32} /></div> : (
                     <div className="h-full overflow-auto rounded-xl border border-border shadow-2xl bg-surface/50 backdrop-blur-sm custom-scrollbar">
@@ -640,25 +364,19 @@ export default function JobDetailPage() {
                               <td className="bg-elevated/50 text-center font-code text-text-secondary border border-border/50 py-4 font-bold">{p}</td>
                                 {DAYS.map(d => {
                                   const dayIdx = DAYS.indexOf(d) + 1;
-                                  
-                                  // Check if this slot is a TARGET of a simulation
                                   const targetChange = simulatedChanges?.find(c => c.new_day === dayIdx && c.new_period === p);
-                                  // Check if this slot is the SOURCE of a simulation (it has moved away)
                                   const sourceChange = simulatedChanges?.find(c => c.day === dayIdx && c.period === p);
 
                                   let slot = (grid?.[d] || {})[String(p)]
-                                  
                                   if (targetChange) {
-                                    slot = (sourceSlot as any)?.data || { subject: 'MOVE TARGET' };
+                                    slot = sourceSlot?.data || { subject: 'MOVE TARGET' };
                                   } else if (sourceChange) {
-                                    // This cell has moved away. If it was swapped, show the other one.
                                     const swap = simulatedChanges?.find(c => c.new_day === dayIdx && c.new_period === p);
-                                    if (!swap) slot = null; // Mark as FREE in the preview
+                                    if (!swap) slot = null;
                                   }
 
                                   const subj = slot ? (slot as any).subject : 'FREE'
                                   const isFree = subj === 'FREE'
-                                  
                                   const cellClassId = view === 'class' ? sel : (slot as any)?.class
                                   const isSource = sourceSlot?.day === dayIdx && sourceSlot?.period === p && (!cellClassId || sourceSlot?.class_id === cellClassId);
                                   
@@ -757,26 +475,9 @@ export default function JobDetailPage() {
                               </linearGradient>
                             </defs>
                             <CartesianGrid strokeDasharray="3 3" stroke="#242430" vertical={false} opacity={0.5} />
-                            <XAxis 
-                              dataKey="gen" 
-                              stroke="#44445a" 
-                              tick={{ fontSize: 10, fontWeight: 700 }} 
-                              axisLine={false}
-                              tickLine={false}
-                            />
-                            <YAxis 
-                              stroke="#44445a" 
-                              tick={{ fontSize: 10, fontWeight: 700 }} 
-                              domain={['auto', 'auto']}
-                              tickFormatter={(val) => Math.round(val).toLocaleString()}
-                              axisLine={false}
-                              tickLine={false}
-                            />
-                            <Tooltip 
-                              contentStyle={{ background: '#111118', border: '1px solid #242430', borderRadius: 20, fontSize: 12, fontWeight: 'bold', padding: '15px 20px', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)' }}
-                              formatter={(val: any) => [val.toLocaleString(), 'Score']}
-                              labelStyle={{ color: '#88889a', marginBottom: 5 }}
-                            />
+                            <XAxis dataKey="gen" stroke="#44445a" tick={{ fontSize: 10, fontWeight: 700 }} axisLine={false} tickLine={false} />
+                            <YAxis stroke="#44445a" tick={{ fontSize: 10, fontWeight: 700 }} domain={['auto', 'auto']} tickFormatter={(val) => Math.round(val).toLocaleString()} axisLine={false} tickLine={false} />
+                            <Tooltip contentStyle={{ background: '#111118', border: '1px solid #242430', borderRadius: 20, fontSize: 12, fontWeight: 'bold', padding: '15px 20px' }} formatter={(val: any) => [val.toLocaleString(), 'Score']} />
                             <Area type="monotone" dataKey="best" stroke="#6c63ff" strokeWidth={4} fillOpacity={1} fill="url(#colorBest)" animationDuration={2000} />
                           </AreaChart>
                         </ResponsiveContainer>
@@ -795,96 +496,89 @@ export default function JobDetailPage() {
                               <p className="text-sm font-bold">Assembling Audit Map...</p>
                             </div>
                           ) : (
-                             <ResponsiveContainer width="100%" height="100%">
-                               <BarChart 
-                                 data={constraintData}
-                                 layout="vertical"
-                               >
-                                 <CartesianGrid strokeDasharray="3 3" stroke="#242430" horizontal={true} vertical={false} />
-                                 <XAxis type="number" stroke="#44445a" tick={{ fontSize: 10 }} label={{ value: 'Penalty Points', position: 'insideBottom', offset: -5, fontSize: 10, fill: '#44445a' }} />
-                                 <YAxis 
-                                   dataKey="name" 
-                                   type="category" 
-                                   stroke="#44445a" 
-                                   tick={{ fontSize: 9, fontWeight: 'bold' }} 
-                                   width={140}
-                                   tickFormatter={(val) => val.split('_').slice(1).join(' ').toUpperCase() || val.toUpperCase()}
-                                 />
-                                 <Tooltip 
-                                   cursor={{ fill: 'rgba(255,255,255,0.05)' }}
-                                   content={({ active, payload }) => {
-                                     if (active && payload && payload.length) {
-                                       const data = payload[0].payload;
-                                       return (
-                                         <div className="bg-[#111118] border border-[#242430] rounded-xl p-3 shadow-2xl max-w-xs">
-                                           <div className="flex justify-between items-start mb-2">
-                                              <p className="text-[10px] font-black text-accent uppercase tracking-widest">{data.name}</p>
-                                              <Badge variant={data.value === 0 ? 'success' : (data.name.startsWith('H') ? 'danger' : 'warning')} className="text-[8px]">
-                                                {data.value === 0 ? 'Satisfied' : 'Violated'}
-                                              </Badge>
-                                           </div>
-                                           <p className="text-lg font-black text-text-primary mb-1">{data.value} <span className="text-[10px] text-text-muted">Penalty Points</span></p>
-                                           <p className="text-[10px] text-text-secondary leading-relaxed italic border-t border-border/30 pt-1.5 mt-1.5">
-                                             {CONSTRAINT_DESCRIPTIONS[data.name] || 'General scheduling conflict detected.'}
-                                           </p>
-                                         </div>
-                                       );
-                                     }
-                                     return null;
-                                   }}
-                                 />
-                                 <Bar dataKey="value" radius={[0, 4, 4, 0]} barSize={25}>
-                                   {constraintData.map((entry, index) => (
-                                     <Cell key={`cell-${index}`} fill={entry.fill} />
-                                   ))}
-                                 </Bar>
-                               </BarChart>
-                             </ResponsiveContainer>
+                            <ResponsiveContainer width="100%" height="100%">
+                              <BarChart layout="vertical" data={constraintData}>
+                                <CartesianGrid strokeDasharray="3 3" stroke="#242430" horizontal={false} opacity={0.5} />
+                                <XAxis type="number" hide />
+                                <YAxis type="category" dataKey="name" stroke="#88889a" tick={{ fontSize: 9, fontWeight: 700 }} width={120} axisLine={false} tickLine={false} />
+                                <Tooltip contentStyle={{ background: '#111118', border: '1px solid #242430', borderRadius: 15, fontSize: 11 }} />
+                                <Bar dataKey="value" radius={[0, 10, 10, 0]} barSize={12}>
+                                  {constraintData.map((d, i) => <Cell key={i} fill={d.fill} />)}
+                                </Bar>
+                              </BarChart>
+                            </ResponsiveContainer>
                           )}
-                      </div>
+                       </div>
+                    </div>
+                 </div>
+
+                 <div className="bg-surface border border-border rounded-[2.5rem] p-10 shadow-2xl">
+                    <div className="flex items-center justify-between mb-8">
+                       <h3 className="font-display text-sm font-black uppercase tracking-[0.2em] text-text-secondary border-l-4 border-success pl-4">Available Reports</h3>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                       {[
+                         { title: 'Interactive Report', type: 'html-report', icon: <FileText className="text-accent" />, desc: 'Full-featured timetable report' },
+                         { title: 'Convergence Plot', type: 'convergence-plot', icon: <Image className="text-success" />, desc: 'Evolution history visualization' },
+                         { title: 'Best Chromosome', type: 'chromosome', icon: <FileJson className="text-warning" />, desc: 'Raw genetic structure (JSON)' }
+                       ].map(report => (
+                         <div key={report.type} className="bg-elevated/40 border border-border rounded-2xl p-6 hover:bg-elevated transition-all group">
+                            <div className="w-12 h-12 rounded-xl bg-surface flex items-center justify-center mb-4 shadow-inner group-hover:scale-110 transition-transform">{report.icon}</div>
+                            <h4 className="text-sm font-bold text-text-primary mb-1">{report.title}</h4>
+                            <p className="text-[10px] text-text-muted mb-6">{report.desc}</p>
+                            <div className="flex gap-2">
+                               <Button size="sm" className="flex-1" onClick={() => handlePreview(report.type, report.title)}>Preview</Button>
+                               <Button size="sm" variant="secondary" onClick={() => downloadExport(jobId!, report.type)}><Download size={14} /></Button>
+                            </div>
+                         </div>
+                       ))}
                     </div>
                  </div>
               </div>
             )}
           </div>
 
-          {/* Side Impact Panel */}
-          {sourceSlot && activeTab === 'timetable' && (
-            <div className="flex-shrink-0 animate-in slide-in-from-right duration-300">
-              <ImpactPanel 
-                analysis={analysisResult} 
-                isLoading={isAnalyzing} 
-                onApply={handleApply} 
-                onUseSuggestion={(s: any) => handleApply(s.modified_chromosome)} 
-                onAutoFix={handleApply} 
-                onCancel={handleCancel} 
-                onFindSubstitutes={handleFindSubstitutes} 
+          {/* Right Panel: Impact & Actions */}
+          <div className="w-[400px] flex-shrink-0 ml-4 border-l border-border pl-4 overflow-y-auto custom-scrollbar">
+             <ImpactPanel 
+                institutionId={institutionId!}
+                analysisResult={analysisResult}
+                sourceSlot={sourceSlot}
+                isAnalyzing={isAnalyzing}
+                onApply={handleApply}
+                onCancel={handleCancel}
                 substitutes={substitutes}
                 isFindingSubstitutes={isFindingSubstitutes}
-                sourceSlot={sourceSlot}
-                onDeleteSlot={handleDeleteSlot}
-                onAddSlot={handleAddSlot}
-              />
-            </div>
-          )}
+                onFindSubstitutes={handleFindSubstitutes}
+                onDelete={handleDeleteSlot}
+                onAdd={handleAddSlot}
+             />
+          </div>
         </div>
       )}
 
       {/* Preview Modal */}
-      <Modal open={!!preview} onClose={() => setPreview(null)} title={`Preview: ${preview?.title}`} wide>
-        {preview && (
-          <div className="space-y-4">
-            <div className="bg-elevated rounded-xl border border-border flex justify-center items-start overflow-hidden overflow-y-auto max-h-[70vh]">
-              {preview.loading ? ( <div className="p-16"><Spinner size={32} /></div> ) : 
-               preview.type === 'convergence-plot' ? ( <img src={preview.url} alt="Convergence Plot" className="w-full object-contain" /> ) : 
-               preview.type === 'html-report' ? ( <iframe srcDoc={preview.content} className="w-full h-[70vh] bg-white border-none" sandbox="allow-same-origin allow-scripts" /> ) : (
-                <pre className="text-[10px] font-code p-6 text-text-secondary w-full whitespace-pre-wrap">{preview.content}</pre>
-               )}
->>>>>>> Stashed changes
->>>>>>> cc0e994 (added API folder which holds the routes and schemas, resolved branch conflicts, and stabilized timetable editor)
-            </div>
-          </div>
-        )}
+      <Modal 
+        isOpen={!!preview} 
+        onClose={() => setPreview(null)}
+        title={preview?.title || ''}
+        size={preview?.type === 'html-report' ? 'xl' : 'lg'}
+      >
+        <div className="flex flex-col h-[70vh]">
+          {preview?.loading ? <div className="flex-1 flex items-center justify-center"><Spinner size={32} /></div> : (
+            <>
+              {preview?.type === 'convergence-plot' ? (
+                <div className="flex-1 flex items-center justify-center bg-black/20 rounded-xl overflow-hidden p-4">
+                  <img src={preview.url} alt="Plot" className="max-w-full max-h-full object-contain" />
+                </div>
+              ) : preview?.type === 'html-report' ? (
+                <iframe srcDoc={preview.content} className="flex-1 w-full bg-white rounded-xl" />
+              ) : (
+                <pre className="flex-1 bg-elevated p-6 rounded-xl overflow-auto text-xs font-code text-text-secondary">{preview?.content}</pre>
+              )}
+            </>
+          )}
+        </div>
       </Modal>
     </div>
   )
