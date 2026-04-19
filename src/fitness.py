@@ -173,35 +173,17 @@ def evaluate_fitness(chromosome, config: Config) -> int:
                     penalty += 500
                 elif (gene.room_id, gene.day, next_period) in room_occupied_by_theory:
                     penalty += 500
-<<<<<<< Updated upstream
-
-                for other in chromosome:
-                    if (
-                        other is not gene
-                        and other.day == gene.day
-                        and other.period == next_period
-                    ):
-                        if (
-                            other.class_id == gene.class_id
-                            or other.teacher_id == gene.teacher_id
-                            or other.room_id == gene.room_id
-                        ):
-                            penalty += 500
-                            break
-=======
-                else:
-                    # Only penalize if OTHER genes occupy the next slot
-                    c_genes = class_slot_genes.get((gene.class_id, gene.day, next_period), [])
-                    t_genes = teacher_slot_genes.get((gene.teacher_id, gene.day, next_period), [])
-                    r_genes = room_slot_genes.get((gene.room_id, gene.day, next_period), [])
-                    
-                    if any(g.period != gene.period for g in c_genes):
-                         penalty += 500
-                    elif any(g.period != gene.period for g in t_genes):
-                         penalty += 500
-                    elif any(g.period != gene.period for g in r_genes):
-                         penalty += 500
->>>>>>> Stashed changes
+                # Only penalize if OTHER genes occupy the next slot
+                c_genes = class_slot_genes.get((gene.class_id, gene.day, next_period), [])
+                t_genes = teacher_slot_genes.get((gene.teacher_id, gene.day, next_period), [])
+                r_genes = room_slot_genes.get((gene.room_id, gene.day, next_period), [])
+                
+                if any(g.period != gene.period for g in c_genes):
+                     penalty += 500
+                elif any(g.period != gene.period for g in t_genes):
+                     penalty += 500
+                elif any(g.period != gene.period for g in r_genes):
+                     penalty += 500
 
     return max(0, MAX_SCORE - penalty)
 
@@ -237,24 +219,7 @@ def get_penalty_breakdown(chromosome, config: Config) -> dict:
         class_day_subjects[gene.class_id][gene.day].append(gene.subject_id)
 
     breakdown = {
-<<<<<<< Updated upstream
-        "H1_teacher_clash": 0,
-        "H2_class_clash": 0,
-        "H3_room_clash": 0,
-        "H_LAB1_odd_period": 0,
-        "H_LAB2_next_free": 0,
-        "S1_missing_lectures": 0,
-        "S2_teacher_overload": 0,
-        "S3_consecutive": 0,
-        "S4_same_subj_day": 0,
-        "S5_class_gaps": 0,
-        "S6_teacher_gaps": 0,
-        "S8_morning_pref": 0,
-        "S9_late_period": 0,
-<<<<<<< HEAD
-        "S10_room_spread": 0,
-=======
-=======
+    breakdown = {
         "hard_penalties": {
             "H1_teacher_clash": 0,
             "H2_class_clash": 0,
@@ -273,8 +238,6 @@ def get_penalty_breakdown(chromosome, config: Config) -> dict:
             "S9_late_period": 0,
             "S10_room_spread": 0,
         }
->>>>>>> Stashed changes
->>>>>>> cc0e994 (added API folder which holds the routes and schemas, resolved branch conflicts, and stabilized timetable editor)
     }
 
     for (tid, day, period), genes in teacher_slot_genes.items():
@@ -360,12 +323,7 @@ def get_penalty_breakdown(chromosome, config: Config) -> dict:
     for cid, rooms_used in class_theory_rooms.items():
         extra = len(rooms_used) - 1
         if extra > 0:
-<<<<<<< HEAD
-            breakdown["S10_room_spread"] += extra * 3
-
-=======
             breakdown["soft_penalties"]["S10_room_spread"] += extra * 3
->>>>>>> cc0e994 (added API folder which holds the routes and schemas, resolved branch conflicts, and stabilized timetable editor)
     class_occupied_by_theory = set()
     teacher_occupied_by_theory = set()
     room_occupied_by_theory = set()
