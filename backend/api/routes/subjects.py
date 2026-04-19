@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 from bson import ObjectId
 from fastapi import APIRouter, Depends, HTTPException
 
+from pymongo.errors import DuplicateKeyError
 from backend.api.dependencies import get_db
 from backend.api.schemas.subject import (
     SubjectBulkCreate,
@@ -50,7 +51,11 @@ async def create_subject(
     oid = _oid(institution_id)
     now = datetime.now(timezone.utc)
     doc = {**body.model_dump(), "institution_id": oid, "created_at": now, "updated_at": now}
-    result = await db[SUBJECTS].insert_one(doc)
+    try:
+        result = await db[SUBJECTS].insert_one(doc)
+    except DuplicateKeyError:
+        raise HTTPException(status_code=400, detail=f"Subject code '{body.subject_code}' already exists for this institution")
+    
     doc["_id"] = result.inserted_id
     return _subj_resp(doc)
 
@@ -75,7 +80,11 @@ async def update_subject(
     if not updates:
         raise HTTPException(status_code=400, detail="No fields to update")
     updates["updated_at"] = datetime.now(timezone.utc)
-    await db[SUBJECTS].update_one({"_id": _oid(subject_id)}, {"$set": updates})
+    try:
+        await db[SUBJECTS].update_one({"_id": _oid(subject_id)}, {"$set": updates})
+    except DuplicateKeyError:
+        raise HTTPException(status_code=400, detail="Subject code already exists for this institution")
+        
     doc = await db[SUBJECTS].find_one({"_id": _oid(subject_id)})
     if not doc:
         raise HTTPException(status_code=404, detail="Subject not found")
@@ -101,5 +110,9 @@ async def bulk_create_subjects(
         {**s.model_dump(), "institution_id": oid, "created_at": now, "updated_at": now}
         for s in body.subjects
     ]
-    result = await db[SUBJECTS].insert_many(docs)
+    try:
+        result = await db[SUBJECTS].insert_many(docs)
+    except DuplicateKeyError:
+        raise HTTPException(status_code=400, detail="One or more subject codes already exist")
+        
     return {"inserted": len(result.inserted_ids), "ids": [str(i) for i in result.inserted_ids]}
