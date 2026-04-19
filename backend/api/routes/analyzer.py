@@ -6,7 +6,7 @@ from bson import ObjectId
 from backend.api.dependencies import get_db
 from backend.db.collections import JOBS, INSTITUTIONS, ROOMS, SUBJECTS, TEACHERS, SECTIONS
 from backend.api.schemas.analyzer import AnalyzeChangeRequest, AnalyzeChangeResponse, CommitChangeRequest, UndoRedoRequest, SubstituteTeacherResponse
-from backend.engine.analyzer import analyze_change, compute_ripple_effect, generate_suggestions, run_local_hill_climbing, find_substitute_teachers
+from src.analyzer import analyze_change, compute_ripple_effect, generate_suggestions, run_local_hill_climbing, find_substitute_teachers
 from src.models import Gene, Config, Institution, Room, Subject, Teacher, Class, CurriculumEntry, GAConfig
 
 router = APIRouter(prefix="/api/v1/analyzer", tags=["Analyzer"])
