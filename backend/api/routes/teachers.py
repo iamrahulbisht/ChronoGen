@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 from bson import ObjectId
 from fastapi import APIRouter, Depends, HTTPException
 
+from pymongo.errors import DuplicateKeyError
 from backend.api.dependencies import get_db
 from backend.api.schemas.teacher import (
     TeacherBulkCreate,
@@ -51,7 +52,11 @@ async def create_teacher(
     oid = _oid(institution_id)
     now = datetime.now(timezone.utc)
     doc = {**body.model_dump(), "institution_id": oid, "created_at": now, "updated_at": now}
-    result = await db[TEACHERS].insert_one(doc)
+    try:
+        result = await db[TEACHERS].insert_one(doc)
+    except DuplicateKeyError:
+        raise HTTPException(status_code=400, detail=f"Teacher code '{body.teacher_code}' already exists for this institution")
+        
     doc["_id"] = result.inserted_id
     return _teacher_resp(doc)
 
@@ -87,7 +92,11 @@ async def update_teacher(
     if not updates:
         raise HTTPException(status_code=400, detail="No fields to update")
     updates["updated_at"] = datetime.now(timezone.utc)
-    await db[TEACHERS].update_one({"_id": _oid(teacher_id)}, {"$set": updates})
+    try:
+        await db[TEACHERS].update_one({"_id": _oid(teacher_id)}, {"$set": updates})
+    except DuplicateKeyError:
+        raise HTTPException(status_code=400, detail="Teacher code already exists for this institution")
+        
     doc = await db[TEACHERS].find_one({"_id": _oid(teacher_id)})
     if not doc:
         raise HTTPException(status_code=404, detail="Teacher not found")
@@ -113,5 +122,9 @@ async def bulk_create_teachers(
         {**t.model_dump(), "institution_id": oid, "created_at": now, "updated_at": now}
         for t in body.teachers
     ]
-    result = await db[TEACHERS].insert_many(docs)
+    try:
+        result = await db[TEACHERS].insert_many(docs)
+    except DuplicateKeyError:
+        raise HTTPException(status_code=400, detail="One or more teacher codes already exist")
+        
     return {"inserted": len(result.inserted_ids), "ids": [str(i) for i in result.inserted_ids]}
