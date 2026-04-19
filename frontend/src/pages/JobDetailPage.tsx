@@ -382,17 +382,34 @@ export default function JobDetailPage() {
                                   
                                   return (
                                     <td key={d} onClick={() => handleSlotClick(DAYS.indexOf(d), p, slot)}
-                                        className={`border border-border/50 px-2 py-3 transition-all cursor-pointer hover:bg-accent/5 
-                                          ${isSource ? 'ring-2 ring-accent bg-accent/5' : ''} 
-                                          ${targetChange ? 'bg-success/10 ring-2 ring-success ring-inset' : ''}
-                                          ${isFree ? 'bg-free-slot/20' : ''}`}>
-                                      {isFree ? <span className="text-text-muted opacity-30 font-bold">FREE</span> : (
-                                        <div className={targetChange ? 'animate-pulse' : ''}>
-                                          <p className="font-bold text-text-primary truncate">{subj}</p>
-                                          {view === 'class' && <p className="text-[9px] text-text-secondary truncate">{(slot as any).teacher}</p>}
-                                          {view === 'teacher' && <p className="text-[9px] text-accent font-bold truncate">{(slot as any).class}</p>}
-                                          {view === 'room' && <p className="text-[9px] text-accent font-bold truncate">{(slot as any).class}</p>}
-                                          <p className="text-[9px] text-text-muted truncate">{(slot as any).room || (slot as any).teacher}</p>
+                                        className={`border border-border/50 px-3 py-4 transition-all cursor-pointer group relative
+                                          ${isSource ? 'bg-accent/10 ring-2 ring-accent ring-inset' : 'hover:bg-elevated'} 
+                                          ${targetChange ? 'bg-success/20 ring-2 ring-success ring-inset animate-pulse' : ''}
+                                          ${isFree ? 'bg-black/5' : 'bg-surface/30'}`}>
+                                      {isSource && <div className="absolute top-1 right-1 w-2 h-2 bg-accent rounded-full animate-ping" />}
+                                      {isFree ? (
+                                        <div className="flex flex-col items-center justify-center opacity-20 group-hover:opacity-40 transition-opacity">
+                                          <Plus size={14} className="text-text-muted mb-1" />
+                                          <span className="text-[8px] font-black uppercase tracking-widest text-text-muted">Empty</span>
+                                        </div>
+                                      ) : (
+                                        <div className="relative z-10">
+                                          <p className="font-black text-text-primary text-xs tracking-tight truncate group-hover:text-accent transition-colors">{subj}</p>
+                                          <div className="flex flex-col gap-0.5 mt-1.5 opacity-70 group-hover:opacity-100 transition-opacity">
+                                            {view === 'class' && (
+                                              <p className="text-[9px] text-text-secondary font-bold truncate flex items-center gap-1">
+                                                <div className="w-1 h-1 rounded-full bg-accent/50" /> {(slot as any).teacher}
+                                              </p>
+                                            )}
+                                            {(view === 'teacher' || view === 'room') && (
+                                              <p className="text-[9px] text-accent font-black truncate uppercase tracking-tighter">
+                                                {(slot as any).class}
+                                              </p>
+                                            )}
+                                            <p className="text-[9px] text-text-muted font-medium truncate italic">
+                                              @ {(slot as any).room || (slot as any).teacher}
+                                            </p>
+                                          </div>
                                         </div>
                                       )}
                                     </td>
@@ -539,19 +556,21 @@ export default function JobDetailPage() {
           </div>
 
           {/* Right Panel: Impact & Actions */}
-          <div className="w-[400px] flex-shrink-0 ml-4 border-l border-border pl-4 overflow-y-auto custom-scrollbar">
+          <div className="w-[450px] flex-shrink-0 ml-4 border-l border-border pl-4 overflow-y-auto custom-scrollbar">
              <ImpactPanel 
                 institutionId={institutionId!}
-                analysisResult={analysisResult}
-                sourceSlot={sourceSlot}
-                isAnalyzing={isAnalyzing}
+                analysis={analysisResult}
+                isLoading={isAnalyzing}
                 onApply={handleApply}
                 onCancel={handleCancel}
                 substitutes={substitutes}
                 isFindingSubstitutes={isFindingSubstitutes}
                 onFindSubstitutes={handleFindSubstitutes}
-                onDelete={handleDeleteSlot}
-                onAdd={handleAddSlot}
+                onDeleteSlot={handleDeleteSlot}
+                onAddSlot={handleAddSlot}
+                sourceSlot={sourceSlot}
+                onUseSuggestion={(s) => handleApply(s.modified_chromosome)}
+                onAutoFix={(c) => handleApply(c)}
              />
           </div>
         </div>

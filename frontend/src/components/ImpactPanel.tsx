@@ -80,7 +80,7 @@ export default function ImpactPanel({
 
     if (isLoading) {
         return (
-            <div className="w-[500px] bg-base border-l border-border h-full flex flex-col flex-shrink-0 relative overflow-y-auto custom-scrollbar">
+            <div className="w-full bg-base border-l border-border h-full flex flex-col flex-shrink-0 relative overflow-y-auto custom-scrollbar">
                 <div className="p-8 border-b border-border sticky top-0 bg-base/90 backdrop-blur-md z-20 flex justify-between items-center shadow-md">
                     <h3 className="font-black text-2xl text-text-primary uppercase tracking-tighter">SIMULATING...</h3>
                     <button onClick={onCancel} className="p-2 hover:bg-elevated rounded-2xl transition-all text-text-muted hover:text-text-primary text-4xl">&times;</button>
@@ -105,7 +105,7 @@ export default function ImpactPanel({
 
     if (!analysis && !isLoading) {
         return (
-            <div className="w-[500px] bg-elevated border-l border-border h-full flex flex-col flex-shrink-0 relative overflow-y-auto custom-scrollbar">
+            <div className="w-full bg-elevated border-l border-border h-full flex flex-col flex-shrink-0 relative overflow-y-auto custom-scrollbar">
                 <div className="p-8 border-b border-border sticky top-0 flex justify-between items-center bg-elevated/80 backdrop-blur-md z-10 shadow-lg">
                     <h3 className="font-black text-2xl text-text-primary uppercase tracking-tighter">Slot Analysis</h3>
                     <button onClick={onCancel} className="text-text-muted hover:text-text-primary text-4xl transition-colors">&times;</button>
@@ -353,7 +353,7 @@ export default function ImpactPanel({
     const { penalty_delta, ripple_effect, suggestions, hill_climbed_chromosome, hill_climb_improved } = analysis;
 
     return (
-        <div className="w-[500px] bg-base border-l border-border h-full flex flex-col flex-shrink-0 relative overflow-y-auto custom-scrollbar shadow-2xl">
+        <div className="w-full bg-base border-l border-border h-full flex flex-col flex-shrink-0 relative overflow-y-auto custom-scrollbar shadow-2xl">
             <div className="p-8 border-b border-border sticky top-0 bg-base/90 backdrop-blur-md z-20 flex justify-between items-center shadow-md">
                 <div className="flex items-center gap-4">
                     <h3 className="font-black text-2xl text-text-primary uppercase tracking-tighter">MOVE ANALYSIS</h3>
