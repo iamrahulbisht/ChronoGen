@@ -19,7 +19,7 @@ from fastapi.staticfiles import StaticFiles
 
 load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 
-from backend.api.routes import classes, exports, institutions, jobs, subjects, teachers
+from backend.api.routes import classes, exports, institutions, jobs, subjects, teachers, analyzer
 from backend.db.collections import create_indexes
 from backend.db.connection import close_connections, get_async_db
 
@@ -64,7 +64,7 @@ app.include_router(subjects.router)
 app.include_router(classes.router)
 app.include_router(jobs.router)
 app.include_router(exports.router)
-
+app.include_router(analyzer.router)
 
 @app.get("/health", tags=["Health"])
 async def health_check():

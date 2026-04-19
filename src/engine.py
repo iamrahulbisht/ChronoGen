@@ -6,7 +6,21 @@ from src.models import Config
 from src.operators import day_block_crossover, mutate, tournament_select
 
 
-def run_ga(config: Config, verbose: bool = True):
+# Global for workers
+_worker_config = None
+
+def _init_worker(config):
+    global _worker_config
+    _worker_config = config
+
+def _worker_eval_fitness(chrom):
+    return evaluate_fitness(chrom, _worker_config)
+
+def _worker_eval_nsga2(chrom):
+    from src.engine import evaluate_nsga2_objectives
+    return evaluate_nsga2_objectives(chrom, _worker_config)
+
+def run_ga(config: Config, verbose: bool = True, progress_callback=None):
     random.seed(config.ga.random_seed)
 
     ga = config.ga
@@ -64,19 +78,15 @@ def run_ga(config: Config, verbose: bool = True):
                 f"{mutation_rate:>8.3f}  {status}"
             )
 
-        if best_fitness >= ga.target_fitness:
-            if generation == 0:
-                if verbose:
-                    print(
-                        f"\n[!] Target {ga.target_fitness} reached at Gen 0! Raising to MAX_SCORE ({MAX_SCORE}) to force soft-constraint optimization."
-                    )
-                ga.target_fitness = MAX_SCORE
-            else:
-                if verbose:
-                    print(
-                        f"\n[✓] Target fitness {ga.target_fitness} reached at generation {generation}!"
-                    )
-                break
+        if progress_callback and generation % 10 == 0:
+            progress_callback(generation, ga.max_generations, best_fitness)
+
+        if best_fitness >= ga.target_fitness and generation > 0:
+            if verbose:
+                print(
+                    f"\n[✓] Target fitness {ga.target_fitness} reached at generation {generation}!"
+                )
+            break
 
         # Stagnation detection -> boost mutation temporarily
         if stagnation_counter >= ga.stagnation_window:
@@ -122,8 +132,10 @@ def run_ga(config: Config, verbose: bool = True):
     return best_chromosome, fitness_history
 
 
-def hill_climb(chrom, config: Config, steps: int = 200):
-    best_chrom = [g for g in chrom]
+def hill_climb(chrom, config: Config, steps: int = 50):
+    # Deep copy the chromosome list and all its gene objects to avoid corrupting the population
+    import copy
+    best_chrom = copy.deepcopy(chrom)
     best_fitness = evaluate_fitness(best_chrom, config)
 
     n = len(best_chrom)
@@ -144,6 +156,7 @@ def hill_climb(chrom, config: Config, steps: int = 200):
         if new_fitness > best_fitness:
             best_fitness = new_fitness
         else:
+            # ROLLBACK
             best_chrom[i].day, best_chrom[j].day = best_chrom[j].day, best_chrom[i].day
             best_chrom[i].period, best_chrom[j].period = (
                 best_chrom[j].period,
@@ -153,7 +166,7 @@ def hill_climb(chrom, config: Config, steps: int = 200):
     return best_chrom
 
 
-def run_memetic_ga(config: Config, verbose: bool = True):
+def run_memetic_ga(config: Config, verbose: bool = True, progress_callback=None):
     random.seed(config.ga.random_seed)
     ga = config.ga
 
@@ -197,19 +210,15 @@ def run_memetic_ga(config: Config, verbose: bool = True):
                 f"{generation:>5}  {best_fitness:>7}  {gen_best_fitness:>8}  {mutation_rate:>8.3f}  {status}"
             )
 
-        if best_fitness >= ga.target_fitness:
-            if generation == 0:
-                if verbose:
-                    print(
-                        f"\n[!] Target {ga.target_fitness} reached at Gen 0! Raising to MAX_SCORE ({MAX_SCORE}) to force soft-constraint optimization."
-                    )
-                ga.target_fitness = MAX_SCORE
-            else:
-                if verbose:
-                    print(
-                        f"\n[✓] Target fitness {ga.target_fitness} reached at generation {generation}!"
-                    )
-                break
+        if progress_callback and generation % 10 == 0:
+            progress_callback(generation, ga.max_generations, best_fitness)
+
+        if best_fitness >= ga.target_fitness and generation > 0:
+            if verbose:
+                print(
+                    f"\n[✓] Target fitness {ga.target_fitness} reached at generation {generation}!"
+                )
+            break
 
         if stagnation_counter >= ga.stagnation_window:
             mutation_rate = ga.stagnation_mutation_boost
@@ -221,10 +230,10 @@ def run_memetic_ga(config: Config, verbose: bool = True):
             mutation_rate = ga.mutation_rate
 
         # MEMETIC LOCAL SEARCH
-        if generation > 0 and generation % 10 == 0:
+        if generation > 0 and generation % 20 == 0:
             if verbose:
                 print(f"  [*] Running Hill Climb on best chromosome...")
-            improved_chrom = hill_climb(best_chromosome, config, steps=200)
+            improved_chrom = hill_climb(best_chromosome, config, steps=50)
             improved_fit = evaluate_fitness(improved_chrom, config)
             if improved_fit > best_fitness:
                 best_fitness = improved_fit
@@ -265,7 +274,7 @@ def run_memetic_ga(config: Config, verbose: bool = True):
     return best_chromosome, fitness_history
 
 
-def run_island_ga(config: Config, verbose: bool = True):
+def run_island_ga(config: Config, verbose: bool = True, progress_callback=None):
     num_islands = 4
     island_size = max(10, config.ga.population_size // num_islands)
 
@@ -324,6 +333,9 @@ def run_island_ga(config: Config, verbose: bool = True):
             print(
                 f"{generation:>5}  {best_fitness:>7}  {gen_best_fitness:>8}  {status}"
             )
+
+        if progress_callback and generation % 10 == 0:
+            progress_callback(generation, ga.max_generations, best_fitness)
 
         if best_fitness >= ga.target_fitness:
             if generation == 0:
@@ -409,7 +421,7 @@ def roulette_select(scores):
     return len(scores) - 1
 
 
-def run_hyper_heuristic_ga(config: Config, verbose: bool = True):
+def run_hyper_heuristic_ga(config: Config, verbose: bool = True, progress_callback=None):
     from src.operators import mutate_day_move, mutate_room_reassign, mutate_slot_swap
 
     random.seed(config.ga.random_seed)
@@ -460,6 +472,9 @@ def run_hyper_heuristic_ga(config: Config, verbose: bool = True):
             print(
                 f"{generation:>5}  {best_fitness:>7}  {gen_best_fitness:>8}  {scores_str:^16}  {status}"
             )
+
+        if progress_callback and generation % 10 == 0:
+            progress_callback(generation, ga.max_generations, best_fitness)
 
         if best_fitness >= ga.target_fitness:
             if generation == 0:
@@ -535,21 +550,8 @@ from src.fitness import get_penalty_breakdown
 
 def evaluate_nsga2_objectives(chromosome, config: Config):
     bd = get_penalty_breakdown(chromosome, config)
-    hard = (
-        bd["H1_teacher_clash"]
-        + bd["H2_class_clash"]
-        + bd["H3_room_clash"]
-        + bd["H_LAB1_odd_period"]
-        + bd["H_LAB2_next_free"]
-    )
-    soft = (
-        bd["S1_missing_lectures"]
-        + bd["S2_teacher_overload"]
-        + bd["S3_consecutive"]
-        + bd["S4_same_subj_day"]
-        + bd["S8_morning_pref"]
-        + bd["S9_late_period"]
-    )
+    hard = sum(bd["hard_penalties"].values())
+    soft = sum(bd["soft_penalties"].values())
     return hard, soft
 
 
@@ -633,7 +635,7 @@ def nsga2_tournament_select(population, ranks, distances, k=5):
     return population[best_idx]
 
 
-def run_nsga2(config: Config, verbose: bool = True):
+def run_nsga2(config: Config, verbose: bool = True, progress_callback=None):
     random.seed(config.ga.random_seed)
     ga = config.ga
 
@@ -664,6 +666,9 @@ def run_nsga2(config: Config, verbose: bool = True):
         mean_fit = sum(proxy_fitnesses) / len(proxy_fitnesses)
         worst_fit = min(proxy_fitnesses)
         fitness_history.append({"best": best_fit, "mean": mean_fit, "worst": worst_fit})
+
+        if progress_callback and generation % 10 == 0:
+            progress_callback(generation, ga.max_generations, best_fit)
 
         ranks = {}
         for rank, front in enumerate(fronts):

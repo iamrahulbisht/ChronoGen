@@ -12,6 +12,7 @@ import ImportPage from './pages/ImportPage'
 import JobsPage from './pages/JobsPage'
 import JobDetailPage from './pages/JobDetailPage'
 import TimetablePage from './pages/TimetablePage'
+import AnalyticsPage from './pages/AnalyticsPage'
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { retry: 1, staleTime: 30_000 } },
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/" element={<SelectInstitutionPage />} />
           <Route element={<AppShell />}>
             <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/analytics" element={<AnalyticsPage />} />
             <Route path="/rooms" element={<RoomsPage />} />
             <Route path="/teachers" element={<TeachersPage />} />
             <Route path="/subjects" element={<SubjectsPage />} />

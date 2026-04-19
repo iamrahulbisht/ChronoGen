@@ -15,7 +15,7 @@ class GAConfigSchema(BaseModel):
     elitism_count: int = 2
     stagnation_window: int = 50
     stagnation_mutation_boost: float = 0.08
-    target_fitness: int = 9800
+    target_fitness: int = 200001
     random_seed: int = 42
     hard_penalty_weight: int = 1
     soft_penalty_weight: int = 1

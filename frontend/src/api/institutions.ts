@@ -40,3 +40,25 @@ export const importJson = (instId: string, file: File) => {
 
 export const validateInstitution = (instId: string) =>
   api.get(`/api/v1/institutions/${instId}/validate`).then(r => r.data)
+
+export const importExcel = (instId: string, file: File) => {
+  const fd = new FormData()
+  fd.append('file', file)
+  return api.post(`/api/v1/institutions/${instId}/import/excel`, fd, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  }).then(r => r.data)
+}
+
+export const downloadExcelTemplate = (instId: string) => {
+  return api.get(`/api/v1/institutions/${instId}/export/excel-template`, {
+    responseType: 'blob'
+  }).then(r => {
+    const url = window.URL.createObjectURL(new Blob([r.data]))
+    const link = document.createElement('a')
+    link.href = url
+    link.setAttribute('download', `chronogen_template_${instId}.xlsx`)
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  })
+}

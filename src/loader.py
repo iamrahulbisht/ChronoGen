@@ -93,7 +93,7 @@ def load_config(filepath: str) -> Config:
         elitism_count=ga_data.get("elitism_count", 2),
         stagnation_window=ga_data.get("stagnation_window", 50),
         stagnation_mutation_boost=ga_data.get("stagnation_mutation_boost", 0.08),
-        target_fitness=ga_data.get("target_fitness", 9800),
+        target_fitness=ga_data.get("target_fitness", 200001),
         random_seed=ga_data.get("random_seed", 42),
     )
 

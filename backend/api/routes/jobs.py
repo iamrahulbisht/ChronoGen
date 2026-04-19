@@ -35,7 +35,6 @@ def _oid(id_str: str) -> ObjectId:
 @router.post("/", status_code=202)
 async def create_job(
     body: JobCreate,
-    background_tasks: BackgroundTasks,
     db=Depends(get_db),
 ):
     """Start a new timetable generation job."""
@@ -63,8 +62,10 @@ async def create_job(
     result = await db[JOBS].insert_one(job_doc)
     job_id = str(result.inserted_id)
 
-    # Schedule the GA run as a background task
-    background_tasks.add_task(run_job, job_id)
+    # Run GA in a dedicated thread so the server stays responsive
+    import threading
+    t = threading.Thread(target=run_job, args=(job_id,), daemon=True)
+    t.start()
 
     return {
         "job_id": job_id,
@@ -116,6 +117,7 @@ async def get_job(job_id: str, db=Depends(get_db)):
         "status": doc["status"],
         "ga_config": doc["ga_config"],
         "result": doc.get("result"),
+        "progress": doc.get("progress"),
         "export_paths": doc.get("export_paths"),
         "error_message": doc.get("error_message"),
         "started_at": doc.get("started_at"),
@@ -160,16 +162,23 @@ async def get_timetable(
     if not result:
         raise HTTPException(status_code=400, detail="No result data")
 
-    # Select chromosome
-    chromosome_data = result.get("chromosome")
-    if (
-        doc["algorithm"] == "nsga2"
-        and result.get("pareto_front")
-        and pareto_index > 0
-    ):
-        pf = result["pareto_front"]
-        if pareto_index < len(pf):
-            chromosome_data = pf[pareto_index]["chromosome"]
+    # Check revisions first
+    revisions = doc.get("revisions", [])
+    active_idx = doc.get("active_revision_index", -1)
+    
+    if revisions and 0 <= active_idx < len(revisions):
+        chromosome_data = revisions[active_idx]
+    else:
+        # Select chromosome
+        chromosome_data = result.get("chromosome")
+        if (
+            doc["algorithm"] == "nsga2"
+            and result.get("pareto_front")
+            and pareto_index > 0
+        ):
+            pf = result["pareto_front"]
+            if pareto_index < len(pf):
+                chromosome_data = pf[pareto_index]["chromosome"]
 
     if not chromosome_data:
         raise HTTPException(status_code=400, detail="No chromosome data")
@@ -217,9 +226,12 @@ async def get_timetable(
         is_lab = subj_info.get("is_lab", False) if isinstance(subj_info, dict) else False
 
         slot = {
+            "class_id": cid,
             "subject": sid,
             "teacher": teacher_name,
+            "teacher_id": tid,
             "room": room_name,
+            "room_id": rid,
             "is_lab": is_lab,
         }
 
@@ -231,6 +243,7 @@ async def get_timetable(
             "class": cid,
             "subject": sid,
             "room": room_name,
+            "room_id": rid,
         }
 
         # Room timetable
@@ -238,24 +251,39 @@ async def get_timetable(
             "class": cid,
             "subject": sid,
             "teacher": teacher_name,
+            "teacher_id": tid,
         }
-
-        # Handle lab second period
+        
+        # If it's a lab, populate the next period as well
         if is_lab:
-            next_period = str(period + 1)
+            next_period_str = str(period + 1)
             lab_slot = {
-                "subject": f"{sid}(L)",
+                "class_id": cid,
+                "subject": sid,
                 "teacher": teacher_name,
+                "teacher_id": tid,
                 "room": room_name,
+                "room_id": rid,
                 "is_lab": True,
+                "is_lab_second_hour": True
             }
-            class_tt.setdefault(cid, {}).setdefault(day_name, {})[next_period] = lab_slot
-            teacher_tt.setdefault(teacher_name, {}).setdefault(day_name, {})[
-                next_period
-            ] = {"class": cid, "subject": f"{sid}(L)", "room": room_name}
-            room_tt.setdefault(room_name, {}).setdefault(day_name, {})[
-                next_period
-            ] = {"class": cid, "subject": f"{sid}(L)", "teacher": teacher_name}
+            class_tt.setdefault(cid, {}).setdefault(day_name, {})[next_period_str] = lab_slot
+            teacher_tt.setdefault(teacher_name, {}).setdefault(day_name, {})[next_period_str] = {
+                "class": cid,
+                "subject": sid,
+                "room": room_name,
+                "room_id": rid,
+                "is_lab": True,
+                "is_lab_second_hour": True
+            }
+            room_tt.setdefault(room_name, {}).setdefault(day_name, {})[next_period_str] = {
+                "class": cid,
+                "subject": sid,
+                "teacher": teacher_name,
+                "teacher_id": tid,
+                "is_lab": True,
+                "is_lab_second_hour": True
+            }
 
     # Fill empty slots with FREE
     for cid in class_tt:

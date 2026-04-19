@@ -20,10 +20,16 @@ export interface JobResult {
   fitness_history: { best: number; mean: number; worst: number }[] | null;
   chromosome: object[] | null; pareto_front: object[] | null;
 }
+export interface JobProgress {
+  current_generation: number;
+  max_generations: number;
+  best_fitness: number;
+}
 export interface JobResponse {
   job_id: string; institution_id: string; algorithm: string;
   status: 'pending' | 'running' | 'completed' | 'failed';
   ga_config: GAConfigSchema; result: JobResult | null;
+  progress?: JobProgress;
   export_paths: Record<string, unknown> | null;
   error_message: string | null; started_at: string | null;
   completed_at: string | null; created_at: string;

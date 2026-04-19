@@ -18,21 +18,24 @@ def evaluate_fitness(chromosome, config: Config) -> int:
     class_day_periods = defaultdict(lambda: defaultdict(list))
 
     for gene in chromosome:
-        teacher_slot_genes[(gene.teacher_id, gene.day, gene.period)].append(gene)
-        room_slot_genes[(gene.room_id, gene.day, gene.period)].append(gene)
-        class_slot_genes[(gene.class_id, gene.day, gene.period)].append(gene)
-        class_day_subjects[gene.class_id][gene.day].append(gene.subject_id)
-
         subj = config.subjects.get(gene.subject_id)
-        weight = 2 if subj and subj.is_lab else 1
+        is_lab = subj.is_lab if subj else False
+        weight = 2 if is_lab else 1
+        
         teacher_count[gene.teacher_id] += weight
-
         class_subj_count[gene.class_id][gene.subject_id] += 1
-        teacher_day_periods[gene.teacher_id][gene.day].append(gene.period)
-        class_day_periods[gene.class_id][gene.day].append(gene.period)
-        if weight == 2:
-            teacher_day_periods[gene.teacher_id][gene.day].append(gene.period + 1)
-            class_day_periods[gene.class_id][gene.day].append(gene.period + 1)
+        
+        for p_offset in range(weight):
+            curr_p = gene.period + p_offset
+            if curr_p <= config.institution.periods_per_day:
+                teacher_slot_genes[(gene.teacher_id, gene.day, curr_p)].append(gene)
+                class_slot_genes[(gene.class_id, gene.day, curr_p)].append(gene)
+                room_slot_genes[(gene.room_id, gene.day, curr_p)].append(gene)
+                
+                teacher_day_periods[gene.teacher_id][gene.day].append(curr_p)
+                class_day_periods[gene.class_id][gene.day].append(curr_p)
+        
+        class_day_subjects[gene.class_id][gene.day].append(gene.subject_id)
 
     penalty = 0
 
@@ -161,19 +164,16 @@ def evaluate_fitness(chromosome, config: Config) -> int:
             if gene.period % 2 == 0:
                 penalty += 500
 
-            # H_LAB2: next period (period+1) must not have any conflicting class, teacher, or room
+            # H_LAB2: next period must be free from theory
             next_period = gene.period + 1
             if next_period <= config.institution.periods_per_day:
                 if (gene.class_id, gene.day, next_period) in class_occupied_by_theory:
                     penalty += 500
-                if (
-                    gene.teacher_id,
-                    gene.day,
-                    next_period,
-                ) in teacher_occupied_by_theory:
+                elif (gene.teacher_id, gene.day, next_period) in teacher_occupied_by_theory:
                     penalty += 500
-                if (gene.room_id, gene.day, next_period) in room_occupied_by_theory:
+                elif (gene.room_id, gene.day, next_period) in room_occupied_by_theory:
                     penalty += 500
+<<<<<<< Updated upstream
 
                 for other in chromosome:
                     if (
@@ -188,6 +188,20 @@ def evaluate_fitness(chromosome, config: Config) -> int:
                         ):
                             penalty += 500
                             break
+=======
+                else:
+                    # Only penalize if OTHER genes occupy the next slot
+                    c_genes = class_slot_genes.get((gene.class_id, gene.day, next_period), [])
+                    t_genes = teacher_slot_genes.get((gene.teacher_id, gene.day, next_period), [])
+                    r_genes = room_slot_genes.get((gene.room_id, gene.day, next_period), [])
+                    
+                    if any(g.period != gene.period for g in c_genes):
+                         penalty += 500
+                    elif any(g.period != gene.period for g in t_genes):
+                         penalty += 500
+                    elif any(g.period != gene.period for g in r_genes):
+                         penalty += 500
+>>>>>>> Stashed changes
 
     return max(0, MAX_SCORE - penalty)
 
@@ -203,23 +217,27 @@ def get_penalty_breakdown(chromosome, config: Config) -> dict:
     class_day_periods = defaultdict(lambda: defaultdict(list))
 
     for gene in chromosome:
-        teacher_slot_genes[(gene.teacher_id, gene.day, gene.period)].append(gene)
-        room_slot_genes[(gene.room_id, gene.day, gene.period)].append(gene)
-        class_slot_genes[(gene.class_id, gene.day, gene.period)].append(gene)
+        subj = config.subjects.get(gene.subject_id)
+        is_lab = subj.is_lab if subj else False
+        weight = 2 if is_lab else 1
+        
+        teacher_count[gene.teacher_id] += weight
+        class_subj_count[gene.class_id][gene.subject_id] += 1
+        
+        for p_offset in range(weight):
+            curr_p = gene.period + p_offset
+            if curr_p <= config.institution.periods_per_day:
+                teacher_slot_genes[(gene.teacher_id, gene.day, curr_p)].append(gene)
+                class_slot_genes[(gene.class_id, gene.day, curr_p)].append(gene)
+                room_slot_genes[(gene.room_id, gene.day, curr_p)].append(gene)
+                
+                teacher_day_periods[gene.teacher_id][gene.day].append(curr_p)
+                class_day_periods[gene.class_id][gene.day].append(curr_p)
+        
         class_day_subjects[gene.class_id][gene.day].append(gene.subject_id)
 
-        subj = config.subjects.get(gene.subject_id)
-        weight = 2 if subj and subj.is_lab else 1
-        teacher_count[gene.teacher_id] += weight
-
-        class_subj_count[gene.class_id][gene.subject_id] += 1
-        teacher_day_periods[gene.teacher_id][gene.day].append(gene.period)
-        class_day_periods[gene.class_id][gene.day].append(gene.period)
-        if weight == 2:
-            teacher_day_periods[gene.teacher_id][gene.day].append(gene.period + 1)
-            class_day_periods[gene.class_id][gene.day].append(gene.period + 1)
-
     breakdown = {
+<<<<<<< Updated upstream
         "H1_teacher_clash": 0,
         "H2_class_clash": 0,
         "H3_room_clash": 0,
@@ -233,30 +251,53 @@ def get_penalty_breakdown(chromosome, config: Config) -> dict:
         "S6_teacher_gaps": 0,
         "S8_morning_pref": 0,
         "S9_late_period": 0,
+<<<<<<< HEAD
         "S10_room_spread": 0,
+=======
+=======
+        "hard_penalties": {
+            "H1_teacher_clash": 0,
+            "H2_class_clash": 0,
+            "H3_room_clash": 0,
+            "H_LAB1_odd_period": 0,
+            "H_LAB2_next_free": 0,
+        },
+        "soft_penalties": {
+            "S1_missing_lectures": 0,
+            "S2_teacher_overload": 0,
+            "S3_consecutive": 0,
+            "S4_same_subj_day": 0,
+            "S5_class_gaps": 0,
+            "S6_teacher_gaps": 0,
+            "S8_morning_pref": 0,
+            "S9_late_period": 0,
+            "S10_room_spread": 0,
+        }
+>>>>>>> Stashed changes
+>>>>>>> cc0e994 (added API folder which holds the routes and schemas, resolved branch conflicts, and stabilized timetable editor)
     }
 
     for (tid, day, period), genes in teacher_slot_genes.items():
         if len(genes) > 1:
-            breakdown["H1_teacher_clash"] += (len(genes) - 1) * 1000
+            breakdown["hard_penalties"]["H1_teacher_clash"] += (len(genes) - 1) * 1000
 
     for (cid, day, period), genes in class_slot_genes.items():
         if len(genes) > 1:
-            breakdown["H2_class_clash"] += (len(genes) - 1) * 1000
+            breakdown["hard_penalties"]["H2_class_clash"] += (len(genes) - 1) * 1000
 
     for (rid, day, period), genes in room_slot_genes.items():
         if len(genes) > 1:
-            breakdown["H3_room_clash"] += (len(genes) - 1) * 1000
+            breakdown["hard_penalties"]["H3_room_clash"] += (len(genes) - 1) * 1000
 
     for cls in config.classes:
         for entry in cls.curriculum:
             actual = class_subj_count[cls.id][entry.subject_id]
             missing = max(0, entry.min_per_week - actual)
-            breakdown["S1_missing_lectures"] += missing * 10
+            breakdown["soft_penalties"]["S1_missing_lectures"] += missing * 10
 
     for tid, teacher in config.teachers.items():
         excess = max(0, teacher_count[tid] - teacher.max_lectures_per_week)
-        breakdown["S2_teacher_overload"] += excess * 5
+        breakdown["soft_penalties"]["S2_teacher_overload"] += excess * 5
 
     for tid, day_map in teacher_day_periods.items():
         teacher = config.teachers.get(tid)
@@ -269,7 +310,7 @@ def get_penalty_breakdown(chromosome, config: Config) -> dict:
                 if sorted_periods[i] == sorted_periods[i - 1] + 1:
                     run += 1
                     if run > teacher.max_consecutive_lectures:
-                        breakdown["S3_consecutive"] += 3
+                        breakdown["soft_penalties"]["S3_consecutive"] += 3
                 else:
                     run = 1
 
@@ -278,19 +319,19 @@ def get_penalty_breakdown(chromosome, config: Config) -> dict:
             seen = set()
             for s in subj_list:
                 if s in seen:
-                    breakdown["S4_same_subj_day"] += 2
+                    breakdown["soft_penalties"]["S4_same_subj_day"] += 2
                 seen.add(s)
 
     half = config.institution.periods_per_day // 2
     for gene in chromosome:
         teacher = config.teachers.get(gene.teacher_id)
         if teacher and teacher.prefers_morning and gene.period > half:
-            breakdown["S8_morning_pref"] += 2
+            breakdown["soft_penalties"]["S8_morning_pref"] += 2
 
     EARLY_PERIOD_CUTOFF = 4
     for gene in chromosome:
         if gene.period > EARLY_PERIOD_CUTOFF:
-            breakdown["S9_late_period"] += (gene.period - EARLY_PERIOD_CUTOFF) * 1
+            breakdown["soft_penalties"]["S9_late_period"] += (gene.period - EARLY_PERIOD_CUTOFF) * 1
 
     for cid, day_map in class_day_periods.items():
         for day, periods in day_map.items():
@@ -299,7 +340,7 @@ def get_penalty_breakdown(chromosome, config: Config) -> dict:
             sorted_p = sorted(set(periods))
             gaps = (sorted_p[-1] - sorted_p[0] + 1) - len(sorted_p)
             if gaps > 0:
-                breakdown["S5_class_gaps"] += gaps * 1
+                breakdown["soft_penalties"]["S5_class_gaps"] += gaps * 1
 
     for tid, day_map in teacher_day_periods.items():
         for day, periods in day_map.items():
@@ -308,7 +349,7 @@ def get_penalty_breakdown(chromosome, config: Config) -> dict:
             sorted_p = sorted(set(periods))
             gaps = (sorted_p[-1] - sorted_p[0] + 1) - len(sorted_p)
             if gaps > 0:
-                breakdown["S6_teacher_gaps"] += gaps * 1
+                breakdown["soft_penalties"]["S6_teacher_gaps"] += gaps * 1
 
     # S10: Minimize distinct classrooms per section (weight 3)
     class_theory_rooms = defaultdict(set)
@@ -319,8 +360,12 @@ def get_penalty_breakdown(chromosome, config: Config) -> dict:
     for cid, rooms_used in class_theory_rooms.items():
         extra = len(rooms_used) - 1
         if extra > 0:
+<<<<<<< HEAD
             breakdown["S10_room_spread"] += extra * 3
 
+=======
+            breakdown["soft_penalties"]["S10_room_spread"] += extra * 3
+>>>>>>> cc0e994 (added API folder which holds the routes and schemas, resolved branch conflicts, and stabilized timetable editor)
     class_occupied_by_theory = set()
     teacher_occupied_by_theory = set()
     room_occupied_by_theory = set()
@@ -335,35 +380,31 @@ def get_penalty_breakdown(chromosome, config: Config) -> dict:
         subj = config.subjects.get(gene.subject_id)
         if subj and subj.is_lab:
             if gene.period % 2 == 0:
-                breakdown["H_LAB1_odd_period"] += 500
+                breakdown["hard_penalties"]["H_LAB1_odd_period"] += 500
             next_period = gene.period + 1
             if next_period <= config.institution.periods_per_day:
                 if (gene.class_id, gene.day, next_period) in class_occupied_by_theory:
-                    breakdown["H_LAB2_next_free"] += 500
-                if (
-                    gene.teacher_id,
-                    gene.day,
-                    next_period,
-                ) in teacher_occupied_by_theory:
-                    breakdown["H_LAB2_next_free"] += 500
-                if (gene.room_id, gene.day, next_period) in room_occupied_by_theory:
-                    breakdown["H_LAB2_next_free"] += 500
+                    breakdown["hard_penalties"]["H_LAB2_next_free"] += 500
+                elif (gene.teacher_id, gene.day, next_period) in teacher_occupied_by_theory:
+                    breakdown["hard_penalties"]["H_LAB2_next_free"] += 500
+                elif (gene.room_id, gene.day, next_period) in room_occupied_by_theory:
+                    breakdown["hard_penalties"]["H_LAB2_next_free"] += 500
+                else:
+                    c_genes = class_slot_genes.get((gene.class_id, gene.day, next_period), [])
+                    t_genes = teacher_slot_genes.get((gene.teacher_id, gene.day, next_period), [])
+                    r_genes = room_slot_genes.get((gene.room_id, gene.day, next_period), [])
 
-                for other in chromosome:
-                    if (
-                        other is not gene
-                        and other.day == gene.day
-                        and other.period == next_period
-                    ):
-                        if (
-                            other.class_id == gene.class_id
-                            or other.teacher_id == gene.teacher_id
-                            or other.room_id == gene.room_id
-                        ):
-                            breakdown["H_LAB2_next_free"] += 500
-                            break
+                    if any(g.period != gene.period for g in c_genes):
+                         breakdown["hard_penalties"]["H_LAB2_next_free"] += 500
+                    elif any(g.period != gene.period for g in t_genes):
+                         breakdown["hard_penalties"]["H_LAB2_next_free"] += 500
+                    elif any(g.period != gene.period for g in r_genes):
+                         breakdown["hard_penalties"]["H_LAB2_next_free"] += 500
 
-    total_penalty = sum(breakdown.values())
+    total_penalty = 0
+    for p_group in [breakdown["hard_penalties"], breakdown["soft_penalties"]]:
+        total_penalty += sum(p_group.values())
+        
     breakdown["total_penalty"] = total_penalty
     breakdown["fitness"] = max(0, MAX_SCORE - total_penalty)
     return breakdown

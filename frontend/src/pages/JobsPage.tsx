@@ -21,7 +21,7 @@ const ALGORITHMS = [
   { value: 'nsga2', label: 'NSGA-II', desc: 'Multi-objective Pareto search' },
 ]
 
-const defaultConfig = { population_size: 100, max_generations: 500, crossover_rate: 0.85, mutation_rate: 0.02, tournament_size: 5, elitism_count: 2, stagnation_window: 50, stagnation_mutation_boost: 0.08, target_fitness: 9800, random_seed: 42, hard_penalty_weight: 1, soft_penalty_weight: 1 }
+const defaultConfig = { population_size: 100, max_generations: 500, crossover_rate: 0.85, mutation_rate: 0.02, tournament_size: 5, elitism_count: 2, stagnation_window: 50, stagnation_mutation_boost: 0.08, target_fitness: 200001, random_seed: 42, hard_penalty_weight: 1, soft_penalty_weight: 1 }
 
 export default function JobsPage() {
   const { institutionId } = useInstitutionStore()

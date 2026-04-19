@@ -7,6 +7,7 @@ import os
 import shutil
 import sys
 import traceback
+import importlib
 from datetime import datetime, timezone
 
 from bson import ObjectId
@@ -16,14 +17,7 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(_
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
-from src.engine import (
-    run_ga,
-    run_hyper_heuristic_ga,
-    run_island_ga,
-    run_memetic_ga,
-    run_nsga2,
-)
-from src.fitness import get_penalty_breakdown
+# engine and fitness functions are imported inside run_job to support hot-reloading
 from src.models import (
     Class,
     Config,
@@ -133,7 +127,7 @@ def build_config_from_db(institution_id: str, ga_config_dict: dict, db) -> Confi
         elitism_count=ga_config_dict.get("elitism_count", 2),
         stagnation_window=ga_config_dict.get("stagnation_window", 50),
         stagnation_mutation_boost=ga_config_dict.get("stagnation_mutation_boost", 0.08),
-        target_fitness=ga_config_dict.get("target_fitness", 9800),
+        target_fitness=ga_config_dict.get("target_fitness", 200001),
         random_seed=ga_config_dict.get("random_seed", 42),
         hard_penalty_weight=ga_config_dict.get("hard_penalty_weight", 1),
         soft_penalty_weight=ga_config_dict.get("soft_penalty_weight", 1),
@@ -181,8 +175,29 @@ def run_job(job_id: str):
         algorithm = job_doc["algorithm"]
         ga_config_dict = job_doc["ga_config"]
 
+        # Force reload modules to ensure latest logic is used
+        import src.fitness
+        import src.engine
+        importlib.reload(src.fitness)
+        importlib.reload(src.engine)
+        
+        from src.engine import run_ga, run_memetic_ga, run_island_ga, run_hyper_heuristic_ga, run_nsga2
+        from src.fitness import get_penalty_breakdown
+
         # Build Config from DB
         config = build_config_from_db(institution_id, ga_config_dict, db)
+
+        def progress_callback(gen, max_gen, best_fit):
+            db[JOBS].update_one(
+                {"_id": oid},
+                {"$set": {
+                    "progress": {
+                        "current_generation": gen,
+                        "max_generations": max_gen,
+                        "best_fitness": int(best_fit)
+                    }
+                }}
+            )
 
         # Create job-specific output folder
         output_base = os.path.join(PROJECT_ROOT, "output", job_id)
@@ -201,18 +216,18 @@ def run_job(job_id: str):
         pareto_data = None
 
         if algorithm == "basic_ga":
-            best_chromosome, fitness_history = run_ga(config, verbose=False)
+            best_chromosome, fitness_history = run_ga(config, verbose=False, progress_callback=progress_callback)
         elif algorithm == "memetic_ga":
-            best_chromosome, fitness_history = run_memetic_ga(config, verbose=False)
+            best_chromosome, fitness_history = run_memetic_ga(config, verbose=False, progress_callback=progress_callback)
         elif algorithm == "island_ga":
-            best_chromosome, fitness_history = run_island_ga(config, verbose=False)
+            best_chromosome, fitness_history = run_island_ga(config, verbose=False, progress_callback=progress_callback)
         elif algorithm == "hyper_heuristic":
             best_chromosome, fitness_history = run_hyper_heuristic_ga(
-                config, verbose=False
+                config, verbose=False, progress_callback=progress_callback
             )
         elif algorithm == "nsga2":
             pareto_front, pareto_objs, fitness_history = run_nsga2(
-                config, verbose=False
+                config, verbose=False, progress_callback=progress_callback
             )
             # Auto-select best: minimum hard penalty, then minimum soft penalty
             idx = min(
@@ -263,7 +278,7 @@ def run_job(job_id: str):
         save_room_timetable_csv(best_chromosome, config, room_dir)
         save_chromosome_json(best_chromosome, charts_dir)
         plot_fitness_history_matplotlib(fitness_history, charts_dir)
-        generate_html_report(config, charts_dir)
+        generate_html_report(config, charts_dir, chromosome=best_chromosome)
 
         # Build export paths (relative to project root output/)
         export_paths = {
@@ -276,15 +291,17 @@ def run_job(job_id: str):
         }
 
         # Build result
+        flat_breakdown = {}
+        if "hard_penalties" in breakdown:
+            flat_breakdown.update(breakdown["hard_penalties"])
+        if "soft_penalties" in breakdown:
+            flat_breakdown.update(breakdown["soft_penalties"])
+
         result = {
             "fitness_score": breakdown.get("fitness"),
             "total_penalty": breakdown.get("total_penalty"),
             "generations_run": len(fitness_history),
-            "constraint_breakdown": {
-                k: v
-                for k, v in breakdown.items()
-                if k not in ("total_penalty", "fitness")
-            },
+            "constraint_breakdown": flat_breakdown,
             "fitness_history": fitness_history,
             "chromosome": chromosome_data,
             "pareto_front": pareto_data,

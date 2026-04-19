@@ -208,6 +208,8 @@ def plot_fitness_history(fitness_history):
 def plot_fitness_history_matplotlib(
     fitness_history, output_dir: str = "output/visual_charts"
 ):
+    import matplotlib
+    matplotlib.use('Agg')
     import matplotlib.pyplot as plt
 
     os.makedirs(output_dir, exist_ok=True)
@@ -261,29 +263,101 @@ def save_chromosome_json(chromosome, output_dir: str = "output/visual_charts"):
     print(f"  Saved: {filepath}")
 
 
-def generate_html_report(config: Config, output_dir: str = "output/visual_charts"):
+def generate_html_report(config: Config, output_dir: str = "output/visual_charts", chromosome=None):
+    from src.fitness import get_penalty_breakdown
     os.makedirs(output_dir, exist_ok=True)
-    html_content = f"""
-    <html>
-    <head>
-        <title>ChronoGen Timetable Report</title>
-        <style>
-            body {{ font-family: sans-serif; padding: 20px; }}
-            h1 {{ color: #2c3e50; }}
-            img {{ max-width: 100%; height: auto; border: 1px solid #ccc; }}
-        </style>
-    </head>
-    <body>
-        <h1>ChronoGen Genetic Algorithm Report</h1>
-        <h2>Fitness Convergence</h2>
-        <img src="convergence_plot.png" alt="Fitness Plot">
-        <p>The convergence chart illustrates the optimization journey.</p>
-        <p>Please refer to the <b>timetable_for_students/</b>, <b>timetable_for_teachers/</b>, and <b>timetable_for_rooms/</b> folders for exact CSV tables.</p>
-    </body>
-    </html>
-    """
+
+    # Build stats section
+    stats_html = ""
+    timetable_html = ""
+    if chromosome:
+        bd = get_penalty_breakdown(chromosome, config)
+        hard_v = sum(bd["hard_penalties"].values())
+        soft_v = sum(bd["soft_penalties"].values())
+        fitness = bd["fitness"]
+
+        stats_html = f"""
+        <div class="stats-grid">
+            <div class="stat-card"><div class="stat-label">Fitness Score</div><div class="stat-value" style="color:#22c55e">{fitness:,}</div></div>
+            <div class="stat-card"><div class="stat-label">Hard Violations</div><div class="stat-value" style="color:{'#ef4444' if hard_v > 0 else '#22c55e'}">{hard_v}</div></div>
+            <div class="stat-card"><div class="stat-label">Soft Penalties</div><div class="stat-value" style="color:#f59e0b">{soft_v}</div></div>
+        </div>
+        """
+
+        # Build timetable grids
+        teachers = {t_id: t.name for t_id, t in config.teachers.items()}
+        rooms_map = {r_id: r.name for r_id, r in config.rooms.items()}
+
+        timetable_html += "<h2 class='section-title'>Class Timetables</h2>"
+        for cls in config.classes:
+            grid = {}
+            for gene in chromosome:
+                if gene.class_id == cls.id:
+                    t_name = teachers.get(gene.teacher_id, gene.teacher_id)
+                    r_name = rooms_map.get(gene.room_id, gene.room_id)
+                    grid[(gene.day, gene.period)] = f"<b>{gene.subject_id}</b><br><small>{t_name} &bull; {r_name}</small>"
+                    subj = config.subjects.get(gene.subject_id)
+                    if subj and subj.is_lab:
+                        grid[(gene.day, gene.period + 1)] = f"<b>{gene.subject_id} (Lab)</b><br><small>{t_name} &bull; {r_name}</small>"
+
+            table = f"<div class='timetable-card'><h3>{cls.name} ({cls.id})</h3><table><tr><th></th>"
+            for p in range(1, config.institution.periods_per_day + 1):
+                table += f"<th>P{p}</th>"
+            table += "</tr>"
+            for d in range(1, config.institution.days_per_week + 1):
+                table += f"<tr><td class='day-name'>{DAY_NAMES.get(d, f'D{d}')}</td>"
+                for p in range(1, config.institution.periods_per_day + 1):
+                    cell = grid.get((d, p), "<span class='free'>FREE</span>")
+                    table += f"<td>{cell}</td>"
+                table += "</tr>"
+            table += "</table></div>"
+            timetable_html += table
+
+    html_content = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ChronoGen Timetable Report</title>
+    <style>
+        :root {{ --bg:#0a0a0f; --surface:#14141d; --accent:#6c63ff; --text:#e1e1e6; --dim:#88889a; --border:#242430; }}
+        body {{ font-family:'Segoe UI',sans-serif; background:var(--bg); color:var(--text); margin:0; padding:40px; }}
+        .header {{ text-align:center; margin-bottom:40px; padding-bottom:30px; border-bottom:1px solid var(--border); }}
+        h1 {{ font-size:2.5rem; font-weight:900; color:var(--accent); margin:0; letter-spacing:-1px; }}
+        .stats-grid {{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:40px; }}
+        .stat-card {{ background:var(--surface); padding:24px; border-radius:16px; border:1px solid var(--border); text-align:center; }}
+        .stat-label {{ font-size:10px; font-weight:700; color:var(--dim); text-transform:uppercase; letter-spacing:2px; }}
+        .stat-value {{ font-size:2rem; font-weight:900; margin-top:8px; }}
+        .section-title {{ font-size:1.2rem; font-weight:900; text-transform:uppercase; letter-spacing:1px; margin:40px 0 20px; border-left:4px solid var(--accent); padding-left:12px; }}
+        .chart-section {{ background:var(--surface); padding:30px; border-radius:20px; border:1px solid var(--border); margin-bottom:40px; }}
+        .timetable-card {{ background:var(--surface); padding:20px; border-radius:16px; border:1px solid var(--border); margin-bottom:20px; overflow-x:auto; }}
+        .timetable-card h3 {{ font-size:14px; font-weight:800; color:var(--accent); margin:0 0 12px; text-transform:uppercase; letter-spacing:1px; }}
+        table {{ width:100%; border-collapse:separate; border-spacing:2px; table-layout:fixed; }}
+        th {{ background:rgba(108,99,255,0.1); padding:8px; font-size:10px; font-weight:800; color:var(--accent); text-transform:uppercase; border-radius:6px; }}
+        td {{ background:rgba(255,255,255,0.02); padding:10px 6px; text-align:center; border-radius:6px; font-size:11px; vertical-align:middle; }}
+        .day-name {{ font-weight:800; color:var(--dim); text-transform:uppercase; font-size:10px; background:transparent; }}
+        .free {{ opacity:0.15; font-weight:800; }}
+        img.plot {{ width:100%; border-radius:12px; }}
+        .footer {{ text-align:center; margin-top:60px; color:var(--dim); font-size:11px; border-top:1px solid var(--border); padding-top:30px; }}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>CHRONOGEN</h1>
+        <p style="color:var(--dim);font-weight:700;letter-spacing:3px;margin-top:8px">TIMETABLE REPORT &bull; {config.institution.name}</p>
+    </div>
+    {stats_html}
+    <div class="chart-section">
+        <h2 class="section-title">Fitness Convergence</h2>
+        <img src="convergence_plot.png" class="plot" alt="Convergence Plot">
+    </div>
+    {timetable_html}
+    <div class="footer">
+        <p>&copy; 2026 ChronoGen Analytics Engine</p>
+    </div>
+</body>
+</html>"""
     filepath = os.path.join(output_dir, "timetable_report.html")
-    with open(filepath, "w") as f:
+    with open(filepath, "w", encoding="utf-8") as f:
         f.write(html_content)
     print(f"  Saved: {filepath}")
 
