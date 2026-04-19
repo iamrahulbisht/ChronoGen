@@ -219,7 +219,6 @@ def get_penalty_breakdown(chromosome, config: Config) -> dict:
         class_day_subjects[gene.class_id][gene.day].append(gene.subject_id)
 
     breakdown = {
-    breakdown = {
         "hard_penalties": {
             "H1_teacher_clash": 0,
             "H2_class_clash": 0,
