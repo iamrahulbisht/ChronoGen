@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import type { AnalyzeChangeResponse, Suggestion, SubstituteTeacher } from '../api/analyzer';
 import Button from './ui/Button';
 import Badge from './ui/Badge';
-import { Zap, TrendingUp, AlertCircle, CheckCircle2, Trash2, Edit3, Save, X, Plus } from 'lucide-react';
+import { Zap, TrendingUp, AlertCircle, CheckCircle2, Trash2, Edit3, Plus } from 'lucide-react';
 import Spinner from './ui/Spinner';
 
 const CONSTRAINT_DESCRIPTIONS: Record<string, string> = {
