@@ -32,18 +32,18 @@ interface ImpactPanelProps {
     onFindSubstitutes: () => void;
     substitutes: SubstituteTeacher[] | null;
     isFindingSubstitutes: boolean;
-    sourceSlot?: {class_id: string, day: number, period: number, isFree?: boolean} | null;
+    sourceSlot?: { class_id: string, day: number, period: number, isFree?: boolean } | null;
     onDeleteSlot?: () => void;
     onAddSlot?: (subject: string, teacher: string, room: string) => void;
 }
 
-export default function ImpactPanel({ 
-    analysis, 
-    isLoading, 
-    onApply, 
-    onUseSuggestion, 
-    onAutoFix, 
-    onCancel, 
+export default function ImpactPanel({
+    analysis,
+    isLoading,
+    onApply,
+    onUseSuggestion,
+    onAutoFix,
+    onCancel,
     onFindSubstitutes,
     substitutes,
     isFindingSubstitutes,
@@ -138,7 +138,7 @@ export default function ImpactPanel({
                                                 <p className="text-xl font-black text-text-primary tracking-tight">{addSubject}</p>
                                                 <p className="text-base font-bold text-text-secondary mt-1">{addTeacher} • {addRoom}</p>
                                             </div>
-                                            <button 
+                                            <button
                                                 onClick={() => setIsEditing(!isEditing)}
                                                 className="p-3 hover:bg-accent/10 rounded-2xl text-text-muted hover:text-accent transition-all shadow-sm"
                                                 title="Edit Details"
@@ -148,11 +148,11 @@ export default function ImpactPanel({
                                         </div>
 
                                         <div className="flex gap-4 mt-8 pt-8 border-t border-border/50">
-                                            <Button 
-                                                variant="primary" 
-                                                size="sm" 
-                                                className="flex-1 h-16 text-base font-black gap-3 shadow-2xl shadow-accent/30" 
-                                                onClick={onFindSubstitutes} 
+                                            <Button
+                                                variant="primary"
+                                                size="sm"
+                                                className="flex-1 h-16 text-base font-black gap-3 shadow-2xl shadow-accent/30"
+                                                onClick={onFindSubstitutes}
                                                 disabled={isFindingSubstitutes}
                                             >
                                                 {isFindingSubstitutes ? <Spinner size={20} /> : <TrendingUp size={24} />}
@@ -174,7 +174,7 @@ export default function ImpactPanel({
                                                 (() => {
                                                     const qualified = substitutes.filter(s => s.is_qualified);
                                                     const freeUnqualified = substitutes.filter(s => !s.is_qualified && s.is_free);
-                                                    
+
                                                     return (
                                                         <>
                                                             <div className="space-y-4">
@@ -292,7 +292,7 @@ export default function ImpactPanel({
                                     <div className="space-y-5 text-left">
                                         <div className="space-y-2">
                                             <label className="text-[10px] font-black text-text-secondary uppercase tracking-widest ml-1">Subject Code</label>
-                                            <input 
+                                            <input
                                                 className="w-full h-14 bg-elevated border border-border rounded-2xl px-5 text-sm font-bold focus:ring-2 ring-accent/50 outline-none transition-all"
                                                 placeholder="e.g. CS101"
                                                 value={addSubject}
@@ -301,7 +301,7 @@ export default function ImpactPanel({
                                         </div>
                                         <div className="space-y-2">
                                             <label className="text-[10px] font-black text-text-secondary uppercase tracking-widest ml-1">Teacher ID</label>
-                                            <input 
+                                            <input
                                                 className="w-full h-14 bg-elevated border border-border rounded-2xl px-5 text-sm font-bold focus:ring-2 ring-accent/50 outline-none transition-all"
                                                 placeholder="e.g. T001"
                                                 value={addTeacher}
@@ -310,7 +310,7 @@ export default function ImpactPanel({
                                         </div>
                                         <div className="space-y-2">
                                             <label className="text-[10px] font-black text-text-secondary uppercase tracking-widest ml-1">Room ID</label>
-                                            <input 
+                                            <input
                                                 className="w-full h-14 bg-elevated border border-border rounded-2xl px-5 text-sm font-bold focus:ring-2 ring-accent/50 outline-none transition-all"
                                                 placeholder="e.g. R101"
                                                 value={addRoom}
@@ -319,8 +319,8 @@ export default function ImpactPanel({
                                         </div>
                                     </div>
 
-                                    <Button 
-                                        variant="primary" 
+                                    <Button
+                                        variant="primary"
                                         className="w-full h-16 text-lg font-black shadow-2xl shadow-accent/20"
                                         disabled={!addSubject || !addTeacher || !addRoom}
                                         onClick={() => onAddSlot?.(addSubject, addTeacher, addRoom)}
@@ -390,7 +390,7 @@ export default function ImpactPanel({
                                 {(() => {
                                     const afterDetails = { ...analysis.penalty_details.hard_penalties, ...analysis.penalty_details.soft_penalties };
                                     const beforeDetails = { ...analysis.penalty_details_before.hard_penalties, ...analysis.penalty_details_before.soft_penalties };
-                                    
+
                                     const newViolations = Object.entries(afterDetails)
                                         .map(([key, count]) => ({ key, delta: (count as number) - (beforeDetails[key] as number || 0) }))
                                         .filter(v => v.delta > 0);
@@ -399,7 +399,7 @@ export default function ImpactPanel({
                                         return <p className="text-[11px] text-success italic flex items-center gap-2"><CheckCircle2 size={12} /> No new violations introduced.</p>;
                                     }
 
-                                    return newViolations.map(({key, delta}) => (
+                                    return newViolations.map(({ key, delta }) => (
                                         <div key={key} className="space-y-1.5 group p-2.5 bg-red-500/5 rounded-lg border border-red-500/10">
                                             <div className="flex justify-between items-center">
                                                 <span className="text-[11px] font-bold text-text-primary group-hover:text-accent transition-colors">
@@ -423,7 +423,7 @@ export default function ImpactPanel({
                 {/* Conflict Map */}
                 <section className="space-y-3">
                     <h4 className="text-[10px] font-black text-text-secondary uppercase tracking-widest border-l-2 border-danger pl-2">
-                      Cross-Section Conflict Map
+                        Cross-Section Conflict Map
                     </h4>
                     {ripple_effect.direct_conflicts.length === 0 ? (
                         <div className="bg-success/5 border border-success/10 rounded-xl p-3 flex items-center gap-3">
@@ -436,21 +436,21 @@ export default function ImpactPanel({
                                 const label = c.type === 'teacher'
                                     ? `${c.id} is already teaching in ${c.clashed_with_class} at this time`
                                     : c.type === 'room'
-                                    ? `Room ${c.id} is occupied by ${c.clashed_with_class} at this time`
-                                    : `Class ${c.id} already has a lecture at this slot`;
+                                        ? `Room ${c.id} is occupied by ${c.clashed_with_class} at this time`
+                                        : `Class ${c.id} already has a lecture at this slot`;
                                 return (
-                                <div key={i} className="p-3 bg-red-500/5 border border-red-500/10 rounded-xl space-y-1.5">
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-6 h-6 rounded-md bg-red-500/20 flex items-center justify-center text-red-500 text-[10px] font-black flex-shrink-0">!</div>
-                                        <span className="text-[10px] font-black text-danger uppercase tracking-tight">
-                                          {c.type} clash — {c.clashed_with_class || 'Unknown'}
-                                        </span>
-                                        <Badge variant="outline" className="text-[8px] ml-auto flex-shrink-0">D{c.day} P{c.period}</Badge>
+                                    <div key={i} className="p-3 bg-red-500/5 border border-red-500/10 rounded-xl space-y-1.5">
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-6 h-6 rounded-md bg-red-500/20 flex items-center justify-center text-red-500 text-[10px] font-black flex-shrink-0">!</div>
+                                            <span className="text-[10px] font-black text-danger uppercase tracking-tight">
+                                                {c.type} clash — {c.clashed_with_class || 'Unknown'}
+                                            </span>
+                                            <Badge variant="outline" className="text-[8px] ml-auto flex-shrink-0">D{c.day} P{c.period}</Badge>
+                                        </div>
+                                        <p className="text-[11px] text-text-secondary leading-relaxed pl-8">
+                                            {label}
+                                        </p>
                                     </div>
-                                    <p className="text-[11px] text-text-secondary leading-relaxed pl-8">
-                                        {label}
-                                    </p>
-                                </div>
                                 );
                             })}
                         </div>
@@ -468,7 +468,7 @@ export default function ImpactPanel({
                                 <div key={i} className="group p-3 rounded-xl bg-elevated border border-border hover:border-accent/50 transition-all flex items-center justify-between">
                                     <div>
                                         <div className="flex items-center gap-2 mb-1">
-                                            <Badge variant="success" className="text-[8px]">Option {i+1}</Badge>
+                                            <Badge variant="success" className="text-[8px]">Option {i + 1}</Badge>
                                             <span className="text-[11px] font-bold text-text-primary">D{s.day} Period {s.period}</span>
                                         </div>
                                         <p className={`text-[10px] font-medium flex items-center gap-1 ${s.penalty_delta <= 0 ? 'text-success' : 'text-warning'}`}>
@@ -489,7 +489,15 @@ export default function ImpactPanel({
                                             </div>
                                         )}
                                     </div>
-                                    <Button size="xs" variant={s.penalty_delta <= 0 ? "primary" : "outline"} onClick={() => onUseSuggestion(s)} className={`opacity-0 group-hover:opacity-100 shadow-lg ${s.penalty_delta <= 0 ? 'shadow-accent/20' : ''}`}>Use</Button>
+                                    <Button
+                                        size="sm"
+                                        variant={s.penalty_delta <= 0 ? "primary" : "secondary"}
+                                        onClick={() => onUseSuggestion(s)}
+                                        className={`opacity-0 group-hover:opacity-100 shadow-lg ${s.penalty_delta <= 0 ? 'shadow-accent/20' : ''
+                                            }`}
+                                    >
+                                        Use
+                                    </Button>
                                 </div>
                             ))}
                         </div>
@@ -501,7 +509,7 @@ export default function ImpactPanel({
                     <Button className="w-full h-11 text-sm font-bold shadow-xl" variant={penalty_delta <= 0 ? 'primary' : 'danger'} onClick={() => onApply(analysis.modified_chromosome)}>
                         {penalty_delta <= 0 ? 'Apply Optimized' : 'Apply Anyway'}
                     </Button>
-                    
+
                     {hill_climbed_chromosome && hill_climb_improved && (
                         <Button className="w-full h-11 relative overflow-hidden group shadow-lg" variant="primary" onClick={() => onAutoFix(hill_climbed_chromosome)}>
                             <div className="absolute inset-0 bg-gradient-to-r from-accent/40 to-transparent group-hover:scale-110 transition-transform"></div>
@@ -510,7 +518,7 @@ export default function ImpactPanel({
                             </span>
                         </Button>
                     )}
-                    
+
                     <button onClick={onCancel} className="w-full text-xs font-bold text-text-muted hover:text-text-primary uppercase tracking-widest transition-colors py-2">Discard Changes</button>
                 </div>
             </div>
