@@ -13,7 +13,28 @@ const statusColors: Record<string, string> = {
   lecture_hall: 'bg-teal-500/10 text-teal-400',
 }
 
-export default function Badge({ children, variant }: { children: React.ReactNode; variant?: string }) {
+type BadgeProps = {
+  children: React.ReactNode
+  variant?: string
+  className?: string
+}
+
+export default function Badge({
+  children,
+  variant,
+  className,
+}: BadgeProps) {
   const color = statusColors[variant || ''] || 'bg-elevated text-text-secondary'
-  return <span className={cn('rounded-full px-2 py-0.5 text-xs font-medium inline-block', color)}>{children}</span>
+
+  return (
+    <span
+      className={cn(
+        'rounded-full px-2 py-0.5 text-xs font-medium inline-block',
+        color,
+        className
+      )}
+    >
+      {children}
+    </span>
+  )
 }
