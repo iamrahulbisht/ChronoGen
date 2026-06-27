@@ -12,7 +12,7 @@ Every school or university has to build a timetable before each term starts. It 
 </p>
 
 ## Try ChronoGen here
-[https://return0-chronogen.vercel.app/](https://chrono-gen-web.vercel.app/)
+[https://chrono-gen-web.vercel.app/](https://chrono-gen-web.vercel.app/)
 
 ## What it Does
 
