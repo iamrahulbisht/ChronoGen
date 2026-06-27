@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useInstitutionStore } from '../../store/institutionStore'
 import { useQueryClient } from '@tanstack/react-query'
-import { LayoutDashboard, DoorOpen, Users, BookOpen, ClipboardList, Download, Settings, ExternalLink, ArrowLeftRight, TrendingUp } from 'lucide-react'
+import { LayoutDashboard, DoorOpen, Users, BookOpen, ClipboardList, Download, Settings, ExternalLink, ArrowLeftRight } from 'lucide-react'
 
 const navItems = [
   { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },

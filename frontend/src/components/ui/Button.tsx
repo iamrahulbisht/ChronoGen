@@ -1,3 +1,5 @@
+import { cn } from '../../utils/cn'
+
 const variants: Record<string, string> = {
   primary: 'bg-accent hover:bg-accent-hover text-white',
   secondary: 'bg-transparent border border-border text-text-secondary hover:border-accent hover:text-accent',
