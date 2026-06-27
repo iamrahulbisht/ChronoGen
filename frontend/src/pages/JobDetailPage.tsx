@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { getJob, getTimetable } from '../api/jobs'
 import { getInstitution } from '../api/institutions'
@@ -8,14 +8,14 @@ import { useInstitutionStore } from '../store/institutionStore'
 import Badge from '../components/ui/Badge'
 import Button from '../components/ui/Button'
 import Spinner from '../components/ui/Spinner'
-import { formatDate, truncateId, formatScore } from '../utils/formatters'
-import { Download, Undo2, Redo2, Plus, ArrowLeft, TrendingUp, Copy } from 'lucide-react'
+import { truncateId, formatScore } from '../utils/formatters'
+import { Download, Undo2, Redo2, Plus, ArrowLeft, TrendingUp, AlertCircle, CheckCircle2, FileText, Image, FileJson } from 'lucide-react'
 import ImpactPanel from '../components/ImpactPanel'
 import { analyzeChange, commitChange, undoChange, redoChange, getSubstitutes } from '../api/analyzer'
 import type { AnalyzeChangeResponse, SubstituteTeacher } from '../api/analyzer'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 import toast from 'react-hot-toast'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, Cell, AreaChart, Area } from 'recharts'
+import { XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, Cell, AreaChart, Area } from 'recharts'
 import { BASE_URL } from '../api/client'
 import Modal from '../components/ui/Modal'
 
@@ -43,7 +43,7 @@ type TabMode = 'timetable' | 'analytics'
 export default function JobDetailPage() {
   const { jobId } = useParams<{ jobId: string }>()
   const { institutionId } = useInstitutionStore()
-  const nav = useNavigate()
+  
   const queryClient = useQueryClient()
 
   // Tabs
@@ -52,7 +52,7 @@ export default function JobDetailPage() {
   // View states
   const [view, setView] = useState<ViewMode>('class')
   const [selected, setSelected] = useState('')
-  const [pareto, setPareto] = useState(0)
+  const [pareto] = useState(0)
   const [preview, setPreview] = useState<{ type: string, title: string, url: string, content?: string, loading?: boolean } | null>(null)
   const [substitutes, setSubstitutes] = useState<SubstituteTeacher[] | null>(null);
   const [isFindingSubstitutes, setIsFindingSubstitutes] = useState(false);
@@ -79,9 +79,9 @@ export default function JobDetailPage() {
 
   const isCompleted = job?.status === 'completed'
   const isPolling = job?.status === 'pending' || job?.status === 'running'
-  const isFailed = job?.status === 'failed'
+  // const isFailed = job?.status === 'failed' // not used currently
 
-  const lunchAfter = inst?.lunch_break_after_period ?? 4
+  // // const lunchAfter = inst?.lunch_break_after_period ?? 4 // not used
   const periodsPerDay = inst?.periods_per_day ?? 8
   const entities = tt ? (view === 'class' ? Object.keys(tt.timetable) : view === 'teacher' ? Object.keys(tt.teacher_timetable) : Object.keys(tt.room_timetable)).sort() : []
   const sel = selected || entities[0] || ''
@@ -89,6 +89,8 @@ export default function JobDetailPage() {
 
   // Analytics Data
   const res = job?.result
+  // Ensure fitnessHistoryRaw is defined – fallback to empty array if missing
+  const fitnessHistoryRaw = (job?.result?.fitness_history ?? [])
   const fitnessData = fitnessHistoryRaw.map((h: any, i: number) => ({ gen: i, ...h }));
 
   // Flatten breakdown if it's nested (compatibility for older jobs)
@@ -114,7 +116,7 @@ export default function JobDetailPage() {
   })
 
   // Handlers
-  const copyId = () => { navigator.clipboard.writeText(jobId!); toast.success('Copied ID') }
+  // const copyId = () => { navigator.clipboard.writeText(jobId!); toast.success('Copied ID') }
   const handleExportCsv = () => {
     if (view === 'class') downloadExport(jobId!, 'student-csv', sel)
     else if (view === 'teacher') downloadExport(jobId!, 'teacher-csv', sel.replace(/ /g, '_'))

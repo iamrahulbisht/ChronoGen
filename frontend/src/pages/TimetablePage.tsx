@@ -36,7 +36,7 @@ export default function TimetablePage() {
   const { data: inst } = useQuery({ queryKey: ['institution', institutionId], queryFn: () => getInstitution(institutionId!) })
   const { data: tt, isLoading } = useQuery({ queryKey: ['timetable', jobId, pareto], queryFn: () => getTimetable(jobId!, pareto) })
 
-  const lunchAfter = inst?.lunch_break_after_period ?? 4
+  // const lunchAfter = inst?.lunch_break_after_period ?? 4
   const periodsPerDay = inst?.periods_per_day ?? 8
 
   const entities = tt ? (view === 'class' ? Object.keys(tt.timetable) : view === 'teacher' ? Object.keys(tt.teacher_timetable) : Object.keys(tt.room_timetable)).sort() : []
